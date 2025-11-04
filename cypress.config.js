@@ -1,0 +1,39 @@
+const { defineConfig } = require("cypress");
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      allureWriter(on, config);
+      return config;
+    },
+    baseUrl: 'https://platform.impetusz0.de/auth/login',
+    env: {
+      allure: true,
+    },
+    viewportWidth: 1440,      // ← Width of the test runner
+    viewportHeight: 900,
+
+    experimentalSessionSupport: true,
+    reporterOptions: {
+      resultsDir: 'allure-results'
+    },
+    //video: true, 
+    screenshotOnRunFailure: true
+  },
+/* module.exports = {
+  reporter: 'cypress-multi-reporters',
+  reporterOptions: {
+    reporterEnabled: 'spec, mochawesome, mocha-junit-reporter',
+    mochawesomeReporterOptions: {
+      reportDir: 'cypress/reports/mochawesome',
+      overwrite: false,
+      html: false,
+      json: true,
+    },
+    mochaJunitReporterReporterOptions: {
+      mochaFile: 'cypress/reports/junit/results-[hash].xml',
+    },
+  },
+}; */
+
+});
