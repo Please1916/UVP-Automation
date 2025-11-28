@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
-  
   "scripts": {
     "cypress:open": "npx cypress open",
     "cypress": "npx cypress run",
     "clean:allure": "rm -rf allure-results allure-report",
-    "test:allure": "npm run clean:allure && npx cypress run --env allure=true && npx allure generate allure-results --clean",
-    "test:allur:generate":"npx allure generate allure-results --clean",
+    "test:allure": "npm run clean:allure && npx cypress run --spec 'cypress/e2e/login.cy.js' --env allure=true && npx allure generate allure-results --clean",
+    "test:allur:generate": "npx allure generate allure-results --clean",
+    "generate:pdf:login": "node generate-pdf.js cypress/e2e/login.cy.js",
     "test:allur:open": "npx allure open"
   },
   "keywords": [],
@@ -21,7 +20,9 @@
     "allure-commandline": "^2.34.1",
     "cypress": "^15.3.0",
     "cypress-file-upload": "^5.0.8",
+    "cypress-xpath": "^2.0.1",
+    "puppeteer": "^24.31.0",
+    "wkhtmltopdf": "^0.4.0",
     "xlsx": "^0.18.5"
   }
-  
 }

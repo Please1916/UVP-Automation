@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Emailable Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f4f4; padding:20px; }
+    h1 { font-size: 32px; }
+    table { width:100%; border-collapse: collapse; margin-top:20px; }
+    th, td { padding: 15px; text-align: center; font-size: 18px; }
+    th { background: #dcdcdc; }
+    .passed { background: #c8f7c5; }
+    .failed { background: #f7c5c5; }
+    .broken { background: #ffe2c6; }
+    .skipped { background: #eeeeee; }
+    .unknown { background: #cccccc; }
+  </style>
+</head>
+
+<body>
+  <h1>Emailable Report</h1>
+  <h3>Allure Summary</h3>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Total</th>
+        <th>Passed</th>
+        <th>Failed</th>
+        <th>Broken</th>
+        <th>Skipped</th>
+        <th>Unknown</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="total"></td>
+        <td id="passed" class="passed"></td>
+        <td id="failed" class="failed"></td>
+        <td id="broken" class="broken"></td>
+        <td id="skipped" class="skipped"></td>
+        <td id="unknown" class="unknown"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const data = JSON.parse(`{"total":3,"passed":"3 (100.00%)","failed":"0 (0.00%)","broken":"0 (0.00%)","skipped":"0 (0.00%)","unknown":"0 (0.00%)"}`);
+
+    document.getElementById("total").innerText = data.total;
+    document.getElementById("passed").innerText = data.passed;
+    document.getElementById("failed").innerText = data.failed;
+    document.getElementById("broken").innerText = data.broken;
+    document.getElementById("skipped").innerText = data.skipped;
+    document.getElementById("unknown").innerText = data.unknown;
+  </script>
+</body>
+</html>
