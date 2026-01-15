@@ -481,7 +481,7 @@ describe("Impetus Platform — Login Page Tests", () => {
       .click(); // Open the dropdown
 
     // Step 2: Select the first option from the dropdown
-    cy.get(".n-options .n-option").contains("Bras").click();
+    cy.get(".n-options .n-option").contains("Bras").first().click();
 
     cy.contains("p", "Upload Design") // find the container by its text
       .parent() // go to the wrapper div

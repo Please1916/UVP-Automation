@@ -8,9 +8,12 @@
     "cypress": "npx cypress run",
     "clean:allure": "rm -rf allure-results allure-report",
     "test:allure": "npm run clean:allure && npx cypress run --spec 'cypress/e2e/login.cy.js' --env allure=true && npx allure generate allure-results --clean",
+    "test:allure:sanity": "npm run clean:allure && npx cypress run --spec 'cypress/e2e/sanityflow.cy.js' --env allure=true",
     "test:allur:generate": "npx allure generate allure-results --clean",
     "generate:pdf:login": "node generate-pdf.js cypress/e2e/login.cy.js",
-    "test:allur:open": "npx allure open"
+    "generate:pdf:sanity": "node generate-pdf.js cypress/e2e/sanityflow.cy.js",
+    "test:allur:open": "npx allure open",
+    "test:allure:sanityopen": "npm run clean:allure && npx cypress open --spec 'cypress/e2e/sanityflow.cy.js' --env allure=true"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +27,8 @@
     "puppeteer": "^24.31.0",
     "wkhtmltopdf": "^0.4.0",
     "xlsx": "^0.18.5"
+  },
+  "dependencies": {
+    "axios": "^1.13.2"
   }
 }

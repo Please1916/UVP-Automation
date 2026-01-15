@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","57108","logs in successfully with valid credentials","","Wed Nov 26 20:46:28 IST 2025","passed","Wed Nov 26 20:47:25 IST 2025","","Impetus Platform — Login Page Tests","",""
-"","31857","should display login form correctly","","Wed Nov 26 20:45:40 IST 2025","passed","Wed Nov 26 20:46:12 IST 2025","","Impetus Platform — Login Page Tests","",""
-"","13978","should show error on invalid credentials","","Wed Nov 26 20:46:13 IST 2025","passed","Wed Nov 26 20:46:27 IST 2025","","Impetus Platform — Login Page Tests","",""

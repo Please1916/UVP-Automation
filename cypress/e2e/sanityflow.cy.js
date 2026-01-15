@@ -8,6 +8,27 @@ describe("Impetus Platform — Login Page Tests", () => {
       cy.login();
     });
   });
+
+  afterEach(function () {
+    if (this.currentTest.state === "failed") {
+      const testTitle = this.currentTest.title;
+      const errMessage = this.currentTest.err.message;
+
+      // Attach a screenshot automatically
+      cy.screenshot(`${testTitle}-failed`);
+
+      // Attach a developer-friendly message to Allure
+      cy.allure().step(
+        `Test "${testTitle}" failed. 
+       Please verify business expectations. 
+       Error: ${errMessage}`,
+        { status: "failed" }
+      );
+
+      // Optionally attach the raw error for QA reference
+      cy.allure().attachment("Cypress Error", errMessage, "text/plain");
+    }
+  });
   after(() => {
     cy.logout({ force: true });
   });
@@ -175,6 +196,22 @@ describe("Impetus Platform — Login Page Tests", () => {
       .click()
       .wait(15000);
     cy.get('input[placeholder="Search"]').type(themeName);
+    cy.get("tr")
+      .first()
+      .find("td")
+      .eq(1)
+      .find("span")
+      .invoke("text")
+      .then((id) => {
+        const moodboardId = id.trim();
+
+        cy.writeFile("cypress/fixtures/runtimeData.json", {
+          odmMoodboardId: moodboardId,
+        });
+
+        cy.log(`Saved Moodboard ID: ${moodboardId}`);
+      });
+
     // cy.get("td.align-middle", { timeout: 20000 })
     //   .find('p[title="automationTheem"]')
     //   .should("exist")
@@ -198,13 +235,22 @@ describe("Impetus Platform — Login Page Tests", () => {
       .last() // ensure we pick the arrow (not the user icon on the left)
       .click({ force: true })
       .wait(1000);
-    cy.get('input[placeholder="Select / Search item"]')
-      .click({ force: true })
-      .wait(1000);
+    // cy.get('input[placeholder="Select / Search item"]')
+    //   .click({ force: true })
+    //   .wait(1000);
+    // cy.contains("label", "MARS FASHIONS - 30304916")
+    //   .scrollIntoView()
+    //   .find('input[type="checkbox"]')
+    //   .check({ force: true })
+    //   .wait(1000);
+    cy.get('input[placeholder="Select / Search item"]').type("MARS FASHIONS");
+
     cy.contains("label", "MARS FASHIONS - 30304916")
+      .scrollIntoView()
       .find('input[type="checkbox"]')
       .check({ force: true })
       .wait(1000);
+
     cy.contains("div.n-button-content", "Share")
       .click({ force: true })
       .wait(600);
@@ -383,9 +429,7 @@ describe("Impetus Platform — Login Page Tests", () => {
     //   //.should("be.visible") // ensure it is visible
     //   .click({ force: true });
     cy.contains("p", "PENDING").first().click({ force: true });
-    cy.contains("button", "Rework")
-      .click({ force: true })
-      
+    cy.contains("button", "Rework").click({ force: true });
   });
 
   //Vendor makes changes to rework design---not working

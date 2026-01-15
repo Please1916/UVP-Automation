@@ -1,51 +1,158 @@
 const fs = require("fs");
-const puppeteer = require("puppeteer");
 const path = require("path");
+const puppeteer = require("puppeteer");
 
-const cypressSpecFile = process.argv[2]; // pass file path as argument
-const fileName = path.basename(cypressSpecFile, ".cy.js"); // e.g., login.cy.js -> login
+const cypressSpecFile = process.argv[2];
+const fileName = path.basename(cypressSpecFile, ".cy.js");
 
-(async () => {
-  const summary = JSON.parse(
-    fs.readFileSync("allure-report/widgets/summary.json", "utf8")
-  );
+const suitesPath = "allure-report/data/suites.json";
 
-  const stats = summary.statistic;
-  const total = stats.total || 0;
+if (!fs.existsSync(suitesPath)) {
+  console.error("ERROR: suites.json not found. Ensure Allure report is generated.");
+  process.exit(1);
+}
 
-  function percent(value) {
-    if (total === 0) return "0%";
-    return ((value / total) * 100).toFixed(2) + "%";
+const suitesJson = JSON.parse(fs.readFileSync(suitesPath, "utf8"));
+
+/* ============================================================
+   FAILURE DETAILS FROM test-cases/<uid>.json
+============================================================ */
+function getFailureDetails(testUid) {
+  const testCasePath = `allure-report/data/test-cases/${testUid}.json`;
+
+  if (!fs.existsSync(testCasePath)) {
+    return {
+      errorMessage: "",
+      errorTrace: "",
+      attachments: []
+    };
   }
 
-  const data = {
-    total: stats.total,
-    passed: `${stats.passed} (${percent(stats.passed)})`,
-    failed: `${stats.failed} (${percent(stats.failed)})`,
-    broken: `${stats.broken} (${percent(stats.broken)})`,
-    skipped: `${stats.skipped} (${percent(stats.skipped)})`,
-    unknown: `${stats.unknown} (${percent(stats.unknown)})`
+  const testCaseJson = JSON.parse(fs.readFileSync(testCasePath, "utf8"));
+
+  return {
+    errorMessage: testCaseJson.statusMessage || "",
+    errorTrace: testCaseJson.statusTrace || "",
+    attachments:
+      testCaseJson.testStage?.attachments?.map(a => ({
+        name: a.name,
+        source: `allure-report/data/attachments/${a.source}`,
+        type: a.type
+      })) || []
   };
+}
 
-  // Load HTML template
-  let html = fs.readFileSync("./reports/emailable-report.html", "utf8");
-  html = html.replace("__ALLURE_DATA__", JSON.stringify(data));
+/* ============================================================
+   EXTRACT TESTS FROM suites.json
+============================================================ */
+function extractTests(suite) {
+  let tests = [];
 
-  const outputHtmlPath = `./reports/emailable-report-${fileName}.html`;
-  fs.writeFileSync(outputHtmlPath, html);
+  if (suite.children) {
+    suite.children.forEach(child => {
+      if (child.status) {
 
+        let failure = {
+          errorMessage: "",
+          errorTrace: "",
+          attachments: []
+        };
+
+        // 🔴 Only failed tests have failure details
+        if (child.status === "failed") {
+          failure = getFailureDetails(child.uid);
+        }
+
+        tests.push({
+          name: child.name,
+          status: child.status,
+          suiteName: suite.name,
+          uid: child.uid,
+          start: child.time?.start,
+          stop: child.time?.stop,
+          duration: child.time?.duration || 0,
+          retries: child.retriesCount || 0,
+          flaky: child.flaky || false,
+
+          // failure mapping
+          errorMessage: failure.errorMessage,
+          errorTrace: failure.errorTrace,
+          attachments: failure.attachments
+        });
+      }
+
+      tests = tests.concat(extractTests(child));
+    });
+  }
+
+  return tests;
+}
+
+const allTests = extractTests(suitesJson);
+// ============================================================
+// TOTAL RETRIES CALCULATION
+// ============================================================
+const totalRetries = allTests.reduce((sum, t) => sum + (t.retries || 0), 0);
+
+
+/* ============================================================
+   STATISTICS (UNKNOWN REMOVED)
+============================================================ */
+const stat = {
+  total: allTests.length,
+  passed: allTests.filter(t => t.status === "passed").length,
+  failed: allTests.filter(t => t.status === "failed").length,
+  broken: allTests.filter(t => t.status === "broken").length,
+  skipped: allTests.filter(t => t.status === "skipped").length,
+  retries: totalRetries
+};
+
+function percent(val) {
+  return stat.total === 0
+    ? "0%"
+    : ((val / stat.total) * 100).toFixed(2) + "%";
+}
+
+/* ============================================================
+   PREPARE DATA FOR HTML
+============================================================ */
+const preparedData = {
+  stats: {
+    total: stat.total,
+    passed: `${stat.passed} (${percent(stat.passed)})`,
+    failed: `${stat.failed} (${percent(stat.failed)})`,
+    broken: `${stat.broken} (${percent(stat.broken)})`,
+    skipped: `${stat.skipped} (${percent(stat.skipped)})`,
+    retries: `${stat.retries} (${percent(stat.retries)})`
+  },
+  tests: allTests
+};
+
+/* ============================================================
+   GENERATE HTML + PDF
+============================================================ */
+let html = fs.readFileSync("./reports/emailable-report.html", "utf8");
+html = html.replace("__ALLURE_DATA__", JSON.stringify(preparedData));
+
+const outHtml = `./reports/${fileName}-report.html`;
+fs.writeFileSync(outHtml, html);
+
+(async () => {
   const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
-  await page.goto(`file://${path.resolve(outputHtmlPath)}`, { waitUntil: "networkidle0" });
+
+  await page.goto(`file://${path.resolve(outHtml)}`, {
+    waitUntil: "networkidle0"
+  });
 
   await page.pdf({
-    path: `./reports/emailable-report-${fileName}.pdf`,
+    path: `./reports/${fileName}-report.pdf`,
     format: "A4",
     printBackground: true
   });
 
   await browser.close();
 
-  console.log(`PDF generated: reports/emailable-report-${fileName}.pdf`);
+  console.log("PDF Report Generated:");
+  console.log(`→ reports/${fileName}-report.pdf`);
 })();
-

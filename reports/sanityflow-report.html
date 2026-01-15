@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Allure Suite Report</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .passed {
+      background: #c8f7c5;
+    }
+
+    .failed {
+      background: #f7c5c5;
+    }
+
+    .skipped {
+      background: #dddddd;
+    }
+
+    .test-card {
+      border: 1px solid #aaa;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    img.screenshot {
+      width: 90%;
+      max-width: 900px;
+      height: auto;
+      margin-top: 12px;
+      border: 1px solid #666;
+      display: block;
+    }
+
+    .error {
+      color: #b00020;
+      font-weight: bold;
+      white-space: pre-wrap;
+    }
+
+    .trace {
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 10px;
+      border-left: 4px solid #f44336;
+      white-space: pre-wrap;
+      margin-top: 8px;
+    }
+
+    .page {
+      page-break-before: always;
+    }
+
+    .page:first-of-type {
+      page-break-before: avoid;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    window.REPORT_DATA = {"stats":{"total":14,"passed":"14 (100.00%)","failed":"0 (0.00%)","broken":"0 (0.00%)","skipped":"0 (0.00%)","retries":"28 (200.00%)"},"tests":[{"name":"logs in successfully with valid credentials","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"55ca7f4a2a4595b2","start":1765977992694,"stop":1765978056036,"duration":63342,"retries":8,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"logs in successfully with valid credentials and upload inspiration file","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"693b536b6e82175a","start":1765978056192,"stop":1765978099755,"duration":43563,"retries":6,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Searches for the Uploaded theme and share it with a vendor","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"b1892104a0f6b262","start":1765978100012,"stop":1765978155500,"duration":55488,"retries":3,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Cluster Reworks the  submitted design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"e9c91562de1cc6a5","start":1765978217901,"stop":1765978270052,"duration":52151,"retries":2,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Rework","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"490f0ee5dad4bb57","start":1765978374655,"stop":1765978411195,"duration":36540,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Unparks the design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"486191630d7515ce","start":1765978542814,"stop":1765978576942,"duration":34128,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Parks","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"59fbb4d708bb378f","start":1765978577214,"stop":1765978623100,"duration":45886,"retries":1,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Rework the parked design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"cb1dfde548a7e1a8","start":1765978623674,"stop":1765978667487,"duration":43813,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Vendor makes changes to rework design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"bbde9408750f0d1a","start":1765978667682,"stop":1765978724283,"duration":56601,"retries":3,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Approval","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"36798f34cc5b570d","start":1765978724722,"stop":1765978793524,"duration":68802,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Cluster rejects submitted design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"24be43b1775b2130","start":1765978847131,"stop":1765978903226,"duration":56095,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Verify that shared Inspiration is visible and submit design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"fe60d40a233428d","start":1765978903962,"stop":1765978958191,"duration":54229,"retries":4,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Cluster approval for submitted design","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"e32651b0cde67a92","start":1765978958520,"stop":1765979026574,"duration":68054,"retries":1,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Rejects","status":"passed","suiteName":"Impetus Platform — Login Page Tests","uid":"fbc23df7b68b231b","start":1765979026834,"stop":1765979073773,"duration":46939,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]}]};
+  </script>
+</head>
+
+<body>
+
+  <h1>Allure Execution PDF</h1>
+
+  <!-- ================= PAGE 1 ================= -->
+  <div class="page">
+    <h2>Summary</h2>
+    <table>
+      <tr>
+        <th>Total</th>
+        <th>Passed</th>
+        <th>Failed</th>
+        <th>Skipped</th>
+        <th>Retries</th>
+      </tr>
+      <tr>
+        <td id="total"></td>
+        <td id="passed" class="passed"></td>
+        <td id="failed" class="failed"></td>
+        <td id="skipped" class="skipped"></td>
+        <td id="retries"></td>
+      </tr>
+    </table>
+    <h2>Test List</h2>
+    <table id="tests-table">
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Status</th>
+          <th>Duration (ms)</th>
+          <th>Retries</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- ================= PAGE 2 ================= -->
+  <div class="page">
+    <h2>Status Distribution</h2>
+    <canvas id="pieChart" width="600" height="600"></canvas>
+  </div>
+
+  <!-- ================= PAGE 3 ================= -->
+  <div class="page">
+    <h2>Duration per Test</h2>
+    <canvas id="durationChart" height="300"></canvas>
+  </div>
+
+  <!-- ================= PAGE 4+ ================= -->
+  <div class="page">
+    <h2>Failed Logs</h2>
+    <div id="test-list"></div>
+  </div>
+
+  <script>
+    /* ===== WHITE BACKGROUND FIX ===== */
+    const whiteBackgroundPlugin = {
+      id: 'whiteBackground',
+      beforeDraw(chart) {
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
+      }
+    };
+
+    /* ===== LABELS INSIDE PIE ===== */
+    const pieLabelPlugin = {
+      id: 'pieLabelPlugin',
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const dataset = chart.data.datasets[0];
+        const meta = chart.getDatasetMeta(0);
+
+        ctx.save();
+        ctx.font = "bold 16px Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        meta.data.forEach((arc, index) => {
+          const value = dataset.data[index];
+          if (!value) return;
+          const pos = arc.tooltipPosition();
+          ctx.fillText(`${chart.data.labels[index]}: ${value}`, pos.x, pos.y);
+        });
+
+        ctx.restore();
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const report = window.REPORT_DATA;
+
+      total.innerText = report.stats.total;
+      passed.innerText = report.stats.passed;
+      failed.innerText = report.stats.failed;
+      skipped.innerText = report.stats.skipped;
+      retries.innerText = report.stats.retries;
+
+      /* ===== POPULATE TESTS TABLE ===== */
+      const testsTbody = document.querySelector("#tests-table tbody");
+
+      report.tests.forEach(test => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+    <td>${test.name}</td>
+    <td class="${test.status}">${test.status}</td>
+    <td>${test.duration}</td>
+    <td>${test.retries}</td>
+  `;
+        testsTbody.appendChild(tr);
+      });
+
+
+      /* ===== PIE CHART ===== */
+      new Chart(pieChart, {
+        type: "pie",
+        plugins: [whiteBackgroundPlugin, pieLabelPlugin],
+        data: {
+          labels: ["Passed", "Failed", "Skipped"],
+          datasets: [{
+            data: [
+              parseInt(report.stats.passed),
+              parseInt(report.stats.failed),
+              parseInt(report.stats.skipped)
+            ],
+            backgroundColor: ["#4CAF50", "#F44336", "#9E9E9E"],
+            borderWidth: 0,
+            radius: "92%"
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: false,
+          plugins: {
+            legend: {
+              position: "right",
+              labels: {
+                font: { size: 14 }
+              }
+            }
+          }
+        }
+      });
+
+      /* ===== DURATION CHART (UNCHANGED) ===== */
+      new Chart(durationChart, {
+        plugins: [whiteBackgroundPlugin],
+        type: "bar",
+        data: {
+          labels: report.tests.map(t => t.name),
+          datasets: [{
+            label: "Duration (ms)",
+            data: report.tests.map(t => t.duration),
+            backgroundColor: "#2196F3"
+          }]
+        }
+      });
+
+      /* ===== FAILED LOGS (FULL DETAILS PRESERVED) ===== */
+      const list = document.getElementById("test-list");
+
+      report.tests.filter(t => t.status === "failed").forEach(test => {
+        const div = document.createElement("div");
+        div.className = "test-card failed";
+
+        div.innerHTML = `
+      <h3>${test.name}</h3>
+      <p><strong>Suite:</strong> ${test.suiteName}</p>
+      <p class="error">Failure Reason:<br>${test.errorMessage || "N/A"}</p>
+      ${test.errorTrace ? `<div class="trace">${test.errorTrace}</div>` : ""}
+      <p><strong>Retries:</strong> ${test.retries}</p>
+      <p><strong>Duration:</strong> ${test.duration} ms</p>
+
+      <h4>Screenshot</h4>
+      ${test.attachments.length
+            ? test.attachments.map(a =>
+              `<img class="screenshot" src="../${a.source}">`
+            ).join("")
+            : "<p>No screenshot available.</p>"
+          }
+    `;
+
+        list.appendChild(div);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
