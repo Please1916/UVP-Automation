@@ -24,7 +24,7 @@ module.exports = defineConfig({
       });
       return config;
     },
-    baseUrl: "https://platform.impetusz0.de/auth/login",
+    baseUrl: "https://platform.uat.impetusz0.de/auth/login",
     env: {
       allure: true,
     },

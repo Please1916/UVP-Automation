@@ -1,0 +1,5 @@
+Timed out retrying after 60000ms: `cy.contains()` failed because it requires a DOM element, window or document.
+
+No elements in the current DOM matched your query:
+
+  > cy.get(div.side-navigation-panel-select-inner-option, [object Object])
