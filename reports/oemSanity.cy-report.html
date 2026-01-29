@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Allure Suite Report</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .passed {
+      background: #c8f7c5;
+    }
+
+    .failed {
+      background: #f7c5c5;
+    }
+
+    .skipped {
+      background: #dddddd;
+    }
+
+    .test-card {
+      border: 1px solid #aaa;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    img.screenshot {
+      width: 90%;
+      max-width: 900px;
+      height: auto;
+      margin-top: 12px;
+      border: 1px solid #666;
+      display: block;
+    }
+
+    .error {
+      color: #b00020;
+      font-weight: bold;
+      white-space: pre-wrap;
+    }
+
+    .trace {
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 10px;
+      border-left: 4px solid #f44336;
+      white-space: pre-wrap;
+      margin-top: 8px;
+    }
+
+    .page {
+      page-break-before: always;
+    }
+
+    .page:first-of-type {
+      page-break-before: avoid;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    window.REPORT_DATA = {"stats":{"total":15,"passed":"15 (100.00%)","failed":"0 (0.00%)","broken":"0 (0.00%)","skipped":"0 (0.00%)","retries":"3 (20.00%)"},"tests":[{"name":"logs in successfully with valid credentials","status":"passed","suiteName":"RA buyer","uid":"9372cb6ccdc7be52","start":1769616737292,"stop":1769616758934,"duration":21642,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"After login should be in the select workspace page and click on OEM buuyer","status":"passed","suiteName":"RA buyer","uid":"7f0a72a775228951","start":1769616759027,"stop":1769616854388,"duration":95361,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Searches for the Uploaded theme and share it with a vendor","status":"passed","suiteName":"RA buyer","uid":"5ab7a16f1996dd7f","start":1769616855755,"stop":1769616907045,"duration":51290,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Verify that shared Inspiration is visible and submit design","status":"passed","suiteName":"RA buyer","uid":"9174b73ae6e555f8","start":1769617047799,"stop":1769617142125,"duration":94326,"retries":1,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Cluster Reworks the  submitted design","status":"passed","suiteName":"RA buyer","uid":"e02914766f56659f","start":1769617143143,"stop":1769617190772,"duration":47629,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Vendor makes changes to rework design after cluster rework","status":"passed","suiteName":"RA buyer","uid":"6f12029129d3788d","start":1769617192782,"stop":1769617272170,"duration":79388,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Cluster approval for submitted design","status":"passed","suiteName":"RA buyer","uid":"d476f83655314238","start":1769617272387,"stop":1769617317634,"duration":45247,"retries":1,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Rework after cluster approval","status":"passed","suiteName":"RA buyer","uid":"16a0fd36dc3ccd76","start":1769617318942,"stop":1769617354557,"duration":35615,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Parks","status":"passed","suiteName":"RA buyer","uid":"c197517c451304d8","start":1769617446708,"stop":1769617493847,"duration":47139,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Unparks the design","status":"passed","suiteName":"RA buyer","uid":"e6662eed6f08193f","start":1769617495295,"stop":1769617530000,"duration":34705,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Parks again","status":"passed","suiteName":"RA buyer","uid":"e23aaac5038765f2","start":1769617530627,"stop":1769617577838,"duration":47211,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Rework the parked design after buyer parks the design","status":"passed","suiteName":"RA buyer","uid":"bf71be7a74a0c35f","start":1769617579690,"stop":1769617683196,"duration":103506,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Vendor makes changes to rework design after buyer rework","status":"passed","suiteName":"RA buyer","uid":"52cc3b17783987b2","start":1769617683603,"stop":1769617779893,"duration":96290,"retries":1,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Buyer Approval after vendor changes","status":"passed","suiteName":"RA buyer","uid":"404a0d47e150ae0a","start":1769617780237,"stop":1769617864121,"duration":83884,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"Validate Auto Reject Scenario","status":"passed","suiteName":"RA buyer","uid":"3affbbef53219c3c","start":1769617864882,"stop":1769617907852,"duration":42970,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]}]};
+  </script>
+</head>
+
+<body>
+
+  <h1>Allure Execution PDF</h1>
+
+  <!-- ================= PAGE 1 ================= -->
+  <div class="page">
+    <h2>Summary</h2>
+    <table>
+      <tr>
+        <th>Total</th>
+        <th>Passed</th>
+        <th>Failed</th>
+        <th>Skipped</th>
+
+      </tr>
+      <tr>
+        <td id="total"></td>
+        <td id="passed" class="passed"></td>
+        <td id="failed" class="failed"></td>
+        <td id="skipped" class="skipped"></td>
+
+      </tr>
+    </table>
+    <h2>Test List</h2>
+    <table id="tests-table">
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Status</th>
+          <th>Duration (ms)</th>
+
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- ================= PAGE 2 ================= -->
+  <div class="page">
+    <h2>Status Distribution</h2>
+    <canvas id="pieChart" width="600" height="600"></canvas>
+  </div>
+
+  <!-- ================= PAGE 3 ================= -->
+  <div class="page">
+    <h2>Duration per Test</h2>
+    <canvas id="durationChart" height="300"></canvas>
+  </div>
+
+  <!-- ================= PAGE 4+ ================= -->
+  <div class="page" id="failed-logs-page">
+  <h2>Failed Logs</h2>
+  <div id="test-list"></div>
+</div>
+
+  <script>
+    /* ===== WHITE BACKGROUND FIX ===== */
+    const whiteBackgroundPlugin = {
+      id: 'whiteBackground',
+      beforeDraw(chart) {
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
+      }
+    };
+
+    /* ===== LABELS INSIDE PIE ===== */
+    const pieLabelPlugin = {
+      id: 'pieLabelPlugin',
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const dataset = chart.data.datasets[0];
+        const meta = chart.getDatasetMeta(0);
+
+        ctx.save();
+        ctx.font = "bold 16px Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        meta.data.forEach((arc, index) => {
+          const value = dataset.data[index];
+          if (!value) return;
+          const pos = arc.tooltipPosition();
+          ctx.fillText(`${chart.data.labels[index]}: ${value}`, pos.x, pos.y);
+        });
+
+        ctx.restore();
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const report = window.REPORT_DATA;
+
+      total.innerText = report.stats.total;
+      passed.innerText = report.stats.passed;
+      failed.innerText = report.stats.failed;
+      skipped.innerText = report.stats.skipped;
+
+
+      /* ===== POPULATE TESTS TABLE ===== */
+      const testsTbody = document.querySelector("#tests-table tbody");
+
+      report.tests.forEach(test => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+    <td>${test.name}</td>
+    <td class="${test.status}">${test.status}</td>
+    <td>${test.duration}</td>
+    
+  `;
+        testsTbody.appendChild(tr);
+      });
+
+
+      /* ===== PIE CHART ===== */
+      new Chart(pieChart, {
+        type: "pie",
+        plugins: [whiteBackgroundPlugin, pieLabelPlugin],
+        data: {
+          labels: ["Passed", "Failed", "Skipped"],
+          datasets: [{
+            data: [
+              parseInt(report.stats.passed),
+              parseInt(report.stats.failed),
+              parseInt(report.stats.skipped)
+            ],
+            backgroundColor: ["#4CAF50", "#F44336", "#9E9E9E"],
+            borderWidth: 0,
+            radius: "92%"
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: false,
+          plugins: {
+            legend: {
+              position: "right",
+              labels: {
+                font: { size: 14 }
+              }
+            }
+          }
+        }
+      });
+
+      /* ===== DURATION CHART (UNCHANGED) ===== */
+      new Chart(durationChart, {
+        plugins: [whiteBackgroundPlugin],
+        type: "bar",
+        data: {
+          labels: report.tests.map(t => t.name),
+          datasets: [{
+            label: "Duration (ms)",
+            data: report.tests.map(t => t.duration),
+            backgroundColor: "#2196F3"
+          }]
+        }
+      });
+
+      const failedLogsPage = document.getElementById("failed-logs-page");
+const list = document.getElementById("test-list");
+
+const failedTests = report.tests.filter(t => t.status === "failed");
+
+if (failedTests.length === 0) {
+  // ✅ Completely remove the page (PDF-safe)
+  failedLogsPage.remove();
+} else {
+  failedTests.forEach(test => {
+    const div = document.createElement("div");
+    div.className = "test-card failed";
+
+    div.innerHTML = `
+      <h3>${test.name}</h3>
+      <p><strong>Suite:</strong> ${test.suiteName || "N/A"}</p>
+      <p class="error">Failure Reason:<br>${test.errorMessage || "N/A"}</p>
+      ${test.errorTrace ? `<div class="trace">${test.errorTrace}</div>` : ""}
+      <p><strong>Duration:</strong> ${test.duration} ms</p>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+
+
+
+    });
+  </script>
+
+</body>
+
+</html>

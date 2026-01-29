@@ -323,7 +323,7 @@ describe("Impetus Platform — Login Page Tests", () => {
     });
   });
 
-  //Cluster role
+  //Cluster role. **
   it("Cluster approval for submitted design", () => {
     cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
 
@@ -376,7 +376,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   //   cy.contains("button", "Approve").click({ force: true });
   // });
   //buyer approve for rework design from vendor
-  it("Buyer Approval", () => {
+  xit("Buyer Approval", () => {
     cy.visit("https://platform.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");

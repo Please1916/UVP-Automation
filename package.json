@@ -12,10 +12,11 @@
     "test:allur:generate": "npx allure generate allure-results --clean",
     "generate:pdf:login": "node generate-pdf.js cypress/e2e/login.cy.js",
     "generate:pdf:sanity": "node generate-pdf.js cypress/e2e/sanityflow.cy.js",
+    "generate:pdf:oemsanity": "node generate-pdf.js cypress/e2e/oemSanity.cy.cy.js",
     "test:allur:open": "npx allure open",
     "test:allure:sanityopen": "npm run clean:allure && npx cypress open --spec 'cypress/e2e/sanityflow.cy.js' --env allure=true"
   },
-  "keywords": [],
+  "keywords": [], 
   "author": "",
   "license": "ISC",
   "devDependencies": {

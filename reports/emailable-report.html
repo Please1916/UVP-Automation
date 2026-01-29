@@ -105,14 +105,14 @@
         <th>Passed</th>
         <th>Failed</th>
         <th>Skipped</th>
-        <th>Retries</th>
+
       </tr>
       <tr>
         <td id="total"></td>
         <td id="passed" class="passed"></td>
         <td id="failed" class="failed"></td>
         <td id="skipped" class="skipped"></td>
-        <td id="retries"></td>
+
       </tr>
     </table>
     <h2>Test List</h2>
@@ -122,7 +122,7 @@
           <th>Test Name</th>
           <th>Status</th>
           <th>Duration (ms)</th>
-          <th>Retries</th>
+
         </tr>
       </thead>
       <tbody></tbody>
@@ -142,10 +142,10 @@
   </div>
 
   <!-- ================= PAGE 4+ ================= -->
-  <div class="page">
-    <h2>Failed Logs</h2>
-    <div id="test-list"></div>
-  </div>
+  <div class="page" id="failed-logs-page">
+  <h2>Failed Logs</h2>
+  <div id="test-list"></div>
+</div>
 
   <script>
     /* ===== WHITE BACKGROUND FIX ===== */
@@ -193,7 +193,7 @@
       passed.innerText = report.stats.passed;
       failed.innerText = report.stats.failed;
       skipped.innerText = report.stats.skipped;
-      retries.innerText = report.stats.retries;
+
 
       /* ===== POPULATE TESTS TABLE ===== */
       const testsTbody = document.querySelector("#tests-table tbody");
@@ -204,7 +204,7 @@
     <td>${test.name}</td>
     <td class="${test.status}">${test.status}</td>
     <td>${test.duration}</td>
-    <td>${test.retries}</td>
+    
   `;
         testsTbody.appendChild(tr);
       });
@@ -255,32 +255,34 @@
         }
       });
 
-      /* ===== FAILED LOGS (FULL DETAILS PRESERVED) ===== */
-      const list = document.getElementById("test-list");
+      const failedLogsPage = document.getElementById("failed-logs-page");
+const list = document.getElementById("test-list");
 
-      report.tests.filter(t => t.status === "failed").forEach(test => {
-        const div = document.createElement("div");
-        div.className = "test-card failed";
+const failedTests = report.tests.filter(t => t.status === "failed");
 
-        div.innerHTML = `
+if (failedTests.length === 0) {
+  // ✅ Completely remove the page (PDF-safe)
+  failedLogsPage.remove();
+} else {
+  failedTests.forEach(test => {
+    const div = document.createElement("div");
+    div.className = "test-card failed";
+
+    div.innerHTML = `
       <h3>${test.name}</h3>
-      <p><strong>Suite:</strong> ${test.suiteName}</p>
+      <p><strong>Suite:</strong> ${test.suiteName || "N/A"}</p>
       <p class="error">Failure Reason:<br>${test.errorMessage || "N/A"}</p>
       ${test.errorTrace ? `<div class="trace">${test.errorTrace}</div>` : ""}
-      <p><strong>Retries:</strong> ${test.retries}</p>
       <p><strong>Duration:</strong> ${test.duration} ms</p>
-
-      <h4>Screenshot</h4>
-      ${test.attachments.length
-            ? test.attachments.map(a =>
-              `<img class="screenshot" src="../${a.source}">`
-            ).join("")
-            : "<p>No screenshot available.</p>"
-          }
     `;
 
-        list.appendChild(div);
-      });
+    list.appendChild(div);
+  });
+}
+
+
+
+
     });
   </script>
 

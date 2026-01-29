@@ -342,7 +342,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
     // Now select the option "LT Orange" from the dropdown
     cy.get('[data-testid="dropdown-scroll"]')
-      .contains(".n-option", "LT ORANGE")
+      .contains(".n-option", "AQUA")
       .scrollIntoView() // scroll within the container
       .click();
 
@@ -432,7 +432,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   //Vendor makes changes to rework design---not working
-  it("Vendor makes changes to rework design", () => {
+  it("Vendor makes changes to rework design after cluster rework", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
@@ -517,7 +517,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   //Buyer reworks the cluster submitted design
-  it("Buyer Rework", () => {
+  it("Buyer Rework after cluster approval", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
@@ -550,7 +550,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   //Vendor reworks on buyer rework design
-  it("Vendor makes changes to rework design", () => {
+  it("Vendor makes changes to rework design after buyer rework", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
@@ -720,7 +720,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   //buyer parks the cluster approved design again
-  it("Buyer Parks", () => {
+  it("Buyer Parks again", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
@@ -793,7 +793,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   //Vendor makes changes to rework design---not working
-  it("Vendor makes changes to rework design", () => {
+  it("Vendor makes changes to rework design after buyer rework", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
@@ -866,7 +866,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   //   cy.contains("button", "Approve").click({ force: true });
   // });
   //buyer approve for rework design from vendor
-  it("Buyer Approval", () => {
+  it("Buyer Approval after vendor rework", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
@@ -910,383 +910,383 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Vnedor submits the third design now
   //Vendor role
-  it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
-    // Click on the vendor card "Shein"
-    cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
-      force: true,
-    }); // click it even if overlayed
-    cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("30304916")
-      .click({ force: true })
-      .wait(1500);
-    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
-      .parents("span.side-navigation-panel-select-option-wrap")
-      .click()
-      .wait(1000);
-    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
-      .contains("ODM")
-      .click()
-      .wait(15000);
-    cy.get('input[placeholder="Search"]').type(themeName).wait(1000);
-    cy.get("div.n-button-content")
-      .contains("View")
-      .first()
-      .click({ force: true })
-      .wait(1000);
-    // Scroll to the "Submit" button and click it
-    cy.contains("div.n-button-content", "Submit")
-      .scrollIntoView()
-      .click({ force: true })
-      .wait(1000);
-    cy.get('input[data-testid="article_code_input"]')
-      .first()
-      .type("StyleTest123");
-    // Type into the search input
-    //cy.get('input[data-testid="dropdown-search"]').type("6206400{enter}");
+  // xit("Verify that shared Inspiration is visible and submit design", () => {
+  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   // Click on the vendor card "Shein"
+  //   cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
+  //     force: true,
+  //   }); // click it even if overlayed
+  //   cy.get("div.sc-dAbbOL.vIbA-D")
+  //     .contains("30304916")
+  //     .click({ force: true })
+  //     .wait(1500);
+  //   cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+  //     .parents("span.side-navigation-panel-select-option-wrap")
+  //     .click()
+  //     .wait(1000);
+  //   cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+  //     .contains("ODM")
+  //     .click()
+  //     .wait(15000);
+  //   cy.get('input[placeholder="Search"]').type(themeName).wait(1000);
+  //   cy.get("div.n-button-content")
+  //     .contains("View")
+  //     .first()
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   // Scroll to the "Submit" button and click it
+  //   cy.contains("div.n-button-content", "Submit")
+  //     .scrollIntoView()
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   cy.get('input[data-testid="article_code_input"]')
+  //     .first()
+  //     .type("StyleTest123");
+  //   // Type into the search input
+  //   //cy.get('input[data-testid="dropdown-search"]').type("6206400{enter}");
 
-    cy.get('input[data-testid="dropdown-search"]').type("620", { delay: 100 });
+  //   cy.get('input[data-testid="dropdown-search"]').type("620", { delay: 100 });
 
-    // Wait for the dropdown options to load
-    cy.wait(800); // adjust if your app loads slower
-    cy.get("body").then(($body) => {
-      console.log($body.html()); // logs HTML to Cypress runner console
-    });
-    // Select the correct code (assuming dropdown options appear as list items)
-    cy.get(".n-options .n-option") // adjust selector to match your dropdown option class
-      .contains("6206400")
-      .click();
+  //   // Wait for the dropdown options to load
+  //   cy.wait(800); // adjust if your app loads slower
+  //   cy.get("body").then(($body) => {
+  //     console.log($body.html()); // logs HTML to Cypress runner console
+  //   });
+  //   // Select the correct code (assuming dropdown options appear as list items)
+  //   cy.get(".n-options .n-option") // adjust selector to match your dropdown option class
+  //     .contains("6206400")
+  //     .click();
 
-    cy.contains("label", "Brick Name *")
-      // Navigate to the closest wrapper containing the dropdown trigger
-      .parent()
-      .find(".n-select__trigger")
-      .click(); // Open the dropdown
+  //   cy.contains("label", "Brick Name *")
+  //     // Navigate to the closest wrapper containing the dropdown trigger
+  //     .parent()
+  //     .find(".n-select__trigger")
+  //     .click(); // Open the dropdown
 
-    // Step 2: Select the first option from the dropdown
-    cy.get(".n-options .n-option").contains("Jeans").click();
+  //   // Step 2: Select the first option from the dropdown
+  //   cy.get(".n-options .n-option").contains("Jeans").click();
 
-    cy.contains("p", "Upload Design") // find the container by its text
-      .parent() // go to the wrapper div
-      .find('input[type="file"]') // find the hidden input
-      .attachFile("design.jpeg", { force: true });
+  //   cy.contains("p", "Upload Design") // find the container by its text
+  //     .parent() // go to the wrapper div
+  //     .find('input[type="file"]') // find the hidden input
+  //     .attachFile("design.jpeg", { force: true });
 
-    cy.contains("p", "Colorways") // find the container by its text
-      .parent() // go to the wrapper div
-      .find('input[type="file"]') // find the hidden input
-      .attachFile("colorways.jpg", { force: true });
+  //   cy.contains("p", "Colorways") // find the container by its text
+  //     .parent() // go to the wrapper div
+  //     .find('input[type="file"]') // find the hidden input
+  //     .attachFile("colorways.jpg", { force: true });
 
-    cy.wait(2000);
+  //   cy.wait(2000);
 
-    // Find the dropdown input with placeholder "Add SAP ID" and click it
-    cy.get('input[data-testid="dropdown-search"][placeholder="Add SAP ID"]')
-      .scrollIntoView() // ensure it's visible
-      .click(); // open the dropdown
+  //   // Find the dropdown input with placeholder "Add SAP ID" and click it
+  //   cy.get('input[data-testid="dropdown-search"][placeholder="Add SAP ID"]')
+  //     .scrollIntoView() // ensure it's visible
+  //     .click(); // open the dropdown
 
-    // Type the value to filter options (optional if searchable)
+  //   // Type the value to filter options (optional if searchable)
 
-    // Now select the option "LT Orange" from the dropdown
-    cy.get('[data-testid="dropdown-scroll"]')
-      .contains(".n-option", "LT ORANGE")
-      .scrollIntoView() // scroll within the container
-      .click();
+  //   // Now select the option "LT Orange" from the dropdown
+  //   cy.get('[data-testid="dropdown-scroll"]')
+  //     .contains(".n-option", "LT ORANGE")
+  //     .scrollIntoView() // scroll within the container
+  //     .click();
 
-    cy.get('input[placeholder="Enter cost"]').type("333");
+  //   cy.get('input[placeholder="Enter cost"]').type("333");
 
-    cy.get("div.n-button-content").each(($el) => {
-      const text = $el.text().trim();
+  //   cy.get("div.n-button-content").each(($el) => {
+  //     const text = $el.text().trim();
 
-      if (text === "Upload") {
-        // Scroll into view, find the parent button, then click
-        cy.wrap($el)
-          .scrollIntoView()
-          .parent("button")
-          .should("be.visible")
-          .click();
+  //     if (text === "Upload") {
+  //       // Scroll into view, find the parent button, then click
+  //       cy.wrap($el)
+  //         .scrollIntoView()
+  //         .parent("button")
+  //         .should("be.visible")
+  //         .click();
 
-        // Stop iterating once found
-        return false;
-      }
-    });
+  //       // Stop iterating once found
+  //       return false;
+  //     }
+  //   });
 
-    //https://assets.impetusz0.de/d2sz0-unified-vendor-portal/design-files/design_20251106_172801.jpeg
+  //   //https://assets.impetusz0.de/d2sz0-unified-vendor-portal/design-files/design_20251106_172801.jpeg
 
-    cy.get('input[placeholder="Ex. cotton 90% Polyester 10%*"]')
-      .first()
-      .scrollIntoView()
-      .clear()
-      .type("cotton90%", { delay: 100 })
-      .blur();
+  //   cy.get('input[placeholder="Ex. cotton 90% Polyester 10%*"]')
+  //     .first()
+  //     .scrollIntoView()
+  //     .clear()
+  //     .type("cotton90%", { delay: 100 })
+  //     .blur();
 
-    cy.get('input[placeholder="Ex. 240/160*"]')
-      .first()
-      .scrollIntoView()
-      .clear()
-      .type(240 / 160, { delay: 100 })
-      .blur();
+  //   cy.get('input[placeholder="Ex. 240/160*"]')
+  //     .first()
+  //     .scrollIntoView()
+  //     .clear()
+  //     .type(240 / 160, { delay: 100 })
+  //     .blur();
 
-    cy.wait(10000);
+  //   cy.wait(10000);
 
-    cy.get("div.n-button-content").each(($el) => {
-      const text = $el.text().trim();
+  //   cy.get("div.n-button-content").each(($el) => {
+  //     const text = $el.text().trim();
 
-      if (text === "Submit") {
-        // Scroll into view, find the parent button, then click
-        cy.wrap($el)
-          .scrollIntoView()
-          .parent("button")
-          .should("be.visible")
-          .click();
+  //     if (text === "Submit") {
+  //       // Scroll into view, find the parent button, then click
+  //       cy.wrap($el)
+  //         .scrollIntoView()
+  //         .parent("button")
+  //         .should("be.visible")
+  //         .click();
 
-        // Stop iterating once found
-        return false;
-      }
-    });
-  });
+  //       // Stop iterating once found
+  //       return false;
+  //     }
+  //   });
+  // });
 
-  //Cluster rejects the submitted design
-  it("Cluster rejects submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  // //Cluster rejects the submitted design
+  // xit("Cluster rejects submitted design", () => {
+  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
 
-    // Click on the cluster card "Shein"
-    cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
-      .click()
-      .wait(10000);
-    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
-      .parents("span.side-navigation-panel-select-option-wrap")
-      .click();
-    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
-      .contains("ODM")
-      .click()
-      .wait(15000);
-    cy.contains("span", "Submitted Design").click();
-    cy.get('button[data-testid="filter-button"]')
-      .scrollIntoView()
-      .should("be.visible")
-      .click({ force: true });
-    //cy.get('[data-testid="input-component"]').type("Automation").wait(1000);
-    cy.contains("div", "Status").click().wait(10000);
-    cy.get('input[value="PENDING"]') // select the checkbox input with value PENDING
-      .scrollIntoView({ duration: 200 }) // scroll smoothly into view
-      //.should("be.visible") // ensure it is visible
-      .click({ force: true })
-      .wait(1000);
-    cy.contains("p", "PENDING").first().click({ force: true });
-    cy.contains("button", "Reject").click({ force: true });
-  });
+  //   // Click on the cluster card "Shein"
+  //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
+  //     .click()
+  //     .wait(10000);
+  //   cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+  //     .parents("span.side-navigation-panel-select-option-wrap")
+  //     .click();
+  //   cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+  //     .contains("ODM")
+  //     .click()
+  //     .wait(15000);
+  //   cy.contains("span", "Submitted Design").click();
+  //   cy.get('button[data-testid="filter-button"]')
+  //     .scrollIntoView()
+  //     .should("be.visible")
+  //     .click({ force: true });
+  //   //cy.get('[data-testid="input-component"]').type("Automation").wait(1000);
+  //   cy.contains("div", "Status").click().wait(10000);
+  //   cy.get('input[value="PENDING"]') // select the checkbox input with value PENDING
+  //     .scrollIntoView({ duration: 200 }) // scroll smoothly into view
+  //     //.should("be.visible") // ensure it is visible
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   cy.contains("p", "PENDING").first().click({ force: true });
+  //   cy.contains("button", "Reject").click({ force: true });
+  // });
 
   //***Second flow is completed */
 
   //Vendor submits one more design
   //Vendor role
-  it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
-    // Click on the vendor card "Shein"
-    cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
-      force: true,
-    }); // click it even if overlayed
-    cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("32021183")
-      .click({ force: true })
-      .wait(1500);
-    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
-      .parents("span.side-navigation-panel-select-option-wrap")
-      .click()
-      .wait(1000);
-    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
-      .contains("ODM")
-      .click()
-      .wait(15000);
-    cy.get('input[placeholder="Search"]').type(themeName).wait(1000);
-    cy.get("div.n-button-content")
-      .contains("View")
-      .first()
-      .click({ force: true })
-      .wait(1000);
-    // Scroll to the "Submit" button and click it
-    cy.contains("div.n-button-content", "Submit")
-      .scrollIntoView()
-      .click({ force: true })
-      .wait(1000);
-    cy.get('input[data-testid="article_code_input"]')
-      .first()
-      .type("StyleTest123");
-    // Type into the search input
-    //cy.get('input[data-testid="dropdown-search"]').type("6206400{enter}");
+  // xit("Verify that shared Inspiration is visible and submit design", () => {
+  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   // Click on the vendor card "Shein"
+  //   cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
+  //     force: true,
+  //   }); // click it even if overlayed
+  //   cy.get("div.sc-dAbbOL.vIbA-D")
+  //     .contains("32021183")
+  //     .click({ force: true })
+  //     .wait(1500);
+  //   cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+  //     .parents("span.side-navigation-panel-select-option-wrap")
+  //     .click()
+  //     .wait(1000);
+  //   cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+  //     .contains("ODM")
+  //     .click()
+  //     .wait(15000);
+  //   cy.get('input[placeholder="Search"]').type(themeName).wait(1000);
+  //   cy.get("div.n-button-content")
+  //     .contains("View")
+  //     .first()
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   // Scroll to the "Submit" button and click it
+  //   cy.contains("div.n-button-content", "Submit")
+  //     .scrollIntoView()
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   cy.get('input[data-testid="article_code_input"]')
+  //     .first()
+  //     .type("StyleTest123");
+  //   // Type into the search input
+  //   //cy.get('input[data-testid="dropdown-search"]').type("6206400{enter}");
 
-    cy.get('input[data-testid="dropdown-search"]').type("620", { delay: 100 });
+  //   cy.get('input[data-testid="dropdown-search"]').type("620", { delay: 100 });
 
-    // Wait for the dropdown options to load
-    cy.wait(800); // adjust if your app loads slower
-    cy.get("body").then(($body) => {
-      console.log($body.html()); // logs HTML to Cypress runner console
-    });
-    // Select the correct code (assuming dropdown options appear as list items)
-    cy.get(".n-options .n-option") // adjust selector to match your dropdown option class
-      .contains("6206400")
-      .click();
+  //   // Wait for the dropdown options to load
+  //   cy.wait(800); // adjust if your app loads slower
+  //   cy.get("body").then(($body) => {
+  //     console.log($body.html()); // logs HTML to Cypress runner console
+  //   });
+  //   // Select the correct code (assuming dropdown options appear as list items)
+  //   cy.get(".n-options .n-option") // adjust selector to match your dropdown option class
+  //     .contains("6206400")
+  //     .click();
 
-    cy.contains("label", "Brick Name *")
-      // Navigate to the closest wrapper containing the dropdown trigger
-      .parent()
-      .find(".n-select__trigger")
-      .click(); // Open the dropdown
+  //   cy.contains("label", "Brick Name *")
+  //     // Navigate to the closest wrapper containing the dropdown trigger
+  //     .parent()
+  //     .find(".n-select__trigger")
+  //     .click(); // Open the dropdown
 
-    // Step 2: Select the first option from the dropdown
-    cy.get(".n-options .n-option").contains("Jeans").click();
+  //   // Step 2: Select the first option from the dropdown
+  //   cy.get(".n-options .n-option").contains("Jeans").click();
 
-    cy.contains("p", "Upload Design") // find the container by its text
-      .parent() // go to the wrapper div
-      .find('input[type="file"]') // find the hidden input
-      .attachFile("design.jpeg", { force: true });
+  //   cy.contains("p", "Upload Design") // find the container by its text
+  //     .parent() // go to the wrapper div
+  //     .find('input[type="file"]') // find the hidden input
+  //     .attachFile("design.jpeg", { force: true });
 
-    cy.contains("p", "Colorways") // find the container by its text
-      .parent() // go to the wrapper div
-      .find('input[type="file"]') // find the hidden input
-      .attachFile("colorways.jpg", { force: true });
+  //   cy.contains("p", "Colorways") // find the container by its text
+  //     .parent() // go to the wrapper div
+  //     .find('input[type="file"]') // find the hidden input
+  //     .attachFile("colorways.jpg", { force: true });
 
-    cy.wait(2000);
+  //   cy.wait(2000);
 
-    // Find the dropdown input with placeholder "Add SAP ID" and click it
-    cy.get('input[data-testid="dropdown-search"][placeholder="Add SAP ID"]')
-      .scrollIntoView() // ensure it's visible
-      .click(); // open the dropdown
+  //   // Find the dropdown input with placeholder "Add SAP ID" and click it
+  //   cy.get('input[data-testid="dropdown-search"][placeholder="Add SAP ID"]')
+  //     .scrollIntoView() // ensure it's visible
+  //     .click(); // open the dropdown
 
-    // Type the value to filter options (optional if searchable)
+  //   // Type the value to filter options (optional if searchable)
 
-    // Now select the option "LT Orange" from the dropdown
-    cy.get('[data-testid="dropdown-scroll"]')
-      .contains(".n-option", "LT ORANGE")
-      .scrollIntoView() // scroll within the container
-      .click();
+  //   // Now select the option "LT Orange" from the dropdown
+  //   cy.get('[data-testid="dropdown-scroll"]')
+  //     .contains(".n-option", "LT ORANGE")
+  //     .scrollIntoView() // scroll within the container
+  //     .click();
 
-    cy.get('input[placeholder="Enter cost"]').type("333");
+  //   cy.get('input[placeholder="Enter cost"]').type("333");
 
-    cy.get("div.n-button-content").each(($el) => {
-      const text = $el.text().trim();
+  //   cy.get("div.n-button-content").each(($el) => {
+  //     const text = $el.text().trim();
 
-      if (text === "Upload") {
-        // Scroll into view, find the parent button, then click
-        cy.wrap($el)
-          .scrollIntoView()
-          .parent("button")
-          .should("be.visible")
-          .click();
+  //     if (text === "Upload") {
+  //       // Scroll into view, find the parent button, then click
+  //       cy.wrap($el)
+  //         .scrollIntoView()
+  //         .parent("button")
+  //         .should("be.visible")
+  //         .click();
 
-        // Stop iterating once found
-        return false;
-      }
-    });
+  //       // Stop iterating once found
+  //       return false;
+  //     }
+  //   });
 
-    //https://assets.impetusz0.de/d2sz0-unified-vendor-portal/design-files/design_20251106_172801.jpeg
+  //   //https://assets.impetusz0.de/d2sz0-unified-vendor-portal/design-files/design_20251106_172801.jpeg
 
-    cy.get('input[placeholder="Ex. cotton 90% Polyester 10%*"]')
-      .first()
-      .scrollIntoView()
-      .clear()
-      .type("cotton90%", { delay: 100 })
-      .blur();
+  //   cy.get('input[placeholder="Ex. cotton 90% Polyester 10%*"]')
+  //     .first()
+  //     .scrollIntoView()
+  //     .clear()
+  //     .type("cotton90%", { delay: 100 })
+  //     .blur();
 
-    cy.get('input[placeholder="Ex. 240/160*"]')
-      .first()
-      .scrollIntoView()
-      .clear()
-      .type(240 / 160, { delay: 100 })
-      .blur();
+  //   cy.get('input[placeholder="Ex. 240/160*"]')
+  //     .first()
+  //     .scrollIntoView()
+  //     .clear()
+  //     .type(240 / 160, { delay: 100 })
+  //     .blur();
 
-    cy.wait(10000);
+  //   cy.wait(10000);
 
-    cy.get("div.n-button-content").each(($el) => {
-      const text = $el.text().trim();
+  //   cy.get("div.n-button-content").each(($el) => {
+  //     const text = $el.text().trim();
 
-      if (text === "Submit") {
-        // Scroll into view, find the parent button, then click
-        cy.wrap($el)
-          .scrollIntoView()
-          .parent("button")
-          .should("be.visible")
-          .click();
+  //     if (text === "Submit") {
+  //       // Scroll into view, find the parent button, then click
+  //       cy.wrap($el)
+  //         .scrollIntoView()
+  //         .parent("button")
+  //         .should("be.visible")
+  //         .click();
 
-        // Stop iterating once found
-        return false;
-      }
-    });
-  });
+  //       // Stop iterating once found
+  //       return false;
+  //     }
+  //   });
+  // });
 
-  //Cluster approval for one more submitted design
-  it("Cluster approval for submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  // //Cluster approval for one more submitted design
+  // xit("Cluster approval for submitted design", () => {
+  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
 
-    // Click on the cluster card "Shein"
-    cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
-      .click()
-      .wait(10000);
-    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
-      .parents("span.side-navigation-panel-select-option-wrap")
-      .click();
-    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
-      .contains("ODM")
-      .click()
-      .wait(15000);
-    cy.contains("span", "Submitted Design").click();
-    cy.get('button[data-testid="filter-button"]')
-      .scrollIntoView()
-      .should("be.visible")
-      .click({ force: true });
-    //cy.get('[data-testid="input-component"]').type("Automation").wait(1000);
-    cy.contains("div", "Status").click().wait(10000);
-    cy.get('input[value="PENDING"]') // select the checkbox input with value PENDING
-      .scrollIntoView({ duration: 200 }) // scroll smoothly into view
-      //.should("be.visible") // ensure it is visible
-      .click({ force: true })
-      .wait(1000);
-    cy.contains("p", "PENDING").first().click({ force: true });
-    cy.contains("button", "Approve").click({ force: true });
-  });
+  //   // Click on the cluster card "Shein"
+  //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
+  //     .click()
+  //     .wait(10000);
+  //   cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+  //     .parents("span.side-navigation-panel-select-option-wrap")
+  //     .click();
+  //   cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+  //     .contains("ODM")
+  //     .click()
+  //     .wait(15000);
+  //   cy.contains("span", "Submitted Design").click();
+  //   cy.get('button[data-testid="filter-button"]')
+  //     .scrollIntoView()
+  //     .should("be.visible")
+  //     .click({ force: true });
+  //   //cy.get('[data-testid="input-component"]').type("Automation").wait(1000);
+  //   cy.contains("div", "Status").click().wait(10000);
+  //   cy.get('input[value="PENDING"]') // select the checkbox input with value PENDING
+  //     .scrollIntoView({ duration: 200 }) // scroll smoothly into view
+  //     //.should("be.visible") // ensure it is visible
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   cy.contains("p", "PENDING").first().click({ force: true });
+  //   cy.contains("button", "Approve").click({ force: true });
+  // });
 
-  // Buyer rejects the cluster approved inspiration
-  it("Buyer Rejects", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
-    cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-     cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
-    cy.wait(10000);
-    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
-      .parents("span.side-navigation-panel-select-option-wrap")
-      .click();
-    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
-      .contains("ODM")
-      .click();
-    cy.contains("span", "Submitted Design", { timeout: 15000 }).click({
-      force: true,
-    });
-    cy.get('button[data-testid="filter-button"]')
-      .scrollIntoView()
-      .should("be.visible")
-      .click({ force: true });
-    cy.contains("div", "Status").click().wait(10000);
-    cy.get('input[value="CLUSTER APPROVED"]') // select the checkbox input with value PENDING
-      .scrollIntoView({ duration: 200 }) // scroll smoothly into view
-      .click({ force: true })
-      .wait(1000);
-    cy.contains("p", "CLUSTER APPROVED").first().click({ force: true });
-    cy.contains("button", "Reject", { timeout: 15000 }).click({ force: true });
-    cy.get('[data-testid="n-checkbox-filter-COST_NOT_VAIBLE"]', {
-      timeout: 10000,
-    })
-      .should("be.visible")
-      .click({ force: true });
+  // // Buyer rejects the cluster approved inspiration
+  // xit("Buyer Rejects", () => {
+  //   cy.visit("https://platform.impetusz0.de/workspace");
+  //   cy.wait(10000);
+  //   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+  //    cy.contains("div", "odm-buyer", { timeout: 20000 })
+  //     .parent()
+  //     .click({ force: true })
+  //     .wait(2000);
+  //   cy.wait(10000);
+  //   cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+  //     .parents("span.side-navigation-panel-select-option-wrap")
+  //     .click();
+  //   cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+  //     .contains("ODM")
+  //     .click();
+  //   cy.contains("span", "Submitted Design", { timeout: 15000 }).click({
+  //     force: true,
+  //   });
+  //   cy.get('button[data-testid="filter-button"]')
+  //     .scrollIntoView()
+  //     .should("be.visible")
+  //     .click({ force: true });
+  //   cy.contains("div", "Status").click().wait(10000);
+  //   cy.get('input[value="CLUSTER APPROVED"]') // select the checkbox input with value PENDING
+  //     .scrollIntoView({ duration: 200 }) // scroll smoothly into view
+  //     .click({ force: true })
+  //     .wait(1000);
+  //   cy.contains("p", "CLUSTER APPROVED").first().click({ force: true });
+  //   cy.contains("button", "Reject", { timeout: 15000 }).click({ force: true });
+  //   cy.get('[data-testid="n-checkbox-filter-COST_NOT_VAIBLE"]', {
+  //     timeout: 10000,
+  //   })
+  //     .should("be.visible")
+  //     .click({ force: true });
 
-    // Wait for Apply button to become enabled (remove disabled attribute if needed)
-    cy.contains("div.n-button-content", "Apply")
-      .should("be.visible")
-      .parent("button") // move to the actual <button>
-      .should("not.be.disabled") // ensure it's clickable
-      .click({ force: true });
-  });
+  //   // Wait for Apply button to become enabled (remove disabled attribute if needed)
+  //   cy.contains("div.n-button-content", "Apply")
+  //     .should("be.visible")
+  //     .parent("button") // move to the actual <button>
+  //     .should("not.be.disabled") // ensure it's clickable
+  //     .click({ force: true });
+  // });
 
   //***Third flow is completed */
 
