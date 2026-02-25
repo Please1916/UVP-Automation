@@ -1,9 +1,13 @@
 const randomDesignName = `Test_${Math.random().toString(36).substring(2, 8)}`;
 export const designname = randomDesignName;
+const randomVendorStyle = `Style_${Math.random().toString(36).substring(2, 8)}`;
+export const vendorStyleCode = randomVendorStyle;
+const newrandomVendorStyle = `Style_${Math.random().toString(36).substring(2, 8)}`;
+export const newvendorStyleCode = newrandomVendorStyle;
 
 Cypress.on("uncaught:exception", () => false);
 describe("RA buyer", () => {
-  const pageUrl = "https://platform.uat.impetusz0.de/uvp/range-architecture";
+  const pageUrl = "https://platform.impetusz0.de/uvp/range-architecture";
 
   beforeEach(() => {
     cy.session("user-session", () => {
@@ -14,9 +18,14 @@ describe("RA buyer", () => {
   it("logs in successfully with valid credentials", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true });
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
       .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -30,11 +39,16 @@ describe("RA buyer", () => {
   it("After login should be in the select workspace page and click on OEM buuyer", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(20000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -171,7 +185,7 @@ describe("RA buyer", () => {
       .attachFile("AQUA.jpg", { force: true })
       .wait(1000);
     cy.get(
-      'input[data-testid="dropdown-search"][placeholder="Add SAP ID"]'
+      'input[data-testid="dropdown-search"][placeholder="Add SAP ID"]',
     ).click();
     cy.get('[data-testid="dropdown-scroll"]')
       .contains(".n-option", "AQUA")
@@ -226,9 +240,14 @@ describe("RA buyer", () => {
   //Go to buyer role
   it("Searches for the Uploaded theme and share it with a vendor", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace", { timeout: 20000 });
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true });
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
       .click({ force: true });
 
     //const res = cy.get("div.side-navigation-panel-select-inner-option", {timeout: 5000}).contains("ODM");
@@ -259,16 +278,21 @@ describe("RA buyer", () => {
       .last() // ensure we pick the arrow (not the user icon on the left)
       .click({ force: true })
       .wait(1000);
-    cy.get('input[placeholder="Select Vendors"]')
-      .click({ force: true })
-      .wait(1000);
-    cy.contains("label", "GRATEFUL APPARELS PRIVATE LIMITED - 32021183")
+    cy.get('input[placeholder="Select Vendors"]').type("KIRARA");
+     cy.contains("label", "KIRARA - 32021182")
+    // cy.get('input[placeholder="Select / Search item"]').type("MAHESHWARI GARMENT");
+    // cy.contains("label", "MAHESHWARI GARMENT - 32021182")
+    // cy.get('input[placeholder="Select / Search item"]').type("KIRARA");
+    //    cy.contains("label", "KIRARA - 32021182")
+      .scrollIntoView()
       .find('input[type="checkbox"]')
       .check({ force: true })
       .wait(1000);
     cy.contains("div.n-button-content", "Share")
       .click({ force: true })
       .wait(600);
+      // cy.get('input[placeholder="Select / Search item"]')
+      
   });
 
   //Vendor role
@@ -279,7 +303,7 @@ describe("RA buyer", () => {
       force: true,
     }); // click it even if overlayed
     cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("32021183")
+      .contains("32021182")
       .click({ force: true })
       .wait(15000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -297,7 +321,7 @@ describe("RA buyer", () => {
 
     cy.get('input[data-testid="article_code_input"]')
       .first()
-      .type("StyleTest123");
+      .type(newrandomVendorStyle, { force: true });
     // Type into the search input
     //cy.get('input[data-testid="dropdown-search"]').type("6206400{enter}");
 
@@ -314,12 +338,12 @@ describe("RA buyer", () => {
       .click();
     cy.contains("p", "Mandatory").scrollIntoView();
 
-    cy.get('[data-testid="cost-0"]').first().type("100").wait(1000);
+    cy.get('[data-testid="cost-0"]').first().type("372").wait(1000);
     //cy.get('button.sc-jiDjCn.ywhsk').first().click({ force: true })
-   cy.get('svg')
-  .find('path[d*="M9.00019 19.0002"]')
-  .parents('svg')
-  .click({ force: true })
+    cy.get("svg")
+      .find('path[d*="M9.00019 19.0002"]')
+      .parents("svg")
+      .click({ force: true });
 
     // cy.get("div.sc-iEkSXm.jBwPqL") // container div
     //   .find("button.sc-hCrRFl.ichMOL") // get buttons inside
@@ -392,6 +416,29 @@ describe("RA buyer", () => {
         // Stop iterating once found
         return false;
       }
+    });
+
+    // Open comments if needed
+    cy.contains("Comments").click();
+
+    // Work ONLY inside comments section
+    cy.get("#comments").within(() => {
+      // Type comment
+      cy.get('div[contenteditable="true"]')
+        .should("be.visible")
+        .click()
+        .type("Vendor submitted");
+
+      // Click attach icon
+      cy.get('button[title="Attach file"]').click({ force: true });
+
+      // Upload file (correct input now)
+      cy.get('input[type="file"]')
+        .selectFile("cypress/fixtures/attachment.jpg", { force: true })
+        .wait(15000);
+
+      // Save comment
+      cy.contains("Save Comment").click();
     });
 
     // cy.wait(2000);
@@ -484,7 +531,28 @@ describe("RA buyer", () => {
     //   //.should("be.visible") // ensure it is visible
     //   .click({ force: true })
     //   .wait(1000);
-    cy.contains("p", "PENDING").first().click({ force: true });
+    cy.contains("p", "PENDING").first().click({ force: true }).wait(1000);
+    cy.contains("Comments").click();
+
+    // Work ONLY inside comments section
+    cy.get("#comments").within(() => {
+      // Type comment
+      cy.get('div[contenteditable="true"]')
+        .should("be.visible")
+        .click()
+        .type("Cluster Approved");
+
+      // Click attach icon
+      cy.get('button[title="Attach file"]').click({ force: true });
+
+      // Upload file (correct input now)
+      cy.get('input[type="file"]')
+        .selectFile("cypress/fixtures/attachment.jpg", { force: true })
+        .wait(15000);
+
+      // Save comment
+      cy.contains("Save Comment").click();
+    });
     cy.contains("button", "Approve").click({ force: true });
   });
 
@@ -496,7 +564,7 @@ describe("RA buyer", () => {
       force: true,
     }); // click it even if overlayed
     cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("32021183")
+      .contains("32021182")
       .click({ force: true })
       .wait(15000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -522,7 +590,7 @@ describe("RA buyer", () => {
 
     cy.get('input[data-testid="article_code_input"]')
       .first()
-      .type("StyleTest123");
+      .type(vendorStyleCode);
     // Type into the search input
     //cy.get('input[data-testid="dropdown-search"]').type("6206400{enter}");
 
@@ -539,12 +607,11 @@ describe("RA buyer", () => {
       .click();
     cy.contains("p", "Mandatory").scrollIntoView();
 
-    cy.get('[data-testid="cost-0"]').first().type("100").wait(1000);
-    cy.get('svg')
-  .find('path[d*="M9.00019 19.0002"]')
-  .parents('svg')
-  .click({ force: true })
-
+    cy.get('[data-testid="cost-0"]').first().type("333").wait(1000);
+    cy.get("svg")
+      .find('path[d*="M9.00019 19.0002"]')
+      .parents("svg")
+      .click({ force: true });
 
     // cy.get("div.sc-iEkSXm")
     //   .find("button.sc-hCrRFl")
@@ -573,7 +640,7 @@ describe("RA buyer", () => {
     //   .parent() // go to the wrapper div
     //   .find('input[type="file"]') // find the hidden input
     //   .attachFile("colorways.jpg", { force: true });
-   cy.contains("p", "Colorways").scrollIntoView().wait(10000); // find the container by its text
+    cy.contains("p", "Colorways").scrollIntoView().wait(10000); // find the container by its text
     cy.contains("button", "Upload Files")
       .parents()
       .find('input[type="file"]')
@@ -723,7 +790,7 @@ describe("RA buyer", () => {
       force: true,
     }); // click it even if overlayed
     cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("32021183")
+      .contains("32021182")
       .click({ force: true })
       .wait(15000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -743,7 +810,7 @@ describe("RA buyer", () => {
     cy.get('input[data-testid="dropdown-search"]', { timeout: 15000 }).click();
     cy.get('input[data-testid="dropdown-search"]').type(
       "{selectall}{backspace}",
-      { force: true }
+      { force: true },
     );
     cy.wait(10000);
     cy.get('input[data-testid="dropdown-search"]').type("620", { delay: 1000 });
@@ -807,11 +874,16 @@ describe("RA buyer", () => {
   it("Buyer Rework after cluster approval", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    // .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -845,13 +917,13 @@ describe("RA buyer", () => {
       force: true,
     }); // click it even if overlayed
     cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("32021183")
+      .contains("32021182")
       .click({ force: true })
       .wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click()
-      .wait(1000);
+      .wait(10000);
     cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
       .contains("OEM")
       .click()
@@ -956,11 +1028,16 @@ describe("RA buyer", () => {
   it("Buyer Parks", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -999,11 +1076,16 @@ describe("RA buyer", () => {
   it("Buyer Unparks the design", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1037,11 +1119,16 @@ describe("RA buyer", () => {
   it("Buyer Parks again", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1080,11 +1167,16 @@ describe("RA buyer", () => {
   it("Buyer Rework the parked design after buyer parks the design", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1105,7 +1197,8 @@ describe("RA buyer", () => {
     cy.get("table tbody tr")
       .first()
       .find('td:nth-child(2) div[data-testid="link-with-context"] span')
-      .click({ force: true }).wait(15000);
+      .click({ force: true })
+      .wait(15000);
     cy.contains("button", "Rework").click();
   });
 
@@ -1117,7 +1210,7 @@ describe("RA buyer", () => {
       force: true,
     }); // click it even if overlayed
     cy.get("div.sc-dAbbOL.vIbA-D")
-      .contains("32021183")
+      .contains("32021182")
       .click({ force: true })
       .wait(15000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -1137,7 +1230,7 @@ describe("RA buyer", () => {
     cy.get('input[data-testid="dropdown-search"]', { timeout: 15000 }).click();
     cy.get('input[data-testid="dropdown-search"]').type(
       "{selectall}{backspace}",
-      { force: true }
+      { force: true },
     );
     cy.wait(10000);
     cy.get('input[data-testid="dropdown-search"]').type("620", { delay: 1000 });
@@ -1161,16 +1254,16 @@ describe("RA buyer", () => {
       .click({ force: true })
       .wait(10000);
 
-  cy.get('input[placeholder="Enter Cost per Piece"]')
-  .clear({ force: true })
+    cy.get('input[placeholder="Enter Cost per Piece"]').clear({ force: true });
 
-cy.get('input[placeholder="Enter Cost per Piece"]')
-  .type('350', { force: true })
+    cy.get('input[placeholder="Enter Cost per Piece"]').type("350", {
+      force: true,
+    });
 
-    cy.get('svg')
-  .find('path[d*="M9.00019 19.0002"]')
-  .parents('svg')
-  .click({ force: true })
+    cy.get("svg")
+      .find('path[d*="M9.00019 19.0002"]')
+      .parents("svg")
+      .click({ force: true });
     // Get the div
     // cy.get("svg title")
     //   .contains("Confirm Edit")
@@ -1206,11 +1299,16 @@ cy.get('input[placeholder="Enter Cost per Piece"]')
   it("Buyer Approval after vendor changes", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1237,21 +1335,67 @@ cy.get('input[placeholder="Enter Cost per Piece"]')
     cy.wait(5000);
     cy.contains("Colorways").scrollIntoView().wait(15000);
 
+    cy.get('button[title="Approve"]').eq(0).click({ force: true });
     cy.get('button[title="Approve"]').eq(1).click({ force: true });
+    cy.contains("Comments").click();
 
+    // Work ONLY inside comments section
+    cy.get("#comments").within(() => {
+      // Type comment
+      cy.get('div[contenteditable="true"]')
+        .should("be.visible")
+        .click()
+        .type("Buyer submitted");
+
+      // Click attach icon
+      cy.get('button[title="Attach file"]').click({ force: true });
+
+      // Upload file (correct input now)
+      cy.get('input[type="file"]')
+        .selectFile("cypress/fixtures/attachment.jpg", { force: true })
+        .wait(15000);
+
+      // Save comment
+      cy.contains("Save Comment").click();
+    });
     //cy.get('button[title="Approve"]').click({ force: true });
     cy.wait(5000);
     cy.contains("button", "Approve").click({ force: true }).wait(10000);
   });
 
-  it("Validate Auto Reject Scenario", () => {
+  it("Email and bell notification", () => {
     cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
-    cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
-    cy.contains("div", "odm-buyer", { timeout: 20000 })
-      .parent()
-      .click({ force: true })
-      .wait(2000);
+    // cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
+    // cy.contains("div", "odm-buyer", { timeout: 20000 })
+    //   .parent()
+    //   .click({ force: true })
+    //   .wait(2000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
+    cy.wait(10000);
+    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+      .parents("span.side-navigation-panel-select-option-wrap")
+      .click();
+    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+      .contains("OEM")
+      .click();
+    cy.contains("div.n-button-content", "Email Inspiration Data")
+      .should("be.visible")
+      .click();
+  });
+
+  it("OEM Auto reject", () => {
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.wait(10000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
     cy.wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1264,7 +1408,6 @@ cy.get('input[placeholder="Enter Cost per Piece"]')
     });
     cy.get('input[placeholder="Search"]').type(designname).wait(10000);
 
-    // cy.contains("p", "CLUSTER APPROVED")
     //   .first()
     //   .click({ force: true })
     //   .wait(10000);
@@ -1283,6 +1426,59 @@ cy.get('input[placeholder="Enter Cost per Piece"]')
     // //cy.get('button[title="Approve"]').click({ force: true });
     // cy.wait(5000);
     // cy.contains("button", "Approve").click({ force: true }).wait(10000);
+  });
+
+  it("Bulk upload OEM", () => {
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.wait(10000);
+    cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+      .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+      .contains(/^S$/) // exact match for 'S'
+      .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+      .click({ force: true });
+    cy.wait(10000);
+    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+      .parents("span.side-navigation-panel-select-option-wrap")
+      .click();
+    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+      .contains("OEM")
+      .click();
+    cy.contains("div.n-button-content", "Bulk Upload")
+      .should("be.visible")
+      .click();
+    cy.get('input[type="file"]').selectFile(
+      "cypress/fixtures/Bulk_Data_1000 2.xlsx",
+      {
+        force: true,
+      },
+    );
+    cy.contains('button', /^Upload$/)
+  .should('be.visible')
+  .click().wait(1500);
+
+  });
+
+  it("FPT and GPT approve", () => {
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
+
+    // Click on the cluster card "Shein"
+    cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
+      .click()
+      .wait(10000);
+    cy.contains("span.side-navigation-panel-select-option-text", "QC")
+      .parents("span.side-navigation-panel-select-option-wrap")
+      .click();
+    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+      .contains("FPT & GPT")
+      .click()
+      .wait(15000);
+
+    cy.get('input[placeholder="Search via Style IDs or other values"]')
+      .type(vendorStyleCode)
+      .wait(1000);
+      cy.contains("BUYER APPROVED").click({ force: true });
+    cy.get('label[for="required-no"]').click();
+    cy.contains("label", "I acknowledge the test completed").click();
   });
 
   //**********One flow is completed till here */

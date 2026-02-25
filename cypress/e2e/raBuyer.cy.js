@@ -17,7 +17,7 @@ describe('RA buyer', () => {
   });
 
   it('After login should be in the select workspace page and click on ODM buuyer', () => {
-    cy.visit('https://platform.impetusz0.de/workspace');
+    cy.visit('https://platform.uat.impetusz0.de/workspace');
     cy.wait(20000);
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).eq(1).click().wait(2000);

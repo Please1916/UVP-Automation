@@ -14,7 +14,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Logs in with valid credentials
   it("logs in successfully with valid credentials", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -32,7 +32,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Upload inspiration
   it("logs in successfully with valid credentials and upload inspiration file", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
       .eq(4)
@@ -127,7 +127,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Go to buyer role
   it("Searches for the Uploaded theme and share it with a vendor", () => {
-    cy.visit("https://platform.impetusz0.de/workspace", { timeout: 20000 });
+    cy.visit("https://platform.uat.impetusz0.de/workspace", { timeout: 20000 });
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).eq(4).click();
 
@@ -181,7 +181,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Vendor role
   it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
@@ -325,7 +325,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Cluster role. **
   it("Cluster approval for submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
     // Click on the cluster card "Shein"
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -356,7 +356,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   // it("Cluster approval for submitted design", () => {
-  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
   //   // Click on the cluster card "Shein"
   //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -377,7 +377,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   // });
   //buyer approve for rework design from vendor
   xit("Buyer Approval", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -419,7 +419,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Vendor role
   it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
@@ -563,7 +563,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Cluster role
   it("Cluster approval for submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
     // Click on the cluster card "Shein"
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -594,7 +594,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   // it("Cluster approval for submitted design", () => {
-  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
   //   // Click on the cluster card "Shein"
   //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -615,7 +615,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   // });
   //buyer approve for rework design from vendor
   it("Buyer Approval", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -657,7 +657,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   
 //Vendor role
   it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
@@ -804,7 +804,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Cluster role
   it("Cluster approval for submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
     // Click on the cluster card "Shein"
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -835,7 +835,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   // it("Cluster approval for submitted design", () => {
-  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
   //   // Click on the cluster card "Shein"
   //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -856,7 +856,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   // });
   //buyer approve for rework design from vendor
   it("Buyer Approval", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -898,7 +898,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Vendor role
   it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
@@ -1042,7 +1042,7 @@ describe("Impetus Platform — Login Page Tests", () => {
 
   //Cluster role
   it("Cluster approval for submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
     // Click on the cluster card "Shein"
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -1073,7 +1073,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   });
 
   // it("Cluster approval for submitted design", () => {
-  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
   //   // Click on the cluster card "Shein"
   //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -1094,7 +1094,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   // });
   //buyer approve for rework design from vendor
   it("Buyer Approval", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
