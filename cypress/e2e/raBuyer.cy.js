@@ -1,6 +1,6 @@
 
 describe('RA buyer', () => {
-  const pageUrl = "https://platform.uat.impetusz0.de/uvp/range-architecture";
+  const pageUrl = "https://platform.impetusz0.de/uvp/range-architecture";
 
   beforeEach(() => {
     cy.session('user-session', () => {
@@ -17,20 +17,20 @@ describe('RA buyer', () => {
   });
 
   it('After login should be in the select workspace page and click on ODM buuyer', () => {
-    cy.visit('https://platform.uat.impetusz0.de/auth/login');
+    cy.visit('https://platform.impetusz0.de/auth/login');
     cy.wait(20000);
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).eq(1).click().wait(2000);
   })
 
   it('logs in successfully and validates the logo', () => {
-    cy.visit('https://platform.uat.impetusz0.de/procuro/po?tab=all&page_size=20&page_number=1&distribution_plan_id=');
+    cy.visit('https://platform.impetusz0.de/procuro/po?tab=all&page_size=20&page_number=1&distribution_plan_id=');
     cy.wait(20000);
     cy.get('img[src*="ImpetusLogoNew"]').should('be.visible');
   });
 
   it('Navigate to range architecture page and Verify RA tabs', () => {
-    cy.visit('https://platform.uat.impetusz0.de/procuro/po?tab=all&page_size=20&page_number=1&distribution_plan_id=');
+    cy.visit('https://platform.impetusz0.de/procuro/po?tab=all&page_size=20&page_number=1&distribution_plan_id=');
     cy.wait(20000);
     cy.contains('span.side-navigation-panel-select-option-text', 'UVP')
       .parents('span.side-navigation-panel-select-option-wrap')
