@@ -3,7 +3,7 @@ export const oemtestdesignname = randomDesignName;
 
 Cypress.on("uncaught:exception", () => false);
 describe("RA buyer", () => {
-  const pageUrl = "https://platform.impetusz0.de/uvp/range-architecture";
+  const pageUrl = "https://platform.uat.impetusz0.de/uvp/range-architecture";
 
   beforeEach(() => {
     cy.session("user-session", () => {
@@ -12,7 +12,7 @@ describe("RA buyer", () => {
   });
 
   it("logs in successfully with valid credentials", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/auth/login");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -29,7 +29,7 @@ describe("RA buyer", () => {
   });
 
   it("After login should be in the select workspace page and click on OEM buuyer", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/auth/login");
     cy.wait(20000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -223,7 +223,7 @@ describe("RA buyer", () => {
 
   //Go to buyer role
   it("Searches for the Uploaded theme and share it with a vendor", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace", { timeout: 20000 });
+    cy.visit("https://platform.uat.impetusz0.de/auth/login", { timeout: 20000 });
     cy.contains("div.nitrozen-badge-truncate", "odm-buyer", {
       timeout: 15000,
     }).click({ force: true });
@@ -270,7 +270,7 @@ describe("RA buyer", () => {
 
   //Vendor role
   it("Verify that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/auth/login").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
@@ -404,7 +404,7 @@ describe("RA buyer", () => {
 
   //Cluster role
   it("Cluster approval for submitted design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/auth/login").wait(10000);
 
     // Click on the cluster card "Shein"
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -436,7 +436,7 @@ describe("RA buyer", () => {
 
   // Buyer rejects the cluster approved inspiration
   it("Buyer Rejects", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/auth/login");
     cy.wait(10000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })

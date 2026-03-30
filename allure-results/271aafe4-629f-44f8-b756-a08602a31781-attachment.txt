@@ -1,9 +1,0 @@
-Timed out retrying after 60000ms: The command was expected to run against origin `https://platform.uat.impetusz0.de` but the application is at origin `https://platform.impetusz0.de`.
-
-This commonly happens when you have either not navigated to the expected origin or have navigated away unexpectedly.
-
-Using `cy.origin()` to wrap the commands run on `https://platform.impetusz0.de` will likely fix this issue.
-
-`cy.origin('https://platform.impetusz0.de', () => {`
-`  <commands targeting https://platform.impetusz0.de go here>`
-`})`
