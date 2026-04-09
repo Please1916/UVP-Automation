@@ -1,0 +1,52 @@
+`cy.request()` failed on:
+
+https://api.impetusz0.de/service/application/odm/v1.0/uvp/dp/create
+
+The response we received from your web server was:
+
+  > 400: Bad Request
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: POST
+URL: https://api.impetusz0.de/service/application/odm/v1.0/uvp/dp/create
+Headers: {
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "Cookie": "bg.session=s%3A402wFWKmJXd8BFhp12pLTng0QAqXV6Iu.UN4GhxJULenoArVOt8Uw%2BzxKBGVk7nn9Dkp9ET6SgSQ; company-code=9161; org_id=5; _ga=GA1.1.1504822173.1775634616; _ga_F745KEEGW3=GS2.1.s1775634615$o1$g1$t1775636140$j56$l0$h1812277278;bg.session=s%3A402wFWKmJXd8BFhp12pLTng0QAqXV6Iu.UN4GhxJULenoArVOt8Uw%2BzxKBGVk7nn9Dkp9ET6SgSQ; company-code=9161; org_id=5; _ga=GA1.1.1504822173.1775634616; _ga_F745KEEGW3=GS2.1.s1775634615$o1$g1$t1775636140$j56$l0$h1812277278",
+  "x-user-data": "{\"user_id\":\"2127\",\"email\":\"chaitanya.dhoddi@ril.com\",\"roles\":[\"odm-cluster\"]}",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+  "accept": "*/*",
+  "cookie": "bg.session=s%3A402wFWKmJXd8BFhp12pLTng0QAqXV6Iu.UN4GhxJULenoArVOt8Uw%2BzxKBGVk7nn9Dkp9ET6SgSQ; company-code=9161; org_id=5; _ga=GA1.1.1504822173.1775634616; _ga_F745KEEGW3=GS2.1.s1775634615$o1$g1$t1775636140$j56$l0$h1812277278;bg.session=s%3A402wFWKmJXd8BFhp12pLTng0QAqXV6Iu.UN4GhxJULenoArVOt8Uw%2BzxKBGVk7nn9Dkp9ET6SgSQ; company-code=9161; org_id=5; _ga=GA1.1.1504822173.1775634616; _ga_F745KEEGW3=GS2.1.s1775634615$o1$g1$t1775636140$j56$l0$h1812277278",
+  "accept-encoding": "gzip, deflate",
+  "content-length": 24
+}
+Body: {"styleCode":"32021321"}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 400 - Bad Request
+Headers: {
+  "date": "Wed, 08 Apr 2026 08:16:03 GMT",
+  "content-type": "application/json",
+  "content-length": "136",
+  "x-request-id": "a1e8ffdd-0898-46ab-a48c-b8fde5f5e731",
+  "via": "1.1 google",
+  "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+}
+Body: {
+  "status": "FAILED",
+  "message": "DP Creation: Design not found with stylecode 32021321",
+  "data": {},
+  "page": null,
+  "error": null,
+  "warnings": null
+}

@@ -1,3 +1,0 @@
-Timed out retrying after 60000ms: Expected to find element: `.react-datepicker__day--outside-month`, but never found it. Queried from:
-
-              > cy.get(.react-datepicker__day--001).not(.react-datepicker__day--disabled)

@@ -1,0 +1,7 @@
+
+Expected:
+"svg.nitrozen-svg-icon"
+
+Actual:
+"svg.nitrozen-svg-icon"
+      

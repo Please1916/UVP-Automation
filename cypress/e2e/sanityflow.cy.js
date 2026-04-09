@@ -51,6 +51,7 @@ it("Test Case 1: logs in successfully with valid credentials and check the works
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
+  //SIT
   cy.get(".sc-ikkxIA")
     .filter(':contains("Shein")')
     .filter(':contains("odm-buyer")')

@@ -34,7 +34,7 @@ Cypress.Commands.add("login", () => {
 Cypress.Commands.add("logout", () => {
   cy.visit("https://platform.impetusz0.de/uvp/range-architecture");
   cy.wait(20000);
-  cy.contains("div", "CD").click({ force: true });
+  cy.contains("div", "SS").click({ force: true });
   cy.contains("div", "Logout").click({ force: true });
   cy.url().should("include", "/login");
 });

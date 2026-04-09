@@ -1,7 +1,0 @@
-
-Expected:
-".react-datepicker__day--outside-month"
-
-Actual:
-".react-datepicker__day--outside-month"
-      
