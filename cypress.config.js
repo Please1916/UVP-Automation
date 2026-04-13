@@ -31,7 +31,7 @@ module.exports = defineConfig({
     viewportWidth: 1440, // ← Width of the test runner
     viewportHeight: 900,
 
-    experimentalSessionSupport: true,
+    experimentalSessionAndOrigin: true,
     reporterOptions: {
       resultsDir: "allure-results",
     },

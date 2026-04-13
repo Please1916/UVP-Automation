@@ -1,0 +1,5 @@
+Timed out retrying after 10000ms: expected '<button.sc-coYmiO.sc-ewBhFl.fiFDXr.eYCIje>' to be 'visible'
+
+This element `<button.sc-coYmiO.sc-ewBhFl.fiFDXr.eYCIje>` is not visible because it has CSS property: `position: fixed` and it's being covered by another element:
+
+`<div role="alert" class="Toastify__toast-body">...</div>`

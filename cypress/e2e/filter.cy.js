@@ -5,6 +5,11 @@ describe("RA buyer", () => {
   beforeEach(() => {
     cy.session("user-session", () => {
       cy.login();
+    }, {
+      cacheAcrossSpecs: true,
+      validate() {
+        cy.getCookies().should('have.length.greaterThan', 0);
+      },
     });
   });
   after(() => {

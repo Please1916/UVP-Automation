@@ -1,7 +1,0 @@
-
-Expected:
-undefined
-
-Actual:
-"https://platform.impetusz0.de/qc/PPsample"
-      

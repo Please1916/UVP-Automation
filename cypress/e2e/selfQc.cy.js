@@ -16,6 +16,11 @@ describe('Impetus Platform — Login Page Tests', () => {
   beforeEach(() => {
     cy.session('user-session', () => {
       cy.login();
+    }, {
+      cacheAcrossSpecs: true,
+      validate() {
+        cy.getCookies().should('have.length.greaterThan', 0);
+      },
     });
   });
 
@@ -61,7 +66,20 @@ it('Test Case 1: Self QC', () => {
     .type(vendorStyleCode);
     cy.contains('QC PENDING', { timeout: 10000 }).click({ force: true }).wait(1000);
 
-      // Directly trigger the checkbox via JS 
+    // Verify vendor cluster on UI and highlight it
+    cy.contains('AHMEDABAD', { timeout: 10000 }).should('exist').then(($el) => {
+      $el[0].scrollIntoView({ inline: 'center', block: 'nearest' });
+    });
+    cy.contains('AHMEDABAD').should('be.visible').then(($el) => {
+      $el.css({
+        'border': '3px solid red',
+        'background-color': 'yellow',
+        'padding': '4px 8px',
+        'border-radius': '4px',
+        'box-shadow': '0 0 10px 3px red',
+      });
+    });
+      // Directly trigger the checkbox via JS
   cy.get('#verification-checkbox')
     .scrollIntoView()
     .then($el => {

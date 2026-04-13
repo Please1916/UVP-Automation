@@ -5,6 +5,11 @@ describe('RA buyer', () => {
   beforeEach(() => {
     cy.session('user-session', () => {
       cy.login();
+    }, {
+      cacheAcrossSpecs: true,
+      validate() {
+        cy.getCookies().should('have.length.greaterThan', 0);
+      },
     });
   });
   after(() => {
@@ -12,24 +17,58 @@ describe('RA buyer', () => {
   });
 
   afterEach(function () {
-    cy.screenshot();
-    cy.allure().attachment('Screenshot', 'path/to/screenshot.png', 'image/png');
+    if (this.currentTest && this.currentTest.state === 'failed') {
+      const testTitle = this.currentTest.title || 'Unknown Test';
+      const errMessage = this.currentTest.err?.message || 'Unknown error';
+      cy.screenshot(`${testTitle}-failed`);
+      if (Cypress.env('allure') === true && typeof cy.allure === 'function') {
+        try {
+          cy.allure().step(`Test "${testTitle}" failed. Error: ${errMessage}`, { status: 'failed' });
+          cy.allure().attachment('Cypress Error', errMessage, 'text/plain');
+        } catch (e) {
+          cy.log('Allure attachment failed: ' + e.message);
+        }
+      }
+    }
   });
 
-  it('After login should be in the select workspace page and click on ODM buuyer', () => {
-    cy.visit('https://platform.impetusz0.de/auth/login');
-    cy.wait(20000);
+  it('Test Case 1: logs in successfully with valid credentials and check the workspace', () => {
+    cy.visit('https://platform.impetusz0.de/workspace');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
-    cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).eq(1).click().wait(2000);
-  })
 
-  it('logs in successfully and validates the logo', () => {
+  //UAT
+  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
+  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
+  //     .contains(/^S$/) // exact match for 'S'
+  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
+  //     .click({ force: true });
+  // Wait for workspace cards to be visible before interacting
+  // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
+
+  //SIT
+  cy.get(".sc-ikkxIA")
+    .filter(':contains("Shein")')
+    .filter(':contains("odm-buyer")')
+    .find("div")
+    .contains("Shein")
+    .should("be.visible")
+    .click({ force: true });
+   
+    cy.contains("span.side-navigation-panel-select-option-text", "UVP")
+      .parents("span.side-navigation-panel-select-option-wrap")
+      .click();
+    cy.get("div.side-navigation-panel-select-inner-option", { timeout: 5000 })
+      .contains("ODM")
+      .click();
+  });
+
+  it('Test Case 2: Logs in successfully and validates the logo', () => {
     cy.visit('https://platform.impetusz0.de/procuro/po?tab=all&page_size=20&page_number=1&distribution_plan_id=');
     cy.wait(20000);
     cy.get('img[src*="ImpetusLogoNew"]').should('be.visible');
   });
 
-  it('Navigate to range architecture page and Verify RA tabs', () => {
+  it('Test Case 3: Navigate to range architecture page and verify RA tabs', () => {
     cy.visit('https://platform.impetusz0.de/procuro/po?tab=all&page_size=20&page_number=1&distribution_plan_id=');
     cy.wait(20000);
     cy.contains('span.side-navigation-panel-select-option-text', 'UVP')
@@ -50,7 +89,7 @@ describe('RA buyer', () => {
     cy.contains('span', 'Current Global RA');
   });
 
-  it('Validate the RA tab clicks', () => {
+  it('Test Case 4: Validate the RA tab clicks', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
 
@@ -64,7 +103,7 @@ describe('RA buyer', () => {
 
   });
 
-  it('Download gloabl RA ', () => {
+  it('Test Case 5: Download Global RA', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
     cy.contains('div.n-button-content', 'Download').click();
@@ -75,7 +114,7 @@ describe('RA buyer', () => {
       });
   });
 
-  it('In the RA page allows the user to type in the search box', () => {
+  it('Test Case 6: In the RA page allows the user to type in the search box', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
     cy.get('[data-testid="input-component"]')
@@ -84,7 +123,7 @@ describe('RA buyer', () => {
       .wait(2000)
       .clear();
   });
-  it('Check and validate header for each columns', () => {
+  it('Test Case 7: Check and validate header for each column', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
     cy.get('table thead tr th, table thead tr td')
@@ -100,8 +139,7 @@ describe('RA buyer', () => {
         // Highlight it by changing background color
         cy.wrap($th).invoke('attr', 'style', 'background-color: yellow; border: 1px solid red;');
       });
-    cy.get('span.sc-cYYuRe.iWgNqp')
-      .contains('Brick Name')
+    cy.contains('span', 'Brick Name', { timeout: 10000 })
       .should('exist')
       .then(($el) => cy.highlight($el));
 
@@ -123,7 +161,7 @@ describe('RA buyer', () => {
 
   });
 
-  it('Check and validate sorting for each column', () => {
+  it('Test Case 8: Check and validate sorting for each column', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
     
@@ -257,7 +295,7 @@ describe('RA buyer', () => {
 
   });
 
-   it('click the hamburger and check the filters', () => {
+   it('Test Case 9: Click the hamburger and check the filters', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
 
@@ -339,7 +377,6 @@ describe('RA buyer', () => {
 
   });
 
-  // it('should click on Upload Global RA button and upload xlsx file', () => {
   //   cy.visit(pageUrl);
   //   cy.wait(20000);
 
@@ -357,7 +394,21 @@ describe('RA buyer', () => {
   //     });
   // });
 
-  it('should click on Upload Global RA button and upload pdf file should throw error', () => {
+  it('Test Case 10: Upload Global RA xlsx file successfully', () => {
+    cy.visit(pageUrl);
+    cy.wait(20000);
+
+    cy.contains('div.n-button-content', 'Upload Global RA').click().wait(5000);
+    cy.get('input[type="file"]').attachFile('RA_RA-260410-0003.xlsx', { force: true });
+    cy.contains('button', 'Continue', { timeout: 10000 }).click().wait(1000);
+    cy.get('[role="alert"]', { timeout: 15000 })
+      .should('be.visible')
+      .within(() => {
+        cy.contains('Upload Successful').should('be.visible');
+      });
+  });
+
+  it('Test Case 11: Upload Global RA with pdf file should throw error', () => {
     cy.visit(pageUrl);
     cy.wait(20000);
 

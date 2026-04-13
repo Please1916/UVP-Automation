@@ -32,14 +32,22 @@ Cypress.on('fail', (error, runnable) => {
 
   // Try extracting expected & actual if available
   if (error.expected !== undefined || error.actual !== undefined) {
+    const safeStringify = (val) => {
+      try {
+        if (val instanceof HTMLElement) return val.outerHTML.slice(0, 500);
+        return JSON.stringify(val, null, 2);
+      } catch {
+        return String(val);
+      }
+    };
     cy.allure().attachment(
       'Expected vs Actual',
       `
 Expected:
-${JSON.stringify(error.expected, null, 2)}
+${safeStringify(error.expected)}
 
 Actual:
-${JSON.stringify(error.actual, null, 2)}
+${safeStringify(error.actual)}
       `,
       'text/plain'
     );
