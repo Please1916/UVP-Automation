@@ -1,6 +1,6 @@
 Cypress.on("uncaught:exception", () => false);
 describe("RA buyer", () => {
-  const pageUrl = "https://platform.impetusz0.de/uvp/range-architecture";
+  const pageUrl = "https://platform.uat.impetusz0.de/uvp/range-architecture";
 
   beforeEach(() => {
     cy.session("user-session", () => {
@@ -16,7 +16,7 @@ describe("RA buyer", () => {
     cy.logout();
   });
   it("After login should be in the select workspace page and click on ODM buuyer", () => {
-    cy.visit("https://platform.impetusz0.de/auth/login");
+    cy.visit("https://platform.uat.impetusz0.de/auth/login");
     cy.wait(20000);
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 })
@@ -48,7 +48,7 @@ describe("RA buyer", () => {
     });
   });
   it("Apply multiple filters and verify Clear All resets them", () => {
-    cy.visit("https://platform.impetusz0.de/uvp/odm");
+    cy.visit("https://platform.uat.impetusz0.de/uvp/odm");
     cy.get('button[data-testid="filter-button"]')
       .scrollIntoView()
       .should("be.visible")
@@ -77,7 +77,7 @@ describe("RA buyer", () => {
 
   //Own search for each filter
   it("Apply multiple filters and verify Clear All resets them", () => {
-    cy.visit("https://platform.impetusz0.de/uvp/odm");
+    cy.visit("https://platform.uat.impetusz0.de/uvp/odm");
     cy.get('button[data-testid="filter-button"]')
       .scrollIntoView()
       .should("be.visible")

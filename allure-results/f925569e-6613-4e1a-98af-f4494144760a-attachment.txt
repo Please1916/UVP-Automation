@@ -1,7 +1,0 @@
-
-Expected:
-"visible"
-
-Actual:
-[object Object]
-      

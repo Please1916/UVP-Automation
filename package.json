@@ -15,7 +15,9 @@
     "generate:pdf:oemsanity": "node generate-pdf.js cypress/e2e/oemSanity.cy.js",
     "generate:pdf:raBuyer": "node generate-pdf.js cypress/e2e/raBuyer.cy.js",
     "test:allur:open": "npx allure open", 
-    "test:allure:sanityopen": "npm run clean:allure && npx cypress open --spec 'cypress/e2e/sanityflow.cy.js' --env allure=true"
+    "test:allure:sanityopen": "npm run clean:allure && npx cypress open --spec 'cypress/e2e/sanityflow.cy.js' --env allure=true",
+    "dashboard:build": "node dashboard/build.js",
+    "dashboard:open": "node dashboard/build.js && open dashboard/index.html"
   },
   "keywords": [], 
   "author": "",

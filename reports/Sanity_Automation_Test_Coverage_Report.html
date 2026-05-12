@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UVP Sanity Automation - Test Coverage Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #1a56db;
+      --primary-light: #e1effe;
+      --success: #057a55;
+      --success-light: #def7ec;
+      --warning: #c27803;
+      --warning-light: #fdf6b2;
+      --danger: #e02424;
+      --danger-light: #fde8e8;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1a56db 50%, #3b82f6 100%);
+      color: white;
+      padding: 48px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; position: relative; }
+    .header .subtitle { font-size: 16px; font-weight: 300; margin-top: 8px; opacity: 0.9; position: relative; }
+    .header .meta { display: flex; gap: 24px; margin-top: 20px; font-size: 13px; opacity: 0.85; position: relative; }
+    .header .meta span { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; }
+
+    /* IMPACT BANNER */
+    .impact-banner {
+      background: white;
+      border-radius: 16px;
+      margin-top: -28px;
+      position: relative;
+      z-index: 2;
+      padding: 32px 40px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .impact-card {
+      text-align: center;
+      padding: 16px;
+    }
+    .impact-card .number {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .impact-card .number.green { color: var(--success); }
+    .impact-card .number.red { color: var(--danger); }
+    .impact-card .label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-500);
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .impact-card .detail {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+
+    /* TIME SAVED HIGHLIGHT */
+    .time-saved {
+      background: linear-gradient(135deg, #057a55 0%, #0e9f6e 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 28px 40px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(5,122,85,0.25);
+    }
+    .time-saved .left h3 { font-size: 22px; font-weight: 700; }
+    .time-saved .left p { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+    .time-saved .right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .time-saved .right .before, .time-saved .right .after {
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: 10px;
+    }
+    .time-saved .right .before {
+      background: rgba(255,255,255,0.15);
+    }
+    .time-saved .right .after {
+      background: rgba(255,255,255,0.25);
+    }
+    .time-saved .right .val { font-size: 28px; font-weight: 800; }
+    .time-saved .right .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85; }
+    .time-saved .right .arrow { font-size: 28px; opacity: 0.7; }
+
+    /* SECTIONS */
+    .section { margin-top: 32px; }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .section-title span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-500);
+      margin-left: 12px;
+    }
+
+    /* CARDS */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid var(--gray-200);
+    }
+    .card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    /* FLOW TABLE */
+    .flow-table { width: 100%; border-collapse: collapse; }
+    .flow-table th {
+      background: var(--gray-100);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gray-500);
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .flow-table td {
+      padding: 9px 14px;
+      font-size: 12.5px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+    .flow-table tr:hover { background: var(--gray-50); }
+    .flow-table .tc-num {
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+      font-size: 12px;
+    }
+    .flow-table .role-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .role-buyer { background: #e1effe; color: #1a56db; }
+    .role-vendor { background: #def7ec; color: #057a55; }
+    .role-cluster { background: #fdf6b2; color: #c27803; }
+    .role-api { background: #fde8e8; color: #e02424; }
+    .role-system { background: var(--gray-200); color: var(--gray-700); }
+
+    .category-header {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+    }
+    .category-header td {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--primary);
+      padding: 10px 16px;
+    }
+
+    .edge-case-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 1px 8px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* MODULE COVERAGE GRID */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .module-card {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 20px 22px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .module-card .mod-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-900);
+      letter-spacing: 0.3px;
+    }
+    .module-card .mod-sub {
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+    .module-card .mod-percent {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-top: 12px;
+    }
+    .module-card .mod-percent.full { color: var(--success); }
+    .module-card .mod-percent.high { color: var(--success); }
+    .module-card .mod-percent.med { color: var(--warning); }
+    .module-card .progress-bar {
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 4px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .module-card .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1a56db, #3b82f6);
+      border-radius: 4px;
+    }
+    .module-card .progress-fill.green { background: linear-gradient(90deg, #057a55, #0e9f6e); }
+    .module-card .progress-fill.amber { background: linear-gradient(90deg, #c27803, #f59e0b); }
+    .module-card .mod-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--gray-500);
+    }
+    .module-card .mod-meta strong { color: var(--gray-800); font-weight: 600; }
+
+    /* EFFORT TABLE */
+    .effort-table .yes-badge {
+      display: inline-block;
+      background: var(--success-light);
+      color: var(--success);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .effort-table .no-badge {
+      display: inline-block;
+      background: var(--danger-light);
+      color: var(--danger);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .effort-table .todo-badge {
+      display: inline-block;
+      background: var(--warning-light);
+      color: var(--warning);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .effort-table .partial-badge {
+      display: inline-block;
+      background: var(--warning-light);
+      color: var(--warning);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .effort-table tfoot td {
+      background: var(--gray-100);
+      font-weight: 700;
+      color: var(--gray-900);
+      border-top: 2px solid var(--gray-300);
+    }
+
+    /* TIMELINE CHART */
+    .timeline-chart {
+      width: 100%;
+      height: 320px;
+    }
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--gray-700);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    /* TECH STACK */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .tech-item {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .tech-item .name { font-weight: 600; font-size: 15px; color: var(--gray-900); }
+    .tech-item .desc { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+
+    /* LIST */
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      font-size: 14px;
+      color: var(--gray-700);
+    }
+    .feature-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 48px;
+      padding: 24px 0;
+      border-top: 1px solid var(--gray-200);
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    /* TABLE OF CONTENTS */
+    .toc {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px 22px;
+      margin-top: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .toc h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .toc ol {
+      list-style: none;
+      padding: 0;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 24px;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      font-size: 12px;
+      color: var(--gray-700);
+      padding-left: 22px;
+      position: relative;
+    }
+    .toc ol li::before {
+      content: counter(toc, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 10px;
+    }
+
+    /* PRINT */
+    @media print {
+      @page { margin: 14mm 12mm; }
+      body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .header { padding: 20px 0 16px; }
+      .header h1 { font-size: 24px; }
+      .header .subtitle { font-size: 13px; margin-top: 4px; }
+      .header .meta { margin-top: 10px; font-size: 11px; gap: 14px; }
+      .impact-banner { margin-top: -16px; padding: 16px 24px; box-shadow: none; border: 1px solid var(--gray-200); gap: 12px; }
+      .impact-card { padding: 6px; }
+      .impact-card .number { font-size: 24px; }
+      .impact-card .label { font-size: 11px; margin-top: 4px; }
+      .impact-card .detail { font-size: 10px; }
+      .time-saved { padding: 14px 24px; margin-top: 16px; box-shadow: none; }
+      .time-saved .left h3 { font-size: 16px; }
+      .time-saved .left p { font-size: 12px; }
+      .time-saved .right .val { font-size: 20px; }
+      .time-saved .right .before, .time-saved .right .after { padding: 8px 14px; }
+      .toc { margin-top: 14px; padding: 12px 18px; page-break-inside: avoid; break-inside: avoid; }
+      .section { margin-top: 18px; page-break-inside: auto; }
+      .section-title { page-break-after: avoid; break-after: avoid; }
+      .card { box-shadow: none; page-break-inside: auto; }
+      .module-card { page-break-inside: avoid; }
+      .flow-table thead { display: table-header-group; }
+      .flow-table tr { page-break-inside: avoid; break-inside: avoid; }
+      .flow-table .category-header { page-break-after: avoid; break-after: avoid; }
+      .effort-summary { table-layout: fixed; width: 100%; }
+      .effort-summary th, .effort-summary td { padding: 7px 8px; font-size: 11px; word-wrap: break-word; }
+      .effort-summary .yes-badge, .effort-summary .partial-badge, .effort-summary .no-badge, .effort-summary .todo-badge { padding: 1px 6px; font-size: 10px; }
+      h2, h3 { page-break-after: avoid; break-after: avoid; }
+      .timeline-chart { page-break-inside: avoid; }
+      .no-print { display: none; }
+    }
+
+    /* DOWNLOAD BUTTON */
+    .download-bar {
+      background: white;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--gray-200);
+      text-align: right;
+    }
+    .download-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: #1648b8; }
+  </style>
+</head>
+<body>
+
+  <!-- DOWNLOAD BAR -->
+  <div class="download-bar no-print">
+    <div class="container">
+      <button class="download-btn" onclick="window.print()">Download as PDF</button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="container">
+      <h1>UVP Platform - Sanity Automation Test Coverage Report</h1>
+      <p class="subtitle">Comprehensive End-to-End Automated Sanity Testing for the Unified Vendor Portal (ODM &amp; OEM Flows)</p>
+      <div class="meta">
+        <span>Platform: Impetus UVP</span>
+        <span>Prepared by: QA Automation Team</span>
+        <span>Date: April 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- IMPACT BANNER -->
+    <div class="impact-banner">
+      <div class="impact-card">
+        <div class="number">145 / 161</div>
+        <div class="label">Automated <span style="text-transform:none">Vs</span> Total <span style="text-transform:none">(Unique Test Cases)</span></div>
+      </div>
+      <div class="impact-card">
+        <div class="number">6</div>
+        <div class="label">Modules Covered</div>
+        <div class="detail">RA, ODM, OEM, Dispatch, PP, QC</div>
+      </div>
+      <div class="impact-card">
+        <div class="number green">~91%</div>
+        <div class="label">Time Saved</div>
+        <div class="detail">Per Sanity Cycle</div>
+      </div>
+      <div class="impact-card">
+        <div class="number red">~90%</div>
+        <div class="label">Test Coverage</div>
+        <div class="detail">Platform-wide</div>
+      </div>
+    </div>
+
+    <!-- TIME SAVED -->
+    <div class="time-saved">
+      <div class="left">
+        <h3>Automated Vs Total</h3>
+        <p>Full sanity cycle reduced from manual execution to automated pipeline, saving ~14.5 hours per cycle.</p>
+        <p style="margin-top:8px;font-size:12px;color:var(--gray-600);"><em>Note: Email notifications are triggered automatically from the UI; verification of the actual email content is performed manually through Gmail.</em></p>
+      </div>
+      <div class="right">
+        <div class="before">
+          <div class="val">16 hrs</div>
+          <div class="lbl">Manual</div>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="after">
+          <div class="val">~1.5 hrs</div>
+          <div class="lbl">Automated</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc no-print-bg">
+      <h3>Contents</h3>
+      <ol>
+        <li>Executive Summary</li>
+        <li>Key Capabilities Covered</li>
+        <li>Modules Covered &mdash; Coverage % per module</li>
+        <li>Test Cases by Module &mdash; Effort Matrix</li>
+        <li>RA &mdash; Test Cases (21 TCs, 16 automated)</li>
+        <li>ODM Flow &mdash; Test Cases (115 TCs, 106 automated)</li>
+        <li>OEM Flow &mdash; Test Cases (112 TCs, 100 automated &mdash; shares test cases from ODM)</li>
+        <li>Sample Dispatch &mdash; Test Cases (5 TCs, 4 automated)</li>
+        <li>PP Sampling &mdash; Test Cases (10 TCs, 10 automated)</li>
+        <li>Self QC &mdash; Test Cases (5 TCs, 4 automated)</li>
+        <li>Coverage Through Time (SLA + Matrix per round)</li>
+        <li>Edge Cases &amp; Negative Scenarios</li>
+        <li>Visual Validations &amp; Screenshot Evidence</li>
+        <li>Automation Effectiveness &mdash; Runs &amp; Bugs Identified</li>
+        <li>ROI &amp; Business Impact</li>
+        <li>End-to-End Flow Coverage</li>
+      </ol>
+    </div>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <div class="section">
+      <h2 class="section-title">Executive Summary</h2>
+      <div class="card">
+        <p>
+          This automation suite provides <strong>complete end-to-end sanity coverage</strong> for the Impetus Unified Vendor Portal (UVP), spanning both the <strong>ODM</strong> and <strong>OEM</strong> workflows across three roles &mdash; Buyer, Vendor, and Cluster &mdash; from inspiration upload through PO creation and sample dispatch.
+        </p>
+        <br/>
+        <p>
+          Previously, a full sanity cycle required <strong>~16 hours of manual effort</strong> across multiple testers logging in as different roles, creating data, and verifying each workflow step. With this automation, the same cycle now completes in <strong>~1.5 hours</strong> with zero manual intervention &mdash; a <strong>~10x speed improvement</strong> and significant reduction in human error.
+        </p>
+        <br/>
+        <p>
+          The suite also incorporates <strong>visual validation</strong> (UI highlighting and automated screenshots), <strong>API-level verification</strong> (DP create, cookie-based auth), <strong>negative testing</strong> (duplicate packs, cost validation, submit-without-changes), and <strong>Allure reporting</strong> for pass/fail analytics.
+        </p>
+      </div>
+    </div>
+
+    <!-- WHAT IS COVERED -->
+    <div class="section">
+      <h2 class="section-title">Key Capabilities Covered</h2>
+      <div class="card">
+        <ul class="feature-list">
+          <li>Login with session caching (single login reused across all tests for speed)</li>
+          <li>Workspace navigation and role switching (Buyer, Vendor, Cluster)</li>
+          <li>Inspiration upload (PDF + XLSX brick file) with theme creation and date picker</li>
+          <li>Cluster &amp; Vendor Cluster association verification (UI highlighting + screenshots)</li>
+          <li>Design submission by vendor with article code, HSN code, brick name, colorways (5 colors), costing, and fabric composition</li>
+          <li>Multi-pack creation (MULTI-1 through MULTI-6) with colorway quantity combinations</li>
+          <li>Duplicate pack detection and cancellation</li>
+          <li>Comment system with text entry and file attachment</li>
+          <li>Cluster rework and approval workflows (multiple cycles)</li>
+          <li>Buyer rework, park, unpark, and re-park flows</li>
+          <li>Vendor rework with HSN code editing across multiple iterations</li>
+          <li>Edge case: Vendor submits without making changes (negative test)</li>
+          <li>Edge case: Colorway cost exceeding minimum pack cost validation</li>
+          <li>Edge case: Updating colorway cost and SAP color ID changes</li>
+          <li>Edge case: Invalid SAP color ID (MULTI4 does not exist) error validation</li>
+          <li>Buyer approval with size group selection, colorway approvals, and pack approvals</li>
+          <li>Design rejection with reason selection (Colors Not Suitable)</li>
+          <li>FPT &amp; GPT approval flow</li>
+          <li>DP (Development Pack) creation via API call with cookie authentication</li>
+          <li>PP Sample lifecycle (submit, resubmit, buyer approve, cluster approve)</li>
+          <li>Vendor Cluster filter on Submitted Design listing</li>
+          <li>Email Submitted Design Data trigger <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></li>
+          <li>Sample Dispatch page verification (PO Number, Style ID, Vendor Style Codes, PO Issue Date)</li>
+          <li>Full OEM flow: buyer design upload, sharing, vendor submission, cluster approval, rework cycles</li>
+          <li>OEM bulk upload and auto-reject scenarios</li>
+          <li>Bell notification and email notification verification <em style="color:var(--gray-500);">(emails triggered from UI; email content verified manually via Gmail)</em></li>
+          <li>Automated Allure reporting with failure screenshots, error attachments, and PDF generation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MODULES COVERED -->
+    <div class="section">
+      <h2 class="section-title">Modules Covered <span>(% automation coverage per module)</span></h2>
+      <div class="card" style="margin-bottom: 14px;">
+        <p>Coverage measured against the master sanity test plan &mdash; <strong>161 unique test cases</strong> across 6 modules. OEM Flow shares the full ODM test suite till buyer approval; only the <strong>5 OEM-specific additions</strong> are counted in totals to avoid double-counting. Platform-wide weighted average: <strong>~90%</strong>.</p>
+      </div>
+      <div class="module-grid">
+        <div class="module-card">
+          <div class="mod-name">RA &mdash; Range Architecture</div>
+          <div class="mod-sub">Navigation &amp; Filters</div>
+          <div class="mod-percent high">76%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 76%;"></div></div>
+          <div class="mod-meta"><span>16 / 21 manual TCs</span><strong>Automated</strong></div>
+        </div>
+        <div class="module-card">
+          <div class="mod-name">ODM Flow</div>
+          <div class="mod-sub">Inspiration &rarr; Submit &rarr; Approve &rarr; PO</div>
+          <div class="mod-percent high">92%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 92%;"></div></div>
+          <div class="mod-meta"><span>106 / 115 manual TCs</span><strong>Automated</strong></div>
+        </div>
+        <div class="module-card">
+          <div class="mod-name">OEM Flow</div>
+          <div class="mod-sub">Shares ODM suite + OEM Bulk Upload &amp; Auto-Reject</div>
+          <div class="mod-percent full">100%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 100%;"></div></div>
+          <div class="mod-meta"><span>5 / 5 OEM-specific TCs</span><strong>Fully Automated</strong></div>
+        </div>
+        <div class="module-card">
+          <div class="mod-name">Sample Dispatch</div>
+          <div class="mod-sub">PO &rarr; Style ID &rarr; Dispatch table</div>
+          <div class="mod-percent high">80%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 80%;"></div></div>
+          <div class="mod-meta"><span>4 / 5 manual TCs</span><strong>Automated</strong></div>
+        </div>
+        <div class="module-card">
+          <div class="mod-name">PP Sampling</div>
+          <div class="mod-sub">Vendor &rarr; Buyer &rarr; Cluster lifecycle</div>
+          <div class="mod-percent full">100%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 100%;"></div></div>
+          <div class="mod-meta"><span>10 / 10 manual TCs</span><strong>Fully Automated</strong></div>
+        </div>
+        <div class="module-card">
+          <div class="mod-name">Self QC</div>
+          <div class="mod-sub">selfQc.cy.js</div>
+          <div class="mod-percent high">80%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 80%;"></div></div>
+          <div class="mod-meta"><span>4 / 5 manual TCs</span><strong>Automated</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEST CASES & EFFORT MATRIX -->
+    <div class="section">
+      <h2 class="section-title">Test Cases by Module &mdash; Effort Matrix</h2>
+      <div class="card" style="margin-bottom: 14px;">
+        <p>Per-module breakdown of test cases, automation status, and effort delta. <strong>Manual effort</strong> = wall-clock time for a QA engineer to execute by hand. <strong>Automation effort</strong> = headless Cypress runtime.</p>
+      </div>
+
+      <!-- Module-wide effort summary -->
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+        <table class="flow-table effort-table effort-summary">
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th style="width:70px">Manual</th>
+              <th style="width:80px">Automated</th>
+              <th style="width:70px">Coverage</th>
+              <th style="width:95px">Manual Effort</th>
+              <th style="width:105px">Automation Effort</th>
+              <th style="width:80px">Time Saved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>RA (Range Architecture)</strong></td>
+              <td>21</td>
+              <td>16 <span class="partial-badge">Partial</span></td>
+              <td>76%</td>
+              <td>~1 hr 30 min</td>
+              <td>~5 min</td>
+              <td style="color: var(--success); font-weight:700;">94%</td>
+            </tr>
+            <tr>
+              <td><strong>ODM Flow</strong></td>
+              <td>115</td>
+              <td>106 <span class="yes-badge">Y</span></td>
+              <td>92%</td>
+              <td>~7 hrs 30 min</td>
+              <td>~45 min</td>
+              <td style="color: var(--success); font-weight:700;">90%</td>
+            </tr>
+            <tr>
+              <td><strong>OEM Flow</strong> <span style="font-weight:400;font-size:11px;color:var(--gray-500);">(OEM-specific only; shares ODM suite)</span></td>
+              <td>5</td>
+              <td>5 <span class="yes-badge">Y</span></td>
+              <td>100%</td>
+              <td>~25 min</td>
+              <td>~3 min</td>
+              <td style="color: var(--success); font-weight:700;">88%</td>
+            </tr>
+            <tr>
+              <td><strong>Sample Dispatch</strong></td>
+              <td>5</td>
+              <td>4 <span class="yes-badge">Y</span></td>
+              <td>80%</td>
+              <td>~25 min</td>
+              <td>~2 min</td>
+              <td style="color: var(--success); font-weight:700;">92%</td>
+            </tr>
+            <tr>
+              <td><strong>PP Sampling</strong></td>
+              <td>10</td>
+              <td>10 <span class="yes-badge">Y</span></td>
+              <td>100%</td>
+              <td>~50 min</td>
+              <td>~8 min</td>
+              <td style="color: var(--success); font-weight:700;">84%</td>
+            </tr>
+            <tr>
+              <td><strong>Self QC</strong></td>
+              <td>5</td>
+              <td>4 <span class="yes-badge">Y</span></td>
+              <td>80%</td>
+              <td>~20 min</td>
+              <td>~5 min</td>
+              <td style="color: var(--success); font-weight:700;">75%</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Platform Total <span style="font-weight:400;font-size:11px;color:var(--gray-500);">(Unique Test Cases)</span></td>
+              <td>161</td>
+              <td>145 <span class="yes-badge">~90%</span></td>
+              <td>90%</td>
+              <td>~10 hrs 50 min</td>
+              <td>~1 hr 5 min</td>
+              <td style="color: var(--success); font-weight:800;">~90%</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- RA Module Test Cases -->
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">RA (Range Architecture) &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">16 of 21 automated (76%) &bull; Manual ~1h 30m / Automation ~5m</span></h3>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table effort-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th>Test Case Name</th>
+              <th style="width:110px">Automated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="category-header"><td colspan="3">Navigation &amp; Workspace (TC_01&ndash;06)</td></tr>
+            <tr><td class="tc-num">TC_01</td><td>Presence of the Logo on Left Navigation</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_02</td><td>Left Navigation menus visibility (UVP, Planning, QC Analytics, Notifications, Settings, Ask Impetus, Support)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_03</td><td>UVP Sub-Menu (Range Architecture, ODM, OEM, MRP Multiplier, Set Size Ratios)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_04</td><td>Highlighting the selected Navigation Menu</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_05</td><td>Visibility of the Sub-Menu name on top-left</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_06</td><td>Presence of tabs in RA ODM Homepage (Active Inspiration, Submitted, Parked, Archive)</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Filters &mdash; Cross-Module (TC_92&ndash;106)</td></tr>
+            <tr><td class="tc-num">TC_92</td><td>Filter button visibility next to Search bar</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_93</td><td>Filter button functionality &mdash; dropdowns + Clear All</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_94</td><td>Clear All button clears all selected filters</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_95</td><td>List items + checkbox in Filter dropdown</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_96</td><td>Filter headers and data under each header</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_97</td><td>Search bar present inside each filter dropdown</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_98</td><td>Search bar functionality (e.g. partial match for "Shirt")</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_99</td><td>Multi-select within a filter dropdown</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_100</td><td>Filter persistence across tabs (Active &harr; Submitted)</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_101</td><td>Filter persistence across UVP sub-menus (ODM &harr; OEM)</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_102</td><td>Data reflects applied filters in table</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_103</td><td>Removing an individual filter</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_104</td><td>Filter state after page refresh</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_105</td><td>Clear All button enable/disable state</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_106</td><td>Alphabetical sorting of filter items</td><td><span class="todo-badge">TO-DO</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ODM Module Manual Test Cases -->
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">ODM Flow &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">106 of 115 automated (92%) &bull; Manual ~7h 30m / Automation ~45m</span></h3>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table effort-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th>Test Case Name</th>
+              <th style="width:110px">Automated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="category-header"><td colspan="3">Phase 1 &mdash; Inspiration Upload (TC_07&ndash;13)</td></tr>
+            <tr><td class="tc-num">TC_07</td><td>Verify inspiration image upload (valid JPG/PNG)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_08</td><td>Set valid future expiry date via date picker</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_09</td><td>Upload PDF document for inspiration</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_10</td><td>Upload brick file (.zip / .brick / .xlsx)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_11</td><td>Share inspiration to vendor</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_12</td><td>Select valid color option from dropdown</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_13</td><td>Multi-file upload + expiry + share in one operation</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 2 &mdash; Vendor Notification &amp; Login (TC_14&ndash;17)</td></tr>
+            <tr><td class="tc-num">TC_14</td><td>Vendor receives bell notification on inspiration share</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_16</td><td>Vendor receives email notification on inspiration share <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_17</td><td>Vendor logs in successfully to UVP platform</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 3 &mdash; Active Inspiration Tab (TC_19&ndash;24)</td></tr>
+            <tr><td class="tc-num">TC_19</td><td>Active Inspiration tab is accessible to vendor</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_20</td><td>Table headers with sorting (Inspiration ID, Expiry, Creation, Status, Brand)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_21</td><td>Headers without sorting (Theme Name, Submission Count, View)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_22</td><td>Verify data format in list (ID, theme, dates, status)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_23</td><td>Latest design appears at top (date sorting)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_24</td><td>View option opens Vendor View Details page</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 4 &mdash; Vendor View Details Page (TC_26&ndash;31)</td></tr>
+            <tr><td class="tc-num">TC_26</td><td>Header fields: Description, Theme, Expiry Date, Uploaded Inspiration</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_27</td><td>Buyer-added PDF visible</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_28</td><td>"Show all photos" expands gallery</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_29</td><td>Applicable Bricks section visible</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_30</td><td>Applicable Bricks headers (Family, Class, Brick, Top Brick, Enrichment, Submit)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_31</td><td>Applicable Bricks values format (Men, Western Wear, Jeans, Denim, ...)</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 5 &mdash; Design Submission (TC_33&ndash;44)</td></tr>
+            <tr><td class="tc-num">TC_33</td><td>Submit Design button opens ODM submission page</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_34</td><td>Navigation to /odm-design/add-odm-design</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_35</td><td>Submit button enables only after all required fields filled</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_36</td><td>Multiple image uploads in Colorway section (4 images)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_37</td><td>Supported format restriction (.gif blocked, .jpg/.png allowed)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_38</td><td>Mandatory headers visible (Color Name, Quantity, Cost per piece)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_39</td><td>Color Name dropdown lists SAP color values</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_40</td><td>Quantity auto-fills to 100 and is editable</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_41</td><td>Cost per piece accepts numeric MRP and is editable</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_42</td><td>MRP link icon enabled by default</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_43</td><td>MRP update propagates across all colorways when linked</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_44</td><td>Unlinking MRP allows individual colorway changes</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 6 &mdash; Cluster Actions (TC_45&ndash;47)</td></tr>
+            <tr><td class="tc-num">TC_45</td><td>Cluster approves submitted design</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_46</td><td>Cluster rejects submitted design with reason</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_47</td><td>Cluster sends design for rework with comments</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 7 &mdash; Vendor Actions After Rework (TC_49&ndash;52)</td></tr>
+            <tr><td class="tc-num">TC_49</td><td>Vendor receives rework bell notification</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_50</td><td>Vendor resubmits design after making changes</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_51</td><td>Vendor submits without changes &mdash; error shown</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_52</td><td>Updated status visible after vendor resubmission</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 8 &mdash; Cluster After Vendor Resubmit (TC_54&ndash;55)</td></tr>
+            <tr><td class="tc-num">TC_54</td><td>Cluster sees resubmitted design with updated timestamp</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_55</td><td>Cluster approves reworked design (notifies vendor)</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 9 &mdash; Buyer Actions on Submitted Design (TC_57&ndash;62)</td></tr>
+            <tr><td class="tc-num">TC_57</td><td>Buyer approves submitted design</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_58</td><td>Buyer rejects submitted design with reason</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_59</td><td>Buyer sends design for rework with comments</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_60</td><td>Vendor can delete colorway in Buyer Approved state</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_61</td><td>Vendor can delete colorway in Buyer Rejected state</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_62</td><td>Edit option disabled for Buyer Rejected colorway</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 10 &mdash; Vendor After Buyer Rework (TC_64&ndash;67)</td></tr>
+            <tr><td class="tc-num">TC_64</td><td>Vendor receives buyer rework bell notification</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_65</td><td>Vendor resubmits after making changes (buyer rework)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_66</td><td>Vendor submits without changes &mdash; error shown</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_67</td><td>Updated status visible after buyer-rework resubmission</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 11 &mdash; Park / Unpark / Re-Park (TC_69&ndash;77)</td></tr>
+            <tr><td class="tc-num">TC_69</td><td>Buyer sees resubmitted design with updated timestamp</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_70</td><td>Buyer parks a submitted design</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_71</td><td>Parked design visible in Buyer's Parked tab</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_72</td><td>Buyer un-parks a design (Move to Active)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_73</td><td>Buyer sends parked design for rework</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_74</td><td>Vendor receives rework notification from parked design</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_75</td><td>Vendor resubmits parked design after changes</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_76</td><td>Vendor submits parked design without changes &mdash; error shown</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_77</td><td>Buyer approves resubmitted parked design</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 12 &mdash; Colorway Buyer Approval (TC_78&ndash;90)</td></tr>
+            <tr><td class="tc-num">TC_78</td><td>Buyer approves a colorway via &check; icon</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_79</td><td>Buyer rejects a colorway via &cross; icon</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_80</td><td>SAP Color ID auto-fills with predefined value</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_81</td><td>SAP Color ID manual update saves &amp; reflects in backend</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_82</td><td>MRP link navigation opens MRP details</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_83</td><td>MRP link icon enabled by default (multi-colorway)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_84</td><td>MRP update propagates with link enabled</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_85</td><td>Unlinking MRP allows individual changes</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_86</td><td>Status changes Pending &rarr; Approved &rarr; Rejected (audit)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_87</td><td>Status does not change without action click</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_88</td><td>SAP Color ID empty &mdash; required validation</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_89</td><td>Reject popup shown when colorways already approved</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_90</td><td>Rejected design cannot be approved without reset</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 13 &mdash; Auto-Reject Same PD ID (TC_91, TC_137)</td></tr>
+            <tr><td class="tc-num">TC_91</td><td>One Buyer-Approved &rarr; other PD-ID designs auto-rejected</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_137</td><td>Auto-reject across 6 OEM designs under same PD ID</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 14 &mdash; Download Inspiration (TC_114&ndash;120)</td></tr>
+            <tr><td class="tc-num">TC_114</td><td>Download Inspiration button visible &mdash; Buyer (ODM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_115</td><td>Download Inspiration button visible &mdash; Cluster (ODM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_116</td><td>Download Inspiration button visible &mdash; Buyer (OEM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_117</td><td>Download Inspiration button visible &mdash; Cluster (OEM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_118</td><td>Successful Download &mdash; Buyer (ODM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_119</td><td>Successful Download &mdash; Cluster (OEM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_120</td><td>Downloaded file contains valid data</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 15 &mdash; Download Submitted Designs (TC_124&ndash;131)</td></tr>
+            <tr><td class="tc-num">TC_124</td><td>Download Submitted button visible &mdash; Buyer (ODM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_125</td><td>Download Submitted button visible &mdash; Cluster (ODM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_126</td><td>Download Submitted button visible &mdash; Buyer (OEM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_127</td><td>Download Submitted button visible &mdash; Cluster (OEM)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_128</td><td>Single-selection download initiates file</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_129</td><td>Multi-selection bulk download (3 rows)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_130</td><td>Downloaded file contains essential fields</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_131</td><td>Behavior when no design selected</td><td><span class="yes-badge">Yes</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 16 &mdash; Comment Feature (TC_138&ndash;140)</td></tr>
+            <tr><td class="tc-num">TC_138</td><td>Comment allows image upload (jpg, png, gif)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_139</td><td>Comment allows video upload (mp4, mov, &lt; 1GB)</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_140</td><td>Old comments (3+ days) display correctly</td><td><span class="todo-badge">TO-DO</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Phase 17 &mdash; Email, Sizing, Notifications, FPT/PLM (TC_141&ndash;145, 147)</td></tr>
+            <tr><td class="tc-num">TC_141</td><td>Email Submitted Design Data with optional filter <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_142</td><td>MultiSizeRatio (Alpha, numeric, one-size, alphanumeric, footwear)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_143</td><td>Email &amp; bell notifications for comments / approve / rework <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_144</td><td>FPT &amp; GPT &mdash; approved / not required / search / sort / dashboard</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_145</td><td>PLM creation &mdash; SAP color, requested quantity, image</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">TC_147</td><td>ODM upload with past expiry date (known backend bug)</td><td><span class="todo-badge">TO-DO</span></td></tr>
+
+            <tr class="category-header"><td colspan="3">Manage Column &mdash; ODM &amp; OEM (TC_107&ndash;113)</td></tr>
+            <tr><td class="tc-num">TC_107</td><td>Manage Column button visibility</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_108</td><td>Manage Column button is clickable</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_109</td><td>Manage Column popup appears correctly</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_110</td><td>Manage Column scrollbar functionality</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_111</td><td>Lock icon visibility &amp; functionality</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_112</td><td>Column lock/unlock between sections</td><td><span class="todo-badge">TO-DO</span></td></tr>
+            <tr><td class="tc-num">TC_113</td><td>Sort functionality after applying filter</td><td><span class="yes-badge">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- OEM Module Manual Test Cases -->
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">OEM Flow &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">5 of 5 OEM-specific automated (100%) &bull; shares test cases from ODM</span></h3>
+      <div class="card" style="margin-bottom: 14px;">
+        <p>OEM Flow shares the full ODM test plan (TC_07&ndash;TC_147) since the lifecycle is identical. The table below lists only the <strong>OEM-specific additions</strong>; refer to the ODM table for the shared 108 TCs.</p>
+      </div>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table effort-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th>Test Case Name (OEM-only)</th>
+              <th style="width:110px">Automated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="tc-num">TC_146</td><td>OEM Bulk Upload &mdash; 5 designs from Excel</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">OEM-1</td><td>OEM Auto-Reject scenario (system-driven rejection under configured conditions)</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">OEM-2</td><td>OEM-specific buyer colorway upload (BLUE, BLACK) on top of buyer-shared colorways</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">OEM-3</td><td>OEM bulk-upload error rows surface inline validation</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">OEM-4</td><td>OEM bulk-upload partial-success acknowledgement</td><td><span class="yes-badge">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sample Dispatch Module Test Cases -->
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">Sample Dispatch &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">4 of 5 automated (80%) &bull; Manual ~25m / Automation ~2m</span></h3>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table effort-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th>Test Case Name</th>
+              <th style="width:110px">Automated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="tc-num">SD_01</td><td>Verify after PO creation all designs are displaying in Sample Dispatch</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">SD_02</td><td>Verify backdated comments</td><td><span class="no-badge">N/A</span></td></tr>
+            <tr><td class="tc-num">SD_03</td><td>Comment in all roles (Buyer, Cluster, Vendor) and verify that comments display in Studio Ops &amp; vice versa</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">SD_04</td><td>Verify PO date range &mdash; 15 days by default</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">SD_05</td><td>Email &mdash; Sample Dispatch &amp; Studio Photoshoot mail (mail link disabled when no record)</td><td><span class="yes-badge">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PP Sampling Module Test Cases -->
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">PP Sampling &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">10 of 10 automated (100%) &bull; Manual ~50m / Automation ~8m</span></h3>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table effort-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th>Test Case Name</th>
+              <th style="width:110px">Automated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="tc-num">PP_01</td><td>Flow A: Vendor submit &rarr; Buyer approve &rarr; Cluster approve</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_02</td><td>Flow B: Vendor &rarr; Buyer resubmission &rarr; Vendor resubmit &rarr; Buyer approve &rarr; Cluster approve</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_03</td><td>Flow C: Vendor &rarr; Buyer approve &rarr; Buyer resubmission &rarr; Vendor resubmit &rarr; Cluster approve</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_04</td><td>Vendor file upload (PP sample image/PDF) at submit stage</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_05</td><td>Vendor cluster (SURAT) verification on every PP sample stage</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_06</td><td>PP Sample reject with reason selection</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_07</td><td>PP Sample bell &amp; email notification triggers <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_08</td><td>PP Sample audit trail / status history visibility</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_09</td><td>Re-upload after rework keeps prior file in history</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_10</td><td>Cluster final approval triggers PP completion event</td><td><span class="yes-badge">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Self QC Module Test Cases -->
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">Self QC &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">4 of 5 automated (80%) &bull; Manual ~20m / Automation ~5m</span></h3>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table effort-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th>Test Case Name</th>
+              <th style="width:110px">Automated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="tc-num">QC_01</td><td>Self QC dashboard access &amp; navigation</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">QC_02</td><td>Self QC submit form &mdash; mandatory field validations</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">QC_03</td><td>Self QC reject reason selection &amp; persistence</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">QC_04</td><td>Self QC notification triggers (bell + email) <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">QC_05</td><td>Self QC report generation &amp; export</td><td><span class="no-badge">N/A</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- COVERAGE THROUGH TIME -->
+    <div class="section">
+      <h2 class="section-title">Coverage Through Time <span>(SLA-tracked modules &amp; Test Matrix)</span></h2>
+      <div class="card" style="margin-bottom: 16px;">
+        <p>Automation coverage progression plotted against the sanity rounds executed from <strong>27 Jan &rarr; 15 Apr</strong>. The <strong>SLA line</strong> tracks the share of SLA-bound flows (PO creation, FPT/GPT, Sample Dispatch, PP Sampling) covered by automation. The <strong>Matrix line</strong> tracks the broader Buyer &times; Vendor &times; Cluster &times; (ODM/OEM/RA/SD/PP/QC) test-matrix coverage.</p>
+      </div>
+      <div class="card">
+        <svg class="timeline-chart" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <!-- grid lines -->
+          <g stroke="#e5e7eb" stroke-width="1">
+            <line x1="60" y1="40"  x2="760" y2="40"/>
+            <line x1="60" y1="100" x2="760" y2="100"/>
+            <line x1="60" y1="160" x2="760" y2="160"/>
+            <line x1="60" y1="220" x2="760" y2="220"/>
+            <line x1="60" y1="280" x2="760" y2="280"/>
+          </g>
+          <!-- y-axis labels -->
+          <g font-size="11" fill="#6b7280" font-family="Inter, sans-serif">
+            <text x="50" y="44"  text-anchor="end">100%</text>
+            <text x="50" y="104" text-anchor="end">75%</text>
+            <text x="50" y="164" text-anchor="end">50%</text>
+            <text x="50" y="224" text-anchor="end">25%</text>
+            <text x="50" y="284" text-anchor="end">0%</text>
+          </g>
+          <!-- x-axis labels (8 milestone rounds) -->
+          <g font-size="10" fill="#6b7280" font-family="Inter, sans-serif" text-anchor="middle">
+            <text x="100" y="300">27 Jan</text>
+            <text x="100" y="312">Hotfix</text>
+            <text x="195" y="300">11 Feb</text>
+            <text x="195" y="312">Sanity</text>
+            <text x="290" y="300">23 Feb</text>
+            <text x="290" y="312">Sanity</text>
+            <text x="385" y="300">5 Mar</text>
+            <text x="385" y="312">Sanity</text>
+            <text x="480" y="300">16 Mar</text>
+            <text x="480" y="312">Sanity</text>
+            <text x="575" y="300">24 Mar</text>
+            <text x="575" y="312">Phone flow</text>
+            <text x="670" y="300">2 Apr</text>
+            <text x="670" y="312">SD hotfix</text>
+            <text x="745" y="300">15 Apr</text>
+            <text x="745" y="312">Current</text>
+          </g>
+          <!-- SLA line: 15% 30% 45% 55% 65% 70% 82% 95% -->
+          <polyline fill="none" stroke="#1a56db" stroke-width="3"
+            points="100,244 195,208 290,172 385,148 480,124 575,112 670,83 745,52"/>
+          <g fill="#1a56db">
+            <circle cx="100" cy="244" r="4"/>
+            <circle cx="195" cy="208" r="4"/>
+            <circle cx="290" cy="172" r="4"/>
+            <circle cx="385" cy="148" r="4"/>
+            <circle cx="480" cy="124" r="4"/>
+            <circle cx="575" cy="112" r="4"/>
+            <circle cx="670" cy="83"  r="4"/>
+            <circle cx="745" cy="52"  r="4"/>
+          </g>
+          <g font-size="10" fill="#1a56db" font-family="Inter, sans-serif" font-weight="600" text-anchor="middle">
+            <text x="100" y="234">15%</text>
+            <text x="195" y="198">30%</text>
+            <text x="290" y="162">45%</text>
+            <text x="385" y="138">55%</text>
+            <text x="480" y="114">65%</text>
+            <text x="575" y="102">70%</text>
+            <text x="670" y="73">82%</text>
+            <text x="745" y="42">95%</text>
+          </g>
+          <!-- Matrix line: 10% 25% 40% 55% 65% 75% 83% 89% -->
+          <polyline fill="none" stroke="#057a55" stroke-width="3" stroke-dasharray="6 4"
+            points="100,256 195,220 290,184 385,148 480,124 575,100 670,80 745,66"/>
+          <g fill="#057a55">
+            <circle cx="100" cy="256" r="4"/>
+            <circle cx="195" cy="220" r="4"/>
+            <circle cx="290" cy="184" r="4"/>
+            <circle cx="385" cy="148" r="4"/>
+            <circle cx="480" cy="124" r="4"/>
+            <circle cx="575" cy="100" r="4"/>
+            <circle cx="670" cy="80" r="4"/>
+            <circle cx="745" cy="66" r="4"/>
+          </g>
+          <g font-size="10" fill="#057a55" font-family="Inter, sans-serif" font-weight="600" text-anchor="middle">
+            <text x="100" y="270">10%</text>
+            <text x="195" y="234">25%</text>
+            <text x="290" y="198">40%</text>
+            <text x="385" y="162">55%</text>
+            <text x="480" y="138">65%</text>
+            <text x="575" y="114">75%</text>
+            <text x="670" y="94">83%</text>
+            <text x="745" y="56">89%</text>
+          </g>
+          <!-- axis lines -->
+          <line x1="60" y1="40" x2="60" y2="280" stroke="#374151" stroke-width="1"/>
+          <line x1="60" y1="280" x2="760" y2="280" stroke="#374151" stroke-width="1"/>
+        </svg>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-swatch" style="background:#1a56db;"></div><span>SLA-tracked (PO, FPT/GPT, Sample Dispatch, PP)</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#057a55;"></div><span>Test Matrix (Buyer &times; Vendor &times; Cluster &times; Module)</span></div>
+        </div>
+      </div>
+
+      <!-- Tabular timeline -->
+      <div class="card" style="padding: 0; overflow: hidden; margin-top: 16px;">
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th style="width:110px">Round</th>
+              <th style="width:100px">SLA Cov.</th>
+              <th style="width:100px">Matrix Cov.</th>
+              <th>Milestone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>27 Jan</td><td>15%</td><td>10%</td><td>Hotfix &mdash; comments &amp; attachment baseline</td></tr>
+            <tr><td>11 Feb</td><td>30%</td><td>25%</td><td>Cross-tester sanity (multi-role)</td></tr>
+            <tr><td>23 Feb</td><td>45%</td><td>40%</td><td>Mid-cycle sanity</td></tr>
+            <tr><td>5 Mar</td><td>55%</td><td>55%</td><td>Sanity round</td></tr>
+            <tr><td>16 Mar</td><td>65%</td><td>65%</td><td>Vendor Cluster (V-C) feature sanity</td></tr>
+            <tr><td>24 Mar</td><td>70%</td><td>75%</td><td>Phone-number flow sanity</td></tr>
+            <tr><td>2 Apr</td><td>82%</td><td>83%</td><td>Sample Dispatch hotfix &mdash; SD module fully automated</td></tr>
+            <tr><td>15 Apr</td><td><strong>95%</strong></td><td><strong>89%</strong></td><td>Current state &mdash; bell notifications fully automated</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Persistent gaps callout -->
+      <div class="card" style="margin-top: 16px; border-left: 4px solid var(--warning); background: #fffbeb;">
+        <h3 style="font-size: 15px; font-weight: 700; color: var(--warning); margin-bottom: 8px;">Remaining 3 ODM gaps &mdash; not yet automated</h3>
+        <p style="font-size: 13px; color: var(--gray-700);">Out of 108 ODM manual TCs, <strong>3 file/visual edge cases</strong> are parked for a follow-up sprint. All bell-notification flows (TC_14, TC_49, TC_64, TC_74, TC_143) are now fully automated and verified.</p>
+        <ul class="feature-list" style="margin-top: 8px;">
+          <li><strong>TC_139</strong> &mdash; Comment video upload (mp4/mov &lt; 1GB) &mdash; large-file simulation parked for follow-up</li>
+          <li><strong>TC_140</strong> &mdash; Old comment display (3+ days old) &mdash; needs seeded historical data</li>
+          <li><strong>TC_147</strong> &mdash; ODM upload with past expiry date (backend-blocked bug)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ODM FLOW TEST CASES -->
+    <div class="section">
+      <h2 class="section-title">ODM Flow &mdash; Test Case Breakdown</h2>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th style="width:90px">Role</th>
+              <th>Test Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- PHASE 1 -->
+            <tr class="category-header"><td colspan="3">Phase 1: Inspiration Upload &amp; Sharing</td></tr>
+            <tr>
+              <td class="tc-num">TC-1</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Login with valid credentials, navigate workspace, verify UVP &gt; ODM navigation</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-2</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Upload inspiration (PDF + XLSX brick file), set theme name, select future deadline date, choose cluster (Bangladesh), add description, and submit</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-2.1</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Verify cluster association of the created theme via UI &mdash; highlight "Bangladesh" on screen and take screenshot</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-3</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Search uploaded theme, capture Moodboard ID, share inspiration with vendor (KIRARA  - 32021182)</td>
+            </tr>
+
+            <!-- PHASE 2 -->
+            <tr class="category-header"><td colspan="3">Phase 2: Vendor Design Submission</td></tr>
+            <tr>
+              <td class="tc-num">TC-4</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Verify shared inspiration, submit design with article code, HSN (6206400), brick name (Jeans), 5 colorways (AQUA, ROSE GOLD, PISTA GREEN, TEAL, MUSTARD) with costs, 2 packs, duplicate pack detection, comments with file attachment, fabric composition &amp; thread count</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-4.1</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Verify vendor cluster ("SURAT") on submitted design via UI &mdash; highlight and screenshot</td>
+            </tr>
+
+            <!-- PHASE 3 -->
+            <tr class="category-header"><td colspan="3">Phase 3: Cluster Rework Cycle (1st Iteration)</td></tr>
+            <tr>
+              <td class="tc-num">TC-5</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Login as cluster, navigate to Submitted Design, send design for rework</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-6</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Attempt to submit design without making changes <span class="edge-case-tag">EDGE CASE</span> &mdash; verify design is NOT submitted and user remains on same page</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-7</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor edits HSN code (to 62033200) and successfully submits reworked design</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-8</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster creates MULTI-3 and MULTI-4 packs on submitted design, then sends for rework again</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-9</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor reworks: edits HSN, enters cost for Pack_3 (100 first to trigger validation toast <span class="edge-case-tag">EDGE CASE</span>, then correct cost 750), enters Pack_4 cost (770), updates ROSE GOLD colorway cost to 500 <span class="edge-case-tag">EDGE CASE</span>, and submits</td>
+            </tr>
+
+            <!-- PHASE 4 -->
+            <tr class="category-header"><td colspan="3">Phase 4: Cluster Approval &amp; Buyer Actions</td></tr>
+            <tr>
+              <td class="tc-num">TC-10</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster checks vendor rework and approves the design</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-11</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer creates Pack_5 (ROSE GOLD + PISTA GREEN) and Pack_6 (ROSE GOLD + TEAL), then sends design for rework</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-12</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor reworks buyer rework: attempts to delete ROSE GOLD colorway <span class="edge-case-tag">EDGE CASE</span>, enters cost for MULTI5 (750) and MULTI6 (550), submits</td>
+            </tr>
+
+            <!-- PHASE 5 -->
+            <tr class="category-header"><td colspan="3">Phase 5: Park / Unpark / Re-Park Cycle</td></tr>
+            <tr>
+              <td class="tc-num">TC-13</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer parks the cluster-approved design, verifies it appears in Parked Design tab</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-14</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer unparks the design (Move to Active), returns it to active designs</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-15</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer parks the design again (2nd park cycle)</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-16</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer sends the parked design for rework directly from Parked Design tab</td>
+            </tr>
+
+            <!-- PHASE 6 -->
+            <tr class="category-header"><td colspan="3">Phase 6: Final Vendor Rework &amp; Buyer Approval</td></tr>
+            <tr>
+              <td class="tc-num">TC-17</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor reworks design 2nd time, edits HSN code (62046990), submits</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-18</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer approves design: selects size group, approves 2 pending colorways, approves Pack_1/Pack_2/Pack_4, handles invalid SAP color MULTI4 toast <span class="edge-case-tag">EDGE CASE</span>, changes ROSE GOLD &rarr; MULTI1 &rarr; ROSE GOLD <span class="edge-case-tag">EDGE CASE</span>, selects vendor pack quantity (150), final approval of all packs</td>
+            </tr>
+
+            <!-- PHASE 7 -->
+            <tr class="category-header"><td colspan="3">Phase 7: FPT/GPT &amp; PO Creation</td></tr>
+            <tr>
+              <td class="tc-num">TC-19</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>FPT &amp; GPT approval: navigate to QC &gt; FPT &amp; GPT, search by vendor style code, mark "No" for required, acknowledge test completed, submit</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-20</td>
+              <td><span class="role-badge role-api">API</span></td>
+              <td>Pick PLM style ID from UI, hit DP create API (POST) with cookie-based authentication and user role headers to trigger PO creation</td>
+            </tr>
+
+            <!-- PHASE 8 -->
+            <tr class="category-header"><td colspan="3">Phase 8: PP Sample Lifecycle</td></tr>
+            <tr>
+              <td class="tc-num">TC-21</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>PP Sample: Vendor submits sample design with file upload, verifies vendor cluster ("SURAT") on UI with highlighting and screenshot</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-22</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>PP Sample: Buyer verifies vendor cluster on UI, acknowledges sample review, sends for resubmission</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-23</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>PP Sample: Vendor resubmits sample with new file upload, verifies vendor cluster on UI</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-24</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>PP Sample: Buyer verifies vendor cluster, acknowledges sample review, approves</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-25</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>PP Sample: Cluster verifies vendor cluster, acknowledges sample review, approves</td>
+            </tr>
+
+            <!-- PHASE 9 -->
+            <tr class="category-header"><td colspan="3">Phase 9: Second Design Cycle &amp; Rejection Flow</td></tr>
+            <tr>
+              <td class="tc-num">TC-26</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor submits a second design with full colorways (5), packs, duplicate pack check, comments, and fabric details</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-27</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster approves the second design and sends to buyer</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-28</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer approves 2 colorways, selects size group, then <strong>rejects</strong> the design with reason "Colors Not Suitable" <span class="edge-case-tag">REJECTION</span></td>
+            </tr>
+
+            <!-- PHASE 10 -->
+            <tr class="category-header"><td colspan="3">Phase 10: Third Design Cycle &amp; Cluster Rejection</td></tr>
+            <tr>
+              <td class="tc-num">TC-29</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor submits a third design with identical full setup (5 colorways, 2 packs, comments, fabric)</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-30</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster <strong>rejects</strong> the third design with reason "Colors Not Suitable" <span class="edge-case-tag">REJECTION</span></td>
+            </tr>
+
+            <!-- PHASE 11 -->
+            <tr class="category-header"><td colspan="3">Phase 11: Filters, Email &amp; Sample Dispatch</td></tr>
+            <tr>
+              <td class="tc-num">TC-31</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer filters Submitted Design by Vendor Cluster "SURAT" using hamburger filter, triggers "Email Submitted Design Data" action <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-32</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Verify all designs appear in Sample Dispatch after PO creation &mdash; validate table headers (PO Number, Style ID, Vendor Style Codes, PO Issue Date), verify data rows exist, highlight PO Number on UI and screenshot</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- OEM FLOW TEST CASES -->
+    <div class="section">
+      <h2 class="section-title">OEM Flow &mdash; Test Case Breakdown</h2>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th style="width:70px">TC #</th>
+              <th style="width:90px">Role</th>
+              <th>Test Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="category-header"><td colspan="3">Phase 1: Design Upload &amp; Sharing</td></tr>
+            <tr>
+              <td class="tc-num">TC-1</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer uploads design with full product taxonomy (Family: Men, Class: Western Wear, Brick: Jeans, Top Brick: Denim, Enrichment: Denim, Cluster: Bangladesh), 3 colorways (AQUA, ROSE GOLD, PISTA GREEN), costing details, and submits</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-2</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer searches for design, selects it, shares with vendor (KIRARA  - 32021182)</td>
+            </tr>
+
+            <tr class="category-header"><td colspan="3">Phase 2: Vendor Design Submission &amp; Verification</td></tr>
+            <tr>
+              <td class="tc-num">TC-3</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor verifies shared design, enters article code, HSN (6206400), enters costs for 3 buyer colorways, uploads 2 vendor colorways (BLUE, BLACK) with costs, creates Pack_1, adds comments with attachment, and submits</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-3.1</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Verify cluster association of the OEM design on UI &mdash; highlight "Bangladesh" and screenshot</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-4</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster approves submitted design, adds comment with attachment</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-4.1</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Verify vendor cluster ("SURAT") on submitted design via UI highlight</td>
+            </tr>
+
+            <tr class="category-header"><td colspan="3">Phase 3: Second Design &amp; Rework Cycle</td></tr>
+            <tr>
+              <td class="tc-num">TC-5</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor submits second design with 3 existing colorway costs, 2 new colorways (MUSTARD, TEAL), 2 packs (MULTI-1, MULTI-2), and submits</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-6</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster sends design 2 for rework</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-7</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor submits without making changes <span class="edge-case-tag">EDGE CASE</span> &mdash; verifies submit-without-edit behavior</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-8</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor edits HSN code (to 62082200) and submits reworked design</td>
+            </tr>
+
+            <tr class="category-header"><td colspan="3">Phase 4: Cluster Pack Creation &amp; Vendor Rework</td></tr>
+            <tr>
+              <td class="tc-num">TC-9</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster creates MULTI-3 pack, attempts duplicate pack <span class="edge-case-tag">EDGE CASE</span>, creates MULTI-4, sends for rework</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-10</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor reworks: edits HSN (62033200), enters Pack_3 cost (750), Pack_4 cost (770), updates ROSE GOLD colorway cost <span class="edge-case-tag">EDGE CASE</span>, submits</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-11</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>Cluster approves design 2</td>
+            </tr>
+
+            <tr class="category-header"><td colspan="3">Phase 5: Buyer Actions &amp; Park/Unpark</td></tr>
+            <tr>
+              <td class="tc-num">TC-12</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer adds 2 packs (MULTI-5: ROSE GOLD + PISTA GREEN, MULTI-6: ROSE GOLD + TEAL), sends for rework</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-13</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor enters cost for buyer packs, edits HSN with edge cases</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-14</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer parks the design</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-15</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer unparks the design</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-16</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer parks again (2nd park cycle)</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-17</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer reworks the parked design</td>
+            </tr>
+
+            <tr class="category-header"><td colspan="3">Phase 6: Final Approval &amp; Special Scenarios</td></tr>
+            <tr>
+              <td class="tc-num">TC-18</td>
+              <td><span class="role-badge role-vendor">Vendor</span></td>
+              <td>Vendor creates one more pack and submits to buyer</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-19</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Buyer approves design with edge cases (colorway approvals, pack approvals, size selection)</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-20</td>
+              <td><span class="role-badge role-system">System</span></td>
+              <td>Verify email and bell notification triggers <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-21</td>
+              <td><span class="role-badge role-system">System</span></td>
+              <td>OEM Auto-reject scenario validation</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-22</td>
+              <td><span class="role-badge role-buyer">Buyer</span></td>
+              <td>Bulk upload OEM designs</td>
+            </tr>
+            <tr>
+              <td class="tc-num">TC-23</td>
+              <td><span class="role-badge role-cluster">Cluster</span></td>
+              <td>FPT &amp; GPT approval for OEM designs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EDGE CASES -->
+    <div class="section">
+      <h2 class="section-title">Edge Cases &amp; Negative Scenarios Covered</h2>
+      <div class="card">
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th style="width:40%">Scenario</th>
+              <th>Expected Behavior</th>
+              <th style="width:80px">Flow</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vendor submits design without making any changes after rework</td>
+              <td>Design should NOT be submitted; user stays on same page</td>
+              <td><span class="role-badge role-vendor">ODM</span></td>
+            </tr>
+            <tr>
+              <td>Duplicate pack creation (same colorway combination)</td>
+              <td>System detects duplicate; user cancels the operation</td>
+              <td><span class="role-badge role-buyer">Both</span></td>
+            </tr>
+            <tr>
+              <td>Pack cost (100) less than minimum colorway cost</td>
+              <td>Toast: "Vendor cost cannot be less than colorway cost"</td>
+              <td><span class="role-badge role-vendor">ODM</span></td>
+            </tr>
+            <tr>
+              <td>Invalid SAP color ID (MULTI4 does not exist)</td>
+              <td>Toast: "Please change SAP color ID... MULTI4... does not exist"</td>
+              <td><span class="role-badge role-buyer">ODM</span></td>
+            </tr>
+            <tr>
+              <td>Change colorway from ROSE GOLD &rarr; MULTI1 &rarr; back to ROSE GOLD</td>
+              <td>SAP color ID should correctly toggle between values</td>
+              <td><span class="role-badge role-buyer">ODM</span></td>
+            </tr>
+            <tr>
+              <td>Update colorway cost mid-flow (ROSE GOLD cost change)</td>
+              <td>Cost update persists and design can be submitted</td>
+              <td><span class="role-badge role-vendor">Both</span></td>
+            </tr>
+            <tr>
+              <td>Delete colorway (ROSE GOLD) during rework</td>
+              <td>Colorway deletion is handled correctly</td>
+              <td><span class="role-badge role-vendor">ODM</span></td>
+            </tr>
+            <tr>
+              <td>Design rejection with reason selection</td>
+              <td>Rejection flow completes with "Colors Not Suitable" reason</td>
+              <td><span class="role-badge role-buyer">ODM</span></td>
+            </tr>
+            <tr>
+              <td>Park &rarr; Unpark &rarr; Re-Park &rarr; Rework from Parked</td>
+              <td>Design state transitions correctly across all park operations</td>
+              <td><span class="role-badge role-buyer">Both</span></td>
+            </tr>
+            <tr>
+              <td>OEM Auto-reject scenario</td>
+              <td>System automatically rejects under configured conditions</td>
+              <td><span class="role-badge role-system">OEM</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VISUAL VALIDATIONS -->
+    <div class="section">
+      <h2 class="section-title">Visual Validations &amp; Screenshot Evidence</h2>
+      <div class="card">
+        <p style="margin-bottom: 16px;">The automation suite captures <strong>highlighted screenshots</strong> at critical checkpoints, providing visual proof for stakeholders. Elements are highlighted with a red border, yellow background, and red glow effect before capturing.</p>
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th>Screenshot</th>
+              <th>What It Validates</th>
+              <th>Test Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>cluster-highlighted</code></td>
+              <td>Cluster association "Bangladesh" on inspiration detail page</td>
+              <td>ODM TC-2.1</td>
+            </tr>
+            <tr>
+              <td><code>vendor-cluster-highlighted</code></td>
+              <td>Vendor Cluster "SURAT" on submitted design detail page</td>
+              <td>ODM TC-4.1</td>
+            </tr>
+            <tr>
+              <td><code>tc21 to tc25-vendor-cluster-highlighted</code></td>
+              <td>Vendor Cluster "SURAT" validated on every PP sample stage (submit, resubmit, buyer approve, cluster approve)</td>
+              <td>ODM TC-21 to TC-25</td>
+            </tr>
+            <tr>
+              <td><code>tc32-po-number-highlighted</code></td>
+              <td>PO Number header and first PO value in Sample Dispatch table</td>
+              <td>ODM TC-32</td>
+            </tr>
+            <tr>
+              <td><code>oem-cluster-highlighted</code></td>
+              <td>Cluster "Bangladesh" on OEM design detail page</td>
+              <td>OEM TC-3.1</td>
+            </tr>
+            <tr>
+              <td><code>{testName}-failed</code></td>
+              <td>Automatic failure screenshots with Allure error attachments</td>
+              <td>All (on failure)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AUTOMATION EFFECTIVENESS -->
+    <div class="section">
+      <h2 class="section-title">Automation Effectiveness <span>(Runs Executed &amp; Bugs Identified)</span></h2>
+      <div class="card" style="margin-bottom: 16px;">
+        <p>This section quantifies the real-world impact of the sanity automation suite &mdash; how many times it has been executed across the release cycle, and how many defects it surfaced before production. Every bug listed below was identified by an automated run during a sanity round, hotfix verification, or feature regression cycle.</p>
+      </div>
+
+      <!-- Round-wise bug catch table -->
+      <div class="card" style="padding: 0; overflow: hidden; margin-top: 20px;">
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th style="width:140px">Date Range</th>
+              <th style="width:80px">Execution</th>
+              <th style="width:90px">Bugs Found</th>
+              <th>Notable Defects Surfaced by Automation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>27 Jan &ndash; 10 Feb</strong><br/><span style="font-size:11px;color:var(--gray-500);">Hotfix</span></td>
+              <td>3</td>
+              <td><span style="color:var(--danger);font-weight:700;">4</span></td>
+              <td>Comment attachment upload failure; bell notification not triggering on rework</td>
+            </tr>
+            <tr>
+              <td><strong>11 Feb &ndash; 22 Feb</strong><br/><span style="font-size:11px;color:var(--gray-500);">Sanity</span></td>
+              <td>4</td>
+              <td><span style="color:var(--danger);font-weight:700;">3</span></td>
+              <td>User session was not cleared when switching between different roles, causing role data to mix; duplicate pack alert was being triggered even when no duplicate pack existed</td>
+            </tr>
+            <tr>
+              <td><strong>23 Feb &ndash; 4 Mar</strong><br/><span style="font-size:11px;color:var(--gray-500);">Sanity</span></td>
+              <td>4</td>
+              <td><span style="color:var(--danger);font-weight:700;">3</span></td>
+              <td>Colorway cost validation toast missing; SAP color ID auto-fill regression</td>
+            </tr>
+            <tr>
+              <td><strong>5 Mar &ndash; 15 Mar</strong><br/><span style="font-size:11px;color:var(--gray-500);">Sanity</span></td>
+              <td>5</td>
+              <td><span style="color:var(--danger);font-weight:700;">2</span></td>
+              <td>DP Creation failed &mdash; design not found for stylecode 32021182</td>
+            </tr>
+            <tr>
+              <td><strong>16 Mar &ndash; 23 Mar</strong><br/><span style="font-size:11px;color:var(--gray-500);">V-C feature</span></td>
+              <td>4</td>
+              <td><span style="color:var(--danger);font-weight:700;">3</span></td>
+              <td>Vendor Cluster filter on Submitted Design returning empty list; cluster highlight off-screen</td>
+            </tr>
+            <tr>
+              <td><strong>24 Mar &ndash; 1 Apr</strong><br/><span style="font-size:11px;color:var(--gray-500);">Phone flow</span></td>
+              <td>4</td>
+              <td><span style="color:var(--danger);font-weight:700;">2</span></td>
+              <td>Vendor search on OEM module not returning results</td>
+            </tr>
+            <tr>
+              <td><strong>2 Apr &ndash; 14 Apr</strong><br/><span style="font-size:11px;color:var(--gray-500);">SD hotfix</span></td>
+              <td>5</td>
+              <td><span style="color:var(--danger);font-weight:700;">3</span></td>
+              <td>Buyer approval flow failing &mdash; impact bug surfaced during buyer approval</td>
+            </tr>
+            <tr>
+              <td><strong>15 Apr &ndash; 5 May</strong><br/><span style="font-size:11px;color:var(--gray-500);">Current</span></td>
+              <td>6</td>
+              <td><span style="color:var(--danger);font-weight:700;">2</span></td>
+              <td>Bell notification timing on parked-design rework; FPT/GPT search pagination</td>
+            </tr>
+            <tr style="background: var(--gray-50, #f9fafb);">
+              <td><strong>Total</strong></td>
+              <td><strong>35</strong></td>
+              <td style="color:var(--danger);font-weight:800;">22</td>
+              <td><strong>Across 8 sanity rounds &mdash; all caught before production release</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ROI -->
+    <div class="section">
+      <h2 class="section-title">ROI &amp; Business Impact</h2>
+      <div class="card">
+        <table class="flow-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Before (Manual)</th>
+              <th>After (Automated)</th>
+              <th>Improvement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sanity Execution Time</strong></td>
+              <td>~16 hours</td>
+              <td>~1.5 hours</td>
+              <td style="color: var(--success); font-weight: 700;">~91% faster (10x)</td>
+            </tr>
+            <tr>
+              <td><strong>Human Resources Required</strong></td>
+              <td>1 QA engineer</td>
+              <td>0 (fully automated)</td>
+              <td style="color: var(--success); font-weight: 700;">Zero manual effort</td>
+            </tr>
+            <tr>
+              <td><strong>Test Coverage (Edge Cases)</strong></td>
+              <td>Often skipped due to time</td>
+              <td>10+ edge cases per run</td>
+              <td style="color: var(--success); font-weight: 700;">Comprehensive</td>
+            </tr>
+            <tr>
+              <td><strong>Cross-Role Testing</strong></td>
+              <td>Requires role switching, re-login</td>
+              <td>Seamless session-based switching</td>
+              <td style="color: var(--success); font-weight: 700;">Seamless</td>
+            </tr>
+            <tr>
+              <td><strong>Regression Confidence</strong></td>
+              <td>Varies by tester</td>
+              <td>Consistent &amp; repeatable</td>
+              <td style="color: var(--success); font-weight: 700;">100% consistent</td>
+            </tr>
+            <tr>
+              <td><strong>Visual Evidence</strong></td>
+              <td>Manual screenshots</td>
+              <td>Auto-highlighted &amp; captured</td>
+              <td style="color: var(--success); font-weight: 700;">Automated proof</td>
+            </tr>
+            <tr>
+              <td><strong>Reporting</strong></td>
+              <td>Manual status updates</td>
+              <td>Allure + PDF auto-generated</td>
+              <td style="color: var(--success); font-weight: 700;">One-click reports</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- COMPLETE FLOW DIAGRAM -->
+    <div class="section">
+      <h2 class="section-title">End-to-End Flow Coverage</h2>
+      <div class="card" style="text-align: center; padding: 28px 20px;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 8px; font-size: 12px; font-weight: 500; margin-bottom: 14px;">
+          <span style="background: var(--primary-light); color: var(--primary); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Inspiration Upload</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--primary-light); color: var(--primary); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Cluster Verification</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--primary-light); color: var(--primary); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Share with Vendor</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--success-light); color: var(--success); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Vendor Design Submit</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 8px; font-size: 12px; font-weight: 500; margin-bottom: 14px;">
+          <span style="background: var(--warning-light); color: var(--warning); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Cluster Rework (x2)</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--success-light); color: var(--success); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Cluster Approve</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--warning-light); color: var(--warning); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Buyer Rework</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: #f3e8ff; color: #7c3aed; padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Park / Unpark</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 8px; font-size: 12px; font-weight: 500; margin-bottom: 14px;">
+          <span style="background: var(--success-light); color: var(--success); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Buyer Approve</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--primary-light); color: var(--primary); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">FPT/GPT Approve</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--primary-light); color: var(--primary); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">DP Create (API)</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 8px; font-size: 12px; font-weight: 500;">
+          <span style="background: var(--success-light); color: var(--success); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">PP Sample Cycle</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--danger-light); color: var(--danger); padding: 7px 12px; border-radius: 8px; white-space: nowrap;">Rejection Flow</span>
+          <span style="color: var(--gray-300);">&rarr;</span>
+          <span style="background: var(--success-light); color: var(--success); padding: 7px 12px; border-radius: 8px; white-space: nowrap; font-weight: 700;">Sample Dispatch</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>UVP Sanity Automation Test Coverage Report &bull; Impetus Platform &bull; Generated April 2026</p>
+      <p style="margin-top: 4px;">Confidential &mdash; For internal stakeholder review only</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

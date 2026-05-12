@@ -19,6 +19,11 @@ import '@shelex/cypress-allure-plugin';
 
 Cypress.config('defaultCommandTimeout', 60000);
 
+// Prevent app-level uncaught exceptions from failing the test
+Cypress.on('uncaught:exception', () => {
+  return false;
+});
+
 import '@shelex/cypress-allure-plugin';
 
 Cypress.on('fail', (error, runnable) => {

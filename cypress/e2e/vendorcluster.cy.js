@@ -51,7 +51,7 @@ describe('Impetus Platform — Login Page Tests', () => {
 
   // ─────────────────────────────────────────────────────────────────────────
   it('Test Case 1: logs in successfully with valid credentials and check the workspace', () => {
-    cy.visit('https://platform.impetusz0.de/workspace');
+    cy.visit('https://platform.uat.impetusz0.de/workspace');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
 
   //UAT
@@ -83,7 +83,7 @@ describe('Impetus Platform — Login Page Tests', () => {
   // ─────────────────────────────────────────────────────────────────────────
   it('Test Case 2: logs in successfully to buyer and upload inspiration file', () => {
      
-    cy.visit('https://platform.impetusz0.de/workspace');
+    cy.visit('https://platform.uat.impetusz0.de/workspace');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
 
   //UAT
