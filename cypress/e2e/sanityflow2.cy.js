@@ -964,11 +964,16 @@ cy.get('input[placeholder="Enter cost"]', { timeout: 10000 })
 
     cy.contains('span', 'Parked Design').click({ force: true });
 
+    cy.get('input[placeholder="Search"]', { timeout: 15000 })
+      .should('be.visible')
+      .type(themeName);
+    cy.get('table tbody tr', { timeout: 20000 }).should('contain.text', themeName);
+
     cy.get('table tbody tr td:nth-child(2)').first().within(() => {
       cy.get('div[data-testid="link-with-context"] span').click({ force: true });
     });
 
-    cy.contains('button', 'Rework').click();
+    cy.contains('button', 'Rework', { timeout: 15000 }).should('be.visible').click();
   });
 
   // ─────────────────────────────────────────────────────────────────────────

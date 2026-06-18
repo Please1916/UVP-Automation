@@ -1,0 +1,52 @@
+`cy.request()` failed on:
+
+https://api.impetusz0.de/service/application/odm/v1.0/uvp/dp/create
+
+The response we received from your web server was:
+
+  > 400: Bad Request
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: POST
+URL: https://api.impetusz0.de/service/application/odm/v1.0/uvp/dp/create
+Headers: {
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "Cookie": "bg.session=s%3AbtehoGoDdn9pMPYOvd5gKlEDA89qSud_.abhjgO9sEllVjAkQxFBSJJ2orvFSoL9TNUw74KmFIOU; company-code=9161; org_id=5; _ga=GA1.1.1435859561.1781764320; _ga_F745KEEGW3=GS2.1.s1781764319$o1$g1$t1781765168$j56$l0$h364309522;bg.session=s%3AbtehoGoDdn9pMPYOvd5gKlEDA89qSud_.abhjgO9sEllVjAkQxFBSJJ2orvFSoL9TNUw74KmFIOU; company-code=9161; org_id=5; _ga=GA1.1.1435859561.1781764320; _ga_F745KEEGW3=GS2.1.s1781764319$o1$g1$t1781765168$j56$l0$h364309522",
+  "x-user-data": "{\"user_id\":\"2127\",\"email\":\"chaitanya.dhoddi@ril.com\",\"roles\":[\"odm-cluster\"]}",
+  "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+  "accept": "*/*",
+  "cookie": "bg.session=s%3AbtehoGoDdn9pMPYOvd5gKlEDA89qSud_.abhjgO9sEllVjAkQxFBSJJ2orvFSoL9TNUw74KmFIOU; company-code=9161; org_id=5; _ga=GA1.1.1435859561.1781764320; _ga_F745KEEGW3=GS2.1.s1781764319$o1$g1$t1781765168$j56$l0$h364309522;bg.session=s%3AbtehoGoDdn9pMPYOvd5gKlEDA89qSud_.abhjgO9sEllVjAkQxFBSJJ2orvFSoL9TNUw74KmFIOU; company-code=9161; org_id=5; _ga=GA1.1.1435859561.1781764320; _ga_F745KEEGW3=GS2.1.s1781764319$o1$g1$t1781765168$j56$l0$h364309522",
+  "accept-encoding": "gzip, deflate",
+  "content-length": 30
+}
+Body: {"styleCode":"MB/260618/0001"}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 400 - Bad Request
+Headers: {
+  "date": "Thu, 18 Jun 2026 06:46:49 GMT",
+  "content-type": "application/json",
+  "content-length": "142",
+  "x-request-id": "54c585b6-327a-4671-848a-bc5bce5c563b",
+  "via": "1.1 google",
+  "alt-svc": "h3=\":443\"; ma=2592000"
+}
+Body: {
+  "status": "FAILED",
+  "message": "DP Creation: Design not found with stylecode MB/260618/0001",
+  "data": {},
+  "page": null,
+  "error": null,
+  "warnings": null
+}
