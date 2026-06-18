@@ -43,7 +43,7 @@ describe("Impetus Platform — Login Page Tests", () => {
   //Logs in with valid credentials
   
 it("Test Case 1: logs in successfully with valid credentials and check the workspace", () => {
-  cy.visit("https://platform.uat.impetusz0.de/workspace");
+  cy.visit("https://platform.impetusz0.de/workspace");
 
   // Wait for the page to be interactive — icon visible means app has loaded
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
@@ -75,7 +75,7 @@ it("Test Case 1: logs in successfully with valid credentials and check the works
 
   //Upload inspiration
   it("Test Case 2: logs in successfully to buyer and upload inspiration file", () => {
-  cy.visit("https://platform.uat.impetusz0.de/workspace");
+  cy.visit("https://platform.impetusz0.de/workspace");
 
   // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -181,7 +181,7 @@ it("Test Case 1: logs in successfully with valid credentials and check the works
 
   //Go to buyer role
   it("Test Case 3: Buyer shares the Uploaded theme and share it with a vendor", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
 
   // Wait for the page to be interactive — icon visible means app has loaded
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
@@ -247,8 +247,8 @@ it("Test Case 1: logs in successfully with valid credentials and check the works
       .click({ force: true });
 
     
-    cy.get('input[placeholder="Select / Search item"]').type("KIRARA   ",);
-    cy.contains("label", "KIRARA  - 32021182")
+    cy.get('input[placeholder="Select / Search item"]').type("MAHESHWARI GARMENT   ",);
+    cy.contains("label", "MAHESHWARI GARMENT  - 32021321")
       .scrollIntoView()
       .find('input[type="checkbox"]')
       .check({ force: true });
@@ -261,15 +261,15 @@ it("Test Case 1: logs in successfully with valid credentials and check the works
 
   //Vendor role
 it("Test Case 4: Vendor verifies that shared Inspiration is visible and submit design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021182").click();
+    cy.contains("32021321").click();
     // cy.get("div.sc-dAbbOL.vIbA-D")
-    //   .contains("32021182")
+    //   .contains("32021321")
     //   .click({ force: true })
     //   ;
 
@@ -571,7 +571,7 @@ it("Test Case 4: Vendor verifies that shared Inspiration is visible and submit d
 
   //Cluster role
   it("Test Case 5: Cluster logins creates MULTI-3 and MULTI4 ", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -641,15 +641,15 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   //Vendor makes changes to rework design---not working
   it("Test Case 6: Vendor reworks on the design after cluster sends for rework", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021182").click();
+    cy.contains("32021321").click();
     // cy.get("div.sc-dAbbOL.vIbA-D")
-    //   .contains("32021182")
+    //   .contains("32021321")
     //   .click({ force: true })
     //   ;
     
@@ -743,7 +743,7 @@ cy.get('button[aria-label="Approve Pack_4"]')
 
   //Cluster role
   it("Test Case 7: Cluster checks the rework by vendor and approve the design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -769,7 +769,7 @@ cy.get('button[aria-label="Approve Pack_4"]')
 
   //Buyer reworks the cluster submitted design /888
   it("Test Case 8: Buyer creates pack and send to vendor", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -866,15 +866,15 @@ cy.get('button.n-button-primary')
 
   //Vendor reworks on buyer rework design
   it("Test Case 9: Vendorlogs in back and rework the design sent by buyer for rework", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021182").click();
+    cy.contains("32021321").click();
     // cy.get("div.sc-dAbbOL.vIbA-D")
-    //   .contains("32021182")
+    //   .contains("32021321")
     //   .click({ force: true })
     //   ;
     
@@ -985,7 +985,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   //buyer parks the cluster approved design
   it("Test Case 10: Buyer Parks", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1034,7 +1034,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   //Unpark the inspiration
   it("Test Case 11: Buyer Unparks the design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1073,7 +1073,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   //buyer parks the cluster approved design again
   it("Test Case 12: Buyer Parks again", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1118,7 +1118,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   //buyer reworks the parked design
   it("Test Case 13: Buyer Rework the parked design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1160,15 +1160,15 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   //Vendor makes changes to rework design---not working
   it("Test Case 14: Vendor reworks the design second time after buyer sent for rework", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021182").click();
+    cy.contains("32021321").click();
     // cy.get("div.sc-dAbbOL.vIbA-D")
-    //   .contains("32021182")
+    //   .contains("32021321")
     //   .click({ force: true })
     //   ;
     
@@ -1214,7 +1214,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   
   it("Test Case 15: Buyer checks the design and approve the design", () => {
-  cy.visit("https://platform.uat.impetusz0.de/workspace");
+  cy.visit("https://platform.impetusz0.de/workspace");
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
   // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1349,7 +1349,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
  
 });
   it("Test Case 16: FPT and GPT approval", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -1383,7 +1383,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
 
   it("Test Case 17: Pick plm style id and hit DP create api", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     //UAT
     // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
@@ -1448,15 +1448,15 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
 
   it("Test Case 18: PP sample: Vendor submits the sample design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021182").click();
+    cy.contains("32021321").click();
     // cy.get("div.sc-dAbbOL.vIbA-D")
-    //   .contains("32021182")
+    //   .contains("32021321")
     //   .click({ force: true })
     //   ;
 
@@ -1486,7 +1486,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
 
   it("Test Case 19: PP sample: Buyer sends the design for resubmission", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1524,15 +1524,15 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
 
   it("Test Case 20: PP sample: Vendor submits the sample again on resubmitted design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021182").click();
+    cy.contains("32021321").click();
     // cy.get("div.sc-dAbbOL.vIbA-D")
-    //   .contains("32021182")
+    //   .contains("32021321")
     //   .click({ force: true })
     //   ;
 
@@ -1555,7 +1555,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
 
   it("Test Case 21: PP sample: Buyer approves the design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
   // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1593,7 +1593,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
 
   it("Test Case 22: PP approval for Cluster approval for submitted design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -1631,13 +1631,13 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
   
   it("Test Case 23: Submit the design for Buyer Reject Scenario", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); 
-   cy.contains("32021182").click();
+   cy.contains("32021321").click();
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -1808,7 +1808,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
   
   it("Test Case 24: Cluster approves the design and send it to buyer", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -1840,7 +1840,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   });
 
   it("Test Case 25: Buyer approves colorways and reject the design", () => {
-    cy.visit("https://platform.uat.impetusz0.de/workspace");
+    cy.visit("https://platform.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // ─── Step 1: Select workspace card ───────────────────────────────────────
 
@@ -1894,7 +1894,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   //Vnedor submits the third design now
   //Vendor role
   // xit("Verify that shared Inspiration is visible and submit design", () => {
-  //   cy.visit("https://platform.uat.impetusz0.de/workspace");
+  //   cy.visit("https://platform.impetusz0.de/workspace");
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
   //   // Click on the vendor card "Shein"
   //   cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
@@ -2030,7 +2030,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   // //Cluster rejects the submitted design
   // xit("Cluster rejects submitted design", () => {
-  //   cy.visit("https://platform.uat.impetusz0.de/workspace");
+  //   cy.visit("https://platform.impetusz0.de/workspace");
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
   //   // Click on the cluster card "Shein"
@@ -2065,7 +2065,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
   //Vendor submits one more design
   //Vendor role
   // xit("Verify that shared Inspiration is visible and submit design", () => {
-  //   cy.visit("https://platform.uat.impetusz0.de/workspace");
+  //   cy.visit("https://platform.impetusz0.de/workspace");
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
   //   // Click on the vendor card "Shein"
   //   cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
@@ -2201,7 +2201,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   // //Cluster approval for one more submitted design
   // xit("Cluster approval for submitted design", () => {
-  //   cy.visit("https://platform.uat.impetusz0.de/workspace");
+  //   cy.visit("https://platform.impetusz0.de/workspace");
   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
   //   // Click on the cluster card "Shein"
@@ -2233,7 +2233,7 @@ cy.get("div.side-navigation-panel-select-inner-option", { timeout: 15000 })
 
   // // Buyer rejects the cluster approved inspiration
   // xit("Buyer Rejects", () => {
-  //   cy.visit("https://platform.uat.impetusz0.de/workspace");
+  //   cy.visit("https://platform.impetusz0.de/workspace");
   //   cy;
   //   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
   //    cy.contains("div", "odm-buyer", { timeout: 20000 })

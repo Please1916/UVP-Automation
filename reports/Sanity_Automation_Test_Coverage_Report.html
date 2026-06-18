@@ -476,6 +476,10 @@
       h2, h3 { page-break-after: avoid; break-after: avoid; }
       .timeline-chart { page-break-inside: avoid; }
       .no-print { display: none; }
+      .footer { margin-top: 18px; padding: 10px 0 0; page-break-inside: avoid; break-inside: avoid; page-break-before: avoid; break-before: avoid; }
+      .footer p { font-size: 10px; }
+      .container > *:last-child { margin-bottom: 0; padding-bottom: 0; }
+      body, html { margin: 0; padding: 0; }
     }
 
     /* DOWNLOAD BUTTON */
@@ -528,8 +532,8 @@
     <!-- IMPACT BANNER -->
     <div class="impact-banner">
       <div class="impact-card">
-        <div class="number">145 / 161</div>
-        <div class="label">Automated <span style="text-transform:none">Vs</span> Total <span style="text-transform:none">(Unique Test Cases)</span></div>
+        <div class="number">246 / 273</div>
+        <div class="label">Automated <span style="text-transform:none">Vs</span> Total <span style="text-transform:none">(Test Cases)</span></div>
       </div>
       <div class="impact-card">
         <div class="number">6</div>
@@ -578,7 +582,7 @@
         <li>Test Cases by Module &mdash; Effort Matrix</li>
         <li>RA &mdash; Test Cases (21 TCs, 16 automated)</li>
         <li>ODM Flow &mdash; Test Cases (115 TCs, 106 automated)</li>
-        <li>OEM Flow &mdash; Test Cases (112 TCs, 100 automated &mdash; shares test cases from ODM)</li>
+        <li>OEM Flow &mdash; Test Cases (117 TCs, 106 automated &mdash; shares test cases from ODM)</li>
         <li>Sample Dispatch &mdash; Test Cases (5 TCs, 4 automated)</li>
         <li>PP Sampling &mdash; Test Cases (10 TCs, 10 automated)</li>
         <li>Self QC &mdash; Test Cases (5 TCs, 4 automated)</li>
@@ -649,7 +653,7 @@
     <div class="section">
       <h2 class="section-title">Modules Covered <span>(% automation coverage per module)</span></h2>
       <div class="card" style="margin-bottom: 14px;">
-        <p>Coverage measured against the master sanity test plan &mdash; <strong>161 unique test cases</strong> across 6 modules. OEM Flow shares the full ODM test suite till buyer approval; only the <strong>5 OEM-specific additions</strong> are counted in totals to avoid double-counting. Platform-wide weighted average: <strong>~90%</strong>.</p>
+        <p>Coverage measured against the master sanity test plan &mdash; <strong>273 test cases</strong> across 6 modules. OEM Flow shares the full ODM test suite till buyer approval and is counted in full (112 shared + 5 OEM-specific = 117). Platform-wide weighted average: <strong>~90%</strong>.</p>
       </div>
       <div class="module-grid">
         <div class="module-card">
@@ -669,9 +673,9 @@
         <div class="module-card">
           <div class="mod-name">OEM Flow</div>
           <div class="mod-sub">Shares ODM suite + OEM Bulk Upload &amp; Auto-Reject</div>
-          <div class="mod-percent full">100%</div>
-          <div class="progress-bar"><div class="progress-fill green" style="width: 100%;"></div></div>
-          <div class="mod-meta"><span>5 / 5 OEM-specific TCs</span><strong>Fully Automated</strong></div>
+          <div class="mod-percent high">91%</div>
+          <div class="progress-bar"><div class="progress-fill green" style="width: 91%;"></div></div>
+          <div class="mod-meta"><span>106 / 117 manual TCs</span><strong>Automated</strong></div>
         </div>
         <div class="module-card">
           <div class="mod-name">Sample Dispatch</div>
@@ -738,13 +742,13 @@
               <td style="color: var(--success); font-weight:700;">90%</td>
             </tr>
             <tr>
-              <td><strong>OEM Flow</strong> <span style="font-weight:400;font-size:11px;color:var(--gray-500);">(OEM-specific only; shares ODM suite)</span></td>
-              <td>5</td>
-              <td>5 <span class="yes-badge">Y</span></td>
-              <td>100%</td>
-              <td>~25 min</td>
-              <td>~3 min</td>
-              <td style="color: var(--success); font-weight:700;">88%</td>
+              <td><strong>OEM Flow</strong> <span style="font-weight:400;font-size:11px;color:var(--gray-500);">(shares ODM suite + OEM-specific)</span></td>
+              <td>117</td>
+              <td>106 <span class="yes-badge">Y</span></td>
+              <td>91%</td>
+              <td>~7 hrs 55 min</td>
+              <td>~48 min</td>
+              <td style="color: var(--success); font-weight:700;">90%</td>
             </tr>
             <tr>
               <td><strong>Sample Dispatch</strong></td>
@@ -776,12 +780,12 @@
           </tbody>
           <tfoot>
             <tr>
-              <td>Platform Total <span style="font-weight:400;font-size:11px;color:var(--gray-500);">(Unique Test Cases)</span></td>
-              <td>161</td>
-              <td>145 <span class="yes-badge">~90%</span></td>
+              <td>Platform Total <span style="font-weight:400;font-size:11px;color:var(--gray-500);">(Test Cases)</span></td>
+              <td>273</td>
+              <td>246 <span class="yes-badge">~90%</span></td>
               <td>90%</td>
-              <td>~10 hrs 50 min</td>
-              <td>~1 hr 5 min</td>
+              <td>~18 hrs 20 min</td>
+              <td>~1 hr 53 min</td>
               <td style="color: var(--success); font-weight:800;">~90%</td>
             </tr>
           </tfoot>
@@ -988,9 +992,9 @@
       </div>
 
       <!-- OEM Module Manual Test Cases -->
-      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">OEM Flow &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">5 of 5 OEM-specific automated (100%) &bull; shares test cases from ODM</span></h3>
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 24px 0 12px;">OEM Flow &mdash; Test Cases <span style="font-weight:500;font-size:13px;color:var(--gray-500);">106 of 117 automated (91%) &bull; shares 112 test cases from ODM + 5 OEM-specific</span></h3>
       <div class="card" style="margin-bottom: 14px;">
-        <p>OEM Flow shares the full ODM test plan (TC_07&ndash;TC_147) since the lifecycle is identical. The table below lists only the <strong>OEM-specific additions</strong>; refer to the ODM table for the shared 108 TCs.</p>
+        <p>OEM Flow shares the full ODM test plan (TC_07&ndash;TC_147) since the lifecycle is identical. The table below lists only the <strong>OEM-specific additions</strong>; refer to the ODM table for the shared 112 TCs. OEM is counted in full (117 = 112 shared + 5 specific) in the totals.</p>
       </div>
       <div class="card" style="padding: 0; overflow: hidden;">
         <table class="flow-table effort-table">
@@ -1048,7 +1052,7 @@
             <tr><td class="tc-num">PP_02</td><td>Flow B: Vendor &rarr; Buyer resubmission &rarr; Vendor resubmit &rarr; Buyer approve &rarr; Cluster approve</td><td><span class="yes-badge">Yes</span></td></tr>
             <tr><td class="tc-num">PP_03</td><td>Flow C: Vendor &rarr; Buyer approve &rarr; Buyer resubmission &rarr; Vendor resubmit &rarr; Cluster approve</td><td><span class="yes-badge">Yes</span></td></tr>
             <tr><td class="tc-num">PP_04</td><td>Vendor file upload (PP sample image/PDF) at submit stage</td><td><span class="yes-badge">Yes</span></td></tr>
-            <tr><td class="tc-num">PP_05</td><td>Vendor cluster (SURAT) verification on every PP sample stage</td><td><span class="yes-badge">Yes</span></td></tr>
+            <tr><td class="tc-num">PP_05</td><td>Vendor cluster (AHMEDABAD) verification on every PP sample stage</td><td><span class="yes-badge">Yes</span></td></tr>
             <tr><td class="tc-num">PP_06</td><td>PP Sample reject with reason selection</td><td><span class="yes-badge">Yes</span></td></tr>
             <tr><td class="tc-num">PP_07</td><td>PP Sample bell &amp; email notification triggers <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td><td><span class="yes-badge">Yes</span></td></tr>
             <tr><td class="tc-num">PP_08</td><td>PP Sample audit trail / status history visibility</td><td><span class="yes-badge">Yes</span></td></tr>
@@ -1248,7 +1252,7 @@
             <tr>
               <td class="tc-num">TC-3</td>
               <td><span class="role-badge role-buyer">Buyer</span></td>
-              <td>Search uploaded theme, capture Moodboard ID, share inspiration with vendor (KIRARA  - 32021182)</td>
+              <td>Search uploaded theme, capture Moodboard ID, share inspiration with vendor (MAHESHWARI GARMENT  - 32021321)</td>
             </tr>
 
             <!-- PHASE 2 -->
@@ -1261,7 +1265,7 @@
             <tr>
               <td class="tc-num">TC-4.1</td>
               <td><span class="role-badge role-cluster">Cluster</span></td>
-              <td>Verify vendor cluster ("SURAT") on submitted design via UI &mdash; highlight and screenshot</td>
+              <td>Verify vendor cluster ("AHMEDABAD") on submitted design via UI &mdash; highlight and screenshot</td>
             </tr>
 
             <!-- PHASE 3 -->
@@ -1364,7 +1368,7 @@
             <tr>
               <td class="tc-num">TC-21</td>
               <td><span class="role-badge role-vendor">Vendor</span></td>
-              <td>PP Sample: Vendor submits sample design with file upload, verifies vendor cluster ("SURAT") on UI with highlighting and screenshot</td>
+              <td>PP Sample: Vendor submits sample design with file upload, verifies vendor cluster ("AHMEDABAD") on UI with highlighting and screenshot</td>
             </tr>
             <tr>
               <td class="tc-num">TC-22</td>
@@ -1423,7 +1427,7 @@
             <tr>
               <td class="tc-num">TC-31</td>
               <td><span class="role-badge role-buyer">Buyer</span></td>
-              <td>Buyer filters Submitted Design by Vendor Cluster "SURAT" using hamburger filter, triggers "Email Submitted Design Data" action <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td>
+              <td>Buyer filters Submitted Design by Vendor Cluster "AHMEDABAD" using hamburger filter, triggers "Email Submitted Design Data" action <em style="color:var(--gray-500);">(triggered from UI; email content verified manually via Gmail)</em></td>
             </tr>
             <tr>
               <td class="tc-num">TC-32</td>
@@ -1457,7 +1461,7 @@
             <tr>
               <td class="tc-num">TC-2</td>
               <td><span class="role-badge role-buyer">Buyer</span></td>
-              <td>Buyer searches for design, selects it, shares with vendor (KIRARA  - 32021182)</td>
+              <td>Buyer searches for design, selects it, shares with vendor (MAHESHWARI GARMENT  - 32021321)</td>
             </tr>
 
             <tr class="category-header"><td colspan="3">Phase 2: Vendor Design Submission &amp; Verification</td></tr>
@@ -1479,7 +1483,7 @@
             <tr>
               <td class="tc-num">TC-4.1</td>
               <td><span class="role-badge role-cluster">Cluster</span></td>
-              <td>Verify vendor cluster ("SURAT") on submitted design via UI highlight</td>
+              <td>Verify vendor cluster ("AHMEDABAD") on submitted design via UI highlight</td>
             </tr>
 
             <tr class="category-header"><td colspan="3">Phase 3: Second Design &amp; Rework Cycle</td></tr>
@@ -1678,12 +1682,12 @@
             </tr>
             <tr>
               <td><code>vendor-cluster-highlighted</code></td>
-              <td>Vendor Cluster "SURAT" on submitted design detail page</td>
+              <td>Vendor Cluster "AHMEDABAD" on submitted design detail page</td>
               <td>ODM TC-4.1</td>
             </tr>
             <tr>
               <td><code>tc21 to tc25-vendor-cluster-highlighted</code></td>
-              <td>Vendor Cluster "SURAT" validated on every PP sample stage (submit, resubmit, buyer approve, cluster approve)</td>
+              <td>Vendor Cluster "AHMEDABAD" validated on every PP sample stage (submit, resubmit, buyer approve, cluster approve)</td>
               <td>ODM TC-21 to TC-25</td>
             </tr>
             <tr>
@@ -1747,7 +1751,7 @@
               <td><strong>5 Mar &ndash; 15 Mar</strong><br/><span style="font-size:11px;color:var(--gray-500);">Sanity</span></td>
               <td>5</td>
               <td><span style="color:var(--danger);font-weight:700;">2</span></td>
-              <td>DP Creation failed &mdash; design not found for stylecode 32021182</td>
+              <td>DP Creation failed &mdash; design not found for stylecode 32021321</td>
             </tr>
             <tr>
               <td><strong>16 Mar &ndash; 23 Mar</strong><br/><span style="font-size:11px;color:var(--gray-500);">V-C feature</span></td>

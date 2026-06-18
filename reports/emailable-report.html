@@ -95,6 +95,7 @@
 <body>
 
   <h1>Allure Execution PDF</h1>
+  <p id="generated-at" style="color:#555; font-size:14px; margin-top:-10px;"></p>
 
   <!-- ================= PAGE 1 ================= -->
   <div class="page">
@@ -193,6 +194,10 @@
       passed.innerText = report.stats.passed;
       failed.innerText = report.stats.failed;
       skipped.innerText = report.stats.skipped;
+
+      if (report.generatedAt) {
+        document.getElementById("generated-at").innerText = "Report Generated: " + report.generatedAt;
+      }
 
 
       /* ===== POPULATE TESTS TABLE ===== */
