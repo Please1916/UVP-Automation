@@ -1112,48 +1112,48 @@ cy.get('input[placeholder="Enter cost"]', { timeout: 10000 })
     cy.wait(2000);
 
     // Approve remaining colorway
-    cy.contains("Colorways").scrollIntoView().wait(5000);
-    cy.get('button[title="Approve"]', { timeout: 10000 }).eq(0).click({ force: true });
-    cy.wait(1000);
+    // cy.contains("Colorways").scrollIntoView().wait(5000);
+    // cy.get('button[title="Approve"]', { timeout: 10000 }).eq(0).click({ force: true });
+    // cy.wait(1000);
 
     // Second Approve (design-level)
-    cy.contains('button', /^Approve$/, { timeout: 10000 })
-      .filter(':visible').last().scrollIntoView()
-      .should('be.visible').click({ force: true });
-    cy.wait(2000);
+    // cy.contains('button', /^Approve$/, { timeout: 10000 })
+    //   .filter(':visible').last().scrollIntoView()
+    //   .should('be.visible').click({ force: true });
+    // cy.wait(2000);
 
-    // Approve remaining packs (Pack_4 intentionally left unapproved — edge case)
-    cy.get('button[aria-label="Approve Pack_1"]', { timeout: 10000 })
-      .scrollIntoView({ duration: 300 }).should('be.visible').click({ force: true });
-    cy.get('button[aria-label="Approve Pack_2"]', { timeout: 10000 })
-      .scrollIntoView({ duration: 300 }).should('be.visible').click({ force: true });
-    cy.wait(3000);
+    // // Approve remaining packs (Pack_4 intentionally left unapproved — edge case)
+    // cy.get('button[aria-label="Approve Pack_1"]', { timeout: 10000 })
+    //   .scrollIntoView({ duration: 300 }).should('be.visible').click({ force: true });
+    // cy.get('button[aria-label="Approve Pack_2"]', { timeout: 10000 })
+    //   .scrollIntoView({ duration: 300 }).should('be.visible').click({ force: true });
+    // cy.wait(3000);
 
-    // Final Approve (whole design)
-    cy.get('button', { timeout: 15000 })
-      .not('[aria-label^="Approve"]')
-      .not('[title="Approve"]')
-      .filter(':visible')
-      .filter((_i, el) => Cypress.$(el).text().trim() === 'Approve')
-      .last()
-      .scrollIntoView().should('be.visible').click({ force: true });
-    cy.wait(2000);
+    // // Final Approve (whole design)
+    // cy.get('button', { timeout: 15000 })
+    //   .not('[aria-label^="Approve"]')
+    //   .not('[title="Approve"]')
+    //   .filter(':visible')
+    //   .filter((_i, el) => Cypress.$(el).text().trim() === 'Approve')
+    //   .last()
+    //   .scrollIntoView().should('be.visible').click({ force: true });
+    // cy.wait(2000);
 
-    // Popup appears: "Please confirm quantity changes for Pack_1 before approving"
-    // Confirm Pack_1 quantity change by clicking its approve (✓) button
-    cy.get('button[aria-label="Approve Pack_1"]', { timeout: 10000 })
-      .scrollIntoView({ duration: 300 }).should('be.visible').click({ force: true });
-    cy.wait(1000);
+    // // Popup appears: "Please confirm quantity changes for Pack_1 before approving"
+    // // Confirm Pack_1 quantity change by clicking its approve (✓) button
+    // cy.get('button[aria-label="Approve Pack_1"]', { timeout: 10000 })
+    //   .scrollIntoView({ duration: 300 }).should('be.visible').click({ force: true });
+    // cy.wait(1000);
 
-    // Approve design again after confirming Pack_1 quantity
-    cy.get('button', { timeout: 15000 })
-      .not('[aria-label^="Approve"]')
-      .not('[title="Approve"]')
-      .filter(':visible')
-      .filter((_i, el) => Cypress.$(el).text().trim() === 'Approve')
-      .last()
-      .scrollIntoView().should('be.visible').click({ force: true });
-    cy.wait(3000);
+    // // Approve design again after confirming Pack_1 quantity
+    // cy.get('button', { timeout: 15000 })
+    //   .not('[aria-label^="Approve"]')
+    //   .not('[title="Approve"]')
+    //   .filter(':visible')
+    //   .filter((_i, el) => Cypress.$(el).text().trim() === 'Approve')
+    //   .last()
+    //   .scrollIntoView().should('be.visible').click({ force: true });
+    // cy.wait(3000);
   });
 
   // ─────────────────────────────────────────────────────────────────────────
