@@ -1,0 +1,7 @@
+
+Expected:
+"div[style=\"grid-column: 2;\"]"
+
+Actual:
+"div[style=\"grid-column: 2;\"]"
+      

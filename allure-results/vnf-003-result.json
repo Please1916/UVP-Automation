@@ -1,0 +1,41 @@
+{
+  "uuid": "dfdb5c26-bde5-4341-a4ec-5ffee89d07d5",
+  "historyId": "vnf-tc-003",
+  "testCaseId": "VNF-003",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_003: Verify 'Vendor Not Feasible' button is absent/disabled once status = Buyer Approved",
+  "name": "TC_003: Verify 'Vendor Not Feasible' button is absent/disabled once status = Buyer Approved",
+  "status": "passed",
+  "statusMessage": "",
+  "statusTrace": "",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896403420,
+  "stop": 1782896404250,
+  "time": {
+    "start": 1782896403420,
+    "stop": 1782896404250,
+    "duration": 830
+  }
+}

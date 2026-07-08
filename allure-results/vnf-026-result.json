@@ -1,0 +1,41 @@
+{
+  "uuid": "e9bbc926-ddb5-4a43-9065-634d96ec8d84",
+  "historyId": "vnf-tc-026",
+  "testCaseId": "VNF-026",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_026: Verify Buyer/Cluster role does not see 'Vendor Not Feasible' button in ODM flow",
+  "name": "TC_026: Verify Buyer/Cluster role does not see 'Vendor Not Feasible' button in ODM flow",
+  "status": "skipped",
+  "statusMessage": "",
+  "statusTrace": "",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896419410,
+  "stop": 1782896419410,
+  "time": {
+    "start": 1782896419410,
+    "stop": 1782896419410,
+    "duration": 0
+  }
+}

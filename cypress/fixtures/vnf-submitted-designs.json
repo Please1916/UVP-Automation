@@ -1,0 +1,16 @@
+{
+  "status": "SUCCESS",
+  "data": [
+    {
+      "bestSellerId": "BS-2026-0001",
+      "pdId": "PD-2026-0001",
+      "vendorId": "VND-001",
+      "vendorName": "Test Vendor Pvt Ltd",
+      "status": "Vendor Rejected",
+      "reason": "Not Feasible for Production",
+      "submittedAt": "2026-06-30T09:00:00.000Z",
+      "rejectedAt": "2026-07-01T10:00:00.000Z"
+    }
+  ],
+  "page": { "totalPage": 1, "currentPage": 1, "limit": 25, "total_records": 1 }
+}

@@ -1,0 +1,27 @@
+{
+  "status": "SUCCESS",
+  "message": "Replenishment File List Response",
+  "data": [
+    {
+      "replenId": "REPLEN/260623/0001",
+      "status": "DP Created",
+      "replenType": "User Upload",
+      "totalSkuCount": 10000,
+      "successCount": 1412,
+      "failedCount": 8588,
+      "dpId": "DP_REPLEN/260623/0001",
+      "filePath": "uploads/replenishment/skuid_qty_10000rows (3)_20260623_070505.xlsx",
+      "errorFilePath": "replenishment-error-files/Shein_REPLEN_260623_0001_errors_20260623_070614.xlsx",
+      "createdBy": "admin",
+      "createdAt": "2026-06-23T07:05:07.658000",
+      "modifiedAt": "2026-06-23T07:21:02.981000",
+      "replenDate": "2026-06-23T07:05:07.658000",
+      "hasError": true,
+      "canAdd": false
+    }
+  ],
+  "page": { "totalPage": 1, "currentPage": 1, "limit": 25, "total_records": 1 },
+  "error": null,
+  "warnings": null,
+  "canUpload": true
+}

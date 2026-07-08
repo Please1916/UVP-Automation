@@ -1,0 +1,41 @@
+{
+  "uuid": "a7176a77-3b37-461a-b7c1-f0381ae0fe28",
+  "historyId": "vnf-tc-006",
+  "testCaseId": "VNF-006",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_006: Verify OEM ID status reflects 'Vendor Rejected' when vendor rejects after submitting colors",
+  "name": "TC_006: Verify OEM ID status reflects 'Vendor Rejected' when vendor rejects after submitting colors",
+  "status": "passed",
+  "statusMessage": "",
+  "statusTrace": "",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896408250,
+  "stop": 1782896408960,
+  "time": {
+    "start": 1782896408250,
+    "stop": 1782896408960,
+    "duration": 710
+  }
+}

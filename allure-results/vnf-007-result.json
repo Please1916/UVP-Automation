@@ -1,0 +1,41 @@
+{
+  "uuid": "9bc81c7f-c48a-4fda-b01a-e1bc43a30c82",
+  "historyId": "vnf-tc-007",
+  "testCaseId": "VNF-007",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_007: Verify new 'Reason' column added to Buyer email dump with vendor-selected rejection reasons",
+  "name": "TC_007: Verify new 'Reason' column added to Buyer email dump with vendor-selected rejection reasons",
+  "status": "passed",
+  "statusMessage": "",
+  "statusTrace": "",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896409260,
+  "stop": 1782896409940,
+  "time": {
+    "start": 1782896409260,
+    "stop": 1782896409940,
+    "duration": 680
+  }
+}

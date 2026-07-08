@@ -51,26 +51,25 @@ describe('Impetus Platform — Login Page Tests', () => {
 
   // ─────────────────────────────────────────────────────────────────────────
   it('Test Case 1: logs in successfully with valid credentials and check the workspace', () => {
-    cy.visit('https://platform.impetusz0.de/workspace');
+    cy.visit('https://platform.uat.impetusz0.de/workspace');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
 
-  //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+    //UAT
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
    
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -83,26 +82,25 @@ describe('Impetus Platform — Login Page Tests', () => {
   // ─────────────────────────────────────────────────────────────────────────
   it('Test Case 2: logs in successfully to buyer and upload inspiration file', () => {
      
-    cy.visit('https://platform.impetusz0.de/workspace');
+    cy.visit('https://platform.uat.impetusz0.de/workspace');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
 
-  //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+    //UAT
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
    
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")

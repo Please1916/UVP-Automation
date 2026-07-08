@@ -1,0 +1,7 @@
+
+Expected:
+"input[data-testid=\"article_code_input\"]"
+
+Actual:
+"input[data-testid=\"article_code_input\"]"
+      

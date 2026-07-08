@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "data": [
+    { "id": 1, "label": "High Manufacturing Cost" },
+    { "id": 2, "label": "Quality Constraints" },
+    { "id": 3, "label": "Production Constraints" },
+    { "id": 4, "label": "Not Feasible for Production" },
+    { "id": 5, "label": "High Cost" },
+    { "id": 6, "label": "Quality Issue" },
+    { "id": 7, "label": "Material Unavailability" },
+    { "id": 8, "label": "Capacity Constraints" },
+    { "id": 9, "label": "Others" }
+  ]
+}

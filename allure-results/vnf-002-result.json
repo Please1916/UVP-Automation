@@ -1,0 +1,41 @@
+{
+  "uuid": "894647c2-8f65-4a1c-9d1f-171e02c85c52",
+  "historyId": "vnf-tc-002",
+  "testCaseId": "VNF-002",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_002: Verify all previously submitted colors are auto-rejected when Vendor Not Feasible is confirmed",
+  "name": "TC_002: Verify all previously submitted colors are auto-rejected when Vendor Not Feasible is confirmed",
+  "status": "passed",
+  "statusMessage": "",
+  "statusTrace": "",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896401540,
+  "stop": 1782896403120,
+  "time": {
+    "start": 1782896401540,
+    "stop": 1782896403120,
+    "duration": 1580
+  }
+}

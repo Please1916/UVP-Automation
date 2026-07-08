@@ -1,0 +1,26 @@
+{
+  "status": "SUCCESS",
+  "data": [
+    {
+      "pdId": "PD-2026-0001",
+      "bestSellerId": "BS-2026-0001",
+      "vendorName": "Test Vendor Pvt Ltd",
+      "colorId": "C001",
+      "colorName": "Red",
+      "status": "Vendor Rejected",
+      "reason": "High Manufacturing Cost",
+      "rejectedAt": "2026-07-01T10:00:00.000Z"
+    },
+    {
+      "pdId": "PD-2026-0001",
+      "bestSellerId": "BS-2026-0001",
+      "vendorName": "Test Vendor Pvt Ltd",
+      "colorId": "C002",
+      "colorName": "Blue",
+      "status": "Vendor Rejected",
+      "reason": "High Manufacturing Cost",
+      "rejectedAt": "2026-07-01T10:00:00.000Z"
+    }
+  ],
+  "page": { "totalPage": 1, "currentPage": 1, "limit": 25, "total_records": 2 }
+}

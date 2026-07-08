@@ -1,0 +1,1 @@
+Timed out retrying after 60000ms: expected '<tr.border-b.transition-colors.group>' to contain text 'Vendor Rejected', but the text was 'PD/260702/0008VNF_sm7i8wSheinJul 02, 2026Aug 16, 2026VENDOR REJECTEDUploadNot feasible'

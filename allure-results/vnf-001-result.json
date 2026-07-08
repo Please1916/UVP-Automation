@@ -1,0 +1,41 @@
+{
+  "uuid": "b7979a9b-8a00-4695-a940-787b7570a0c7",
+  "historyId": "vnf-tc-001",
+  "testCaseId": "VNF-001",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_001: Verify Style × Vendor ID status becomes 'Vendor Rejected' after confirmation (no prior submissions)",
+  "name": "TC_001: Verify Style × Vendor ID status becomes 'Vendor Rejected' after confirmation (no prior submissions)",
+  "status": "passed",
+  "statusMessage": "",
+  "statusTrace": "",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896400000,
+  "stop": 1782896401240,
+  "time": {
+    "start": 1782896400000,
+    "stop": 1782896401240,
+    "duration": 1240
+  }
+}

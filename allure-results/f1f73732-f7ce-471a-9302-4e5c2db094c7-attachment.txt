@@ -1,0 +1,1 @@
+Timed out retrying after 10000ms: Expected to find content: 'Vendor Rejected' within the element: <tr.border-b.transition-colors.group> but never did.

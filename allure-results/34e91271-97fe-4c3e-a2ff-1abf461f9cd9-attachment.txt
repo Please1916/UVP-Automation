@@ -1,0 +1,7 @@
+
+Expected:
+"[role=\"dialog\"], [role=\"tooltip\"], .modal, [class*=\"popup\"], [class*=\"popover\"], [class*=\"tooltip\"]"
+
+Actual:
+"[role=\"dialog\"], [role=\"tooltip\"], .modal, [class*=\"popup\"], [class*=\"popover\"], [class*=\"tooltip\"]"
+      

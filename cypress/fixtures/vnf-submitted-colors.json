@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "bestSellerId": "BS-2026-0001",
+    "colors": [
+      { "id": "C001", "name": "Red",  "status": "Vendor Rejected", "reason": "High Manufacturing Cost" },
+      { "id": "C002", "name": "Blue", "status": "Vendor Rejected", "reason": "High Manufacturing Cost" }
+    ]
+  }
+}

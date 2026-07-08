@@ -1,0 +1,7 @@
+
+Expected:
+undefined
+
+Actual:
+"https://platform.uat.impetusz0.de/uvp/oem/details?designId=PD/260702/0046"
+      

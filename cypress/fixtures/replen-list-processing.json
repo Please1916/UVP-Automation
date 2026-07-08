@@ -1,0 +1,27 @@
+{
+  "status": "SUCCESS",
+  "message": "Replenishment File List Response",
+  "data": [
+    {
+      "replenId": "REPLEN/260630/0001",
+      "status": "Processing",
+      "replenType": "User Upload",
+      "totalSkuCount": 3,
+      "successCount": 0,
+      "failedCount": 0,
+      "dpId": null,
+      "filePath": "uploads/replenishment/replen_upload_test_20260630_075239.xlsx",
+      "errorFilePath": null,
+      "createdBy": "admin",
+      "createdAt": "2026-06-30T07:52:41.307000",
+      "modifiedAt": "2026-06-30T07:52:41.307000",
+      "replenDate": "2026-06-30T07:52:41.307000",
+      "hasError": false,
+      "canAdd": false
+    }
+  ],
+  "page": { "totalPage": 1, "currentPage": 1, "limit": 25, "total_records": 1 },
+  "error": null,
+  "warnings": null,
+  "canUpload": false
+}

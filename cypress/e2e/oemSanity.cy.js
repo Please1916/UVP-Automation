@@ -8,7 +8,7 @@ export const newvendorStyleCode = newrandomVendorStyle;
 Cypress.on("uncaught:exception", () => false);
 describe("RA buyer", () => {
   const pageUrl =
-    "https://platform.impetusz0.de/auth/loginuvp/range-architecture";
+    "https://platform.uat.impetusz0.de/auth/loginuvp/range-architecture";
 
   beforeEach(() => {
     cy.session("user-session", () => {
@@ -38,7 +38,7 @@ describe("RA buyer", () => {
   });
 
   //   it("logs in successfully with valid credentials", () => {
-  //   cy.visit("https://platform.impetusz0.de/workspace");
+  //   cy.visit("https://platform.uat.impetusz0.de/workspace");
   //   cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
   //   // cy.get(".sc-ikkxIA")
@@ -71,26 +71,25 @@ describe("RA buyer", () => {
   // });
 
   it("Test Case 1: Buyer uploads design and colorways", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
 
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -310,26 +309,25 @@ describe("RA buyer", () => {
 
   //Go to buyer role
   it("Test Case 2: Searches for design name and share with vendor", () => {
-    cy.visit("https://platform.impetusz0.de/workspace", { timeout: 20000 });
+    cy.visit("https://platform.uat.impetusz0.de/workspace", { timeout: 20000 });
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
      //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
 
     //const res = cy.get("div.side-navigation-panel-select-inner-option", {timeout: 5000}).contains("ODM");
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -354,8 +352,8 @@ describe("RA buyer", () => {
       .last() // ensure we pick the arrow (not the user icon on the left)
       .click({ force: true })
       .wait(1000);
-   cy.get('input[placeholder="Select Vendors"]').type('MAHESHWARI GARMENT');
-   cy.contains('label', 'MAHESHWARI GARMENT - 32021321')
+   cy.get('input[placeholder="Select Vendors"]').type('KIRARA');
+   cy.contains('label', 'KIRARA - 32021182')
       .scrollIntoView()
       .find('input[type="checkbox"]')
       .check({ force: true });
@@ -368,8 +366,8 @@ describe("RA buyer", () => {
       .click({ force: true });
 
     //UAT
-    // cy.get('input[placeholder="Select Vendors"]').type("MAHESHWARI GARMENT   ")
-    // //cy.contains("label", "MAHESHWARI GARMENT    - 32021321")
+    // cy.get('input[placeholder="Select Vendors"]').type("KIRARA   ")
+    // //cy.contains("label", "KIRARA    - 32021182")
     //   .scrollIntoView()
     //   .find('input[type="checkbox"]')
     //   .check({ force: true })
@@ -382,14 +380,14 @@ describe("RA buyer", () => {
 
   //Vendor role
   it("Test Case 3: Vendor verifies shared design and submits", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021321").click().wait(1000);
+    cy.contains("32021182").click().wait(1000);
     //  cy.get("div.sc-dAbbOL.vIbA-D")
-    //     .contains("32021321")
+    //     .contains("32021182")
     //     .click({ force: true })
     //     .wait(10000);
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
@@ -626,7 +624,7 @@ describe("RA buyer", () => {
     const expectedCluster = "Bangladesh";
 
     // Login as cluster
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 }).should("be.visible").click();
@@ -665,7 +663,7 @@ describe("RA buyer", () => {
 
   //Cluster role
   it("Test Case 4: Cluster approval for submitted design after vendor submits", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -717,7 +715,7 @@ describe("RA buyer", () => {
 
   // ─────────────────────────────────────────────────────────────────────────
   it("Test Case 4.1: Cluster verifies vendor cluster for the submitted design via API and UI", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 }).should("be.visible").click();
@@ -755,7 +753,7 @@ describe("RA buyer", () => {
     // Validate vendor cluster on UI and highlight it
     cy.contains("p", "Vendor Cluster", { timeout: 10000 })
       .parent()
-      .should("contain.text", "AHMEDABAD")
+      .should("contain.text", "SURAT")
       .then(($el) => {
         $el.css({
           border: "3px solid red",
@@ -768,12 +766,12 @@ describe("RA buyer", () => {
 
   //Vendor role to submit design again
   it("Test Case 5: Vendor submits the second design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+    cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     }); // click it even if overlayed
-    cy.contains("32021321").click().wait(1000);
+    cy.contains("32021182").click().wait(1000);
 
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -956,7 +954,7 @@ describe("RA buyer", () => {
 
   //Cluster role
   it("Test Case 6: Cluster sends the design for rework", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -981,14 +979,14 @@ describe("RA buyer", () => {
 
   //Vendor reworks on buyer rework design
   it("Test Case 7: Vendor submits without making any changes to design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 })
       .should("be.visible")
       .click({ force: true });
 
-    cy.contains("32021321", { timeout: 10000 }).should("be.visible").click();
+    cy.contains("32021182", { timeout: 10000 }).should("be.visible").click();
 
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
@@ -1024,14 +1022,14 @@ describe("RA buyer", () => {
   });
 
   it("Test Case 8: Vendor edits the HSN code and submits the design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 })
       .should("be.visible")
       .click({ force: true });
 
-    cy.contains("32021321", { timeout: 10000 }).should("be.visible").click();
+    cy.contains("32021182", { timeout: 10000 }).should("be.visible").click();
 
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
@@ -1099,7 +1097,7 @@ describe("RA buyer", () => {
   });
 
   it("Test Case 9: Cluster creates MULTI packs and reworks second submitted design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -1190,13 +1188,13 @@ describe("RA buyer", () => {
 
   //Vendor makes changes to rework design
   it("Test Case 10: Vendor reworks on design 2 after cluster rework", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({
       force: true,
     });
-    cy.contains("32021321", { timeout: 15000 }).click().wait(1000);
+    cy.contains("32021182", { timeout: 15000 }).click().wait(1000);
 
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1321,7 +1319,7 @@ describe("RA buyer", () => {
   });
   //Cluster role
   it("Test Case 11: Cluster approves design 2", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -1346,25 +1344,24 @@ describe("RA buyer", () => {
 
   //Buyer reworks the cluster submitted design
   it("Test Case 12: Buyer adds two more packs and sends to vendor for rework", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     // ── Navigate to OEM ──────────────────────────────────────
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1467,14 +1464,14 @@ describe("RA buyer", () => {
 
   //Vendor reworks on buyer rework design
   it("Test Case 13: Vendor enters cost for packs, edits HSN with edge cases", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 })
       .should("be.visible")
       .click({ force: true });
 
-    cy.contains("32021321", { timeout: 10000 }).should("be.visible").click();
+    cy.contains("32021182", { timeout: 10000 }).should("be.visible").click();
 
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
@@ -1582,25 +1579,24 @@ describe("RA buyer", () => {
 
   //buyer parks the cluster approved design
   it("Test Case 14: Buyer Parks the design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -1630,25 +1626,24 @@ describe("RA buyer", () => {
 
   //Unpark the inspiration
   it("Test Case 15: Buyer Unparks the design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
        //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -1668,25 +1663,24 @@ describe("RA buyer", () => {
 
   //buyer parks the cluster approved design again
   it("Test Case 16: Buyer Parks again", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -1712,25 +1706,24 @@ describe("RA buyer", () => {
 
   //buyer reworks the parked design
   it("Test Case 17: Buyer Reworks the parked design", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -1749,14 +1742,14 @@ describe("RA buyer", () => {
 
   //Vendor makes changes to rework design
   it("Test Case 18: Vendor creates one more pack and sends to buyer", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
     // Click on the vendor card "Shein"
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 })
       .should("be.visible")
       .click({ force: true });
 
-    cy.contains("32021321", { timeout: 10000 }).should("be.visible").click();
+    cy.contains("32021182", { timeout: 10000 }).should("be.visible").click();
 
     // Wait for page to fully load before touching sidebar
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
@@ -1817,7 +1810,7 @@ describe("RA buyer", () => {
   });
 
   // it("Cluster approval for submitted design", () => {
-  //   cy.visit("https://platform.impetusz0.de/workspace").wait(10000);
+  //   cy.visit("https://platform.uat.impetusz0.de/workspace").wait(10000);
 
   //   // Click on the cluster card "Shein"
   //   cy.get('[data-testid="Shein-odm-cluster"]', { timeout: 20000 })
@@ -1839,26 +1832,25 @@ describe("RA buyer", () => {
 
   //buyer approve for rework design from vendor
   it("Test Case 19: Buyer checks the design and approves with edge cases", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
 
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -1955,25 +1947,24 @@ describe("RA buyer", () => {
   });
 
   it("Test Case 20: Email and bell notification", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
      //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -1987,25 +1978,24 @@ describe("RA buyer", () => {
   });
 
   it("Test Case 21: OEM Auto reject", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
       .click();
@@ -2038,25 +2028,24 @@ describe("RA buyer", () => {
   });
 
   it("Test Case 22: Bulk upload OEM", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
       //UAT
-  // cy.get('[data-testid="Shein-odm-buyer"]') // get the exact card
-  //     .find("p.sc-iHbSHJ.sc-klVQfs.eSxHEb.iTeuNh") // find the <p> inside
-  //     .contains(/^S$/) // exact match for 'S'
-  //     .scrollIntoView({ offset: { top: -100 } }) // scroll if not visible
-  //     .click({ force: true });
+  cy.get('[data-testid="Shein-odm-buyer"]')
+      .find('p').first()
+      .scrollIntoView({ offset: { top: -100 } })
+      .click({ force: true });
   // Wait for workspace cards to be visible before interacting
   // cy.get(".sc-ikkxIA", { timeout: 20000 }).should("be.visible");
 
   //SIT
-  cy.get(".sc-ikkxIA")
-    .filter(':contains("Shein")')
-    .filter(':contains("odm-buyer")')
-    .find("div")
-    .contains("Shein")
-    .should("be.visible")
-    .click({ force: true });
+  // cy.get(".sc-ikkxIA")
+  //   .filter(':contains("Shein")')
+  //   .filter(':contains("odm-buyer")')
+  //   .find("div")
+  //   .contains("Shein")
+  //   .should("be.visible")
+  //   .click({ force: true });
 
     cy.contains("span.side-navigation-panel-select-option-text", "UVP")
       .parents("span.side-navigation-panel-select-option-wrap")
@@ -2080,7 +2069,7 @@ describe("RA buyer", () => {
   });
 
   it("Test Case 23: FPT and GPT approve", () => {
-    cy.visit("https://platform.impetusz0.de/workspace");
+    cy.visit("https://platform.uat.impetusz0.de/workspace");
     cy.get("svg.nitrozen-svg-icon", { timeout: 20000 }).should("be.visible");
 
     // Click on the cluster card "Shein"
@@ -2099,10 +2088,10 @@ describe("RA buyer", () => {
       .wait(1000);
 
     // Verify vendor cluster on listing page and highlight it
-    cy.contains("AHMEDABAD", { timeout: 10000 }).should("exist").then(($el) => {
+    cy.contains("SURAT", { timeout: 10000 }).should("exist").then(($el) => {
       $el[0].scrollIntoView({ inline: "center", block: "nearest" });
     });
-    cy.contains("AHMEDABAD").should("be.visible").then(($el) => {
+    cy.contains("SURAT").should("be.visible").then(($el) => {
       $el.css({
         border: "3px solid red",
         "background-color": "yellow",

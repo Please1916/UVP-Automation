@@ -1,0 +1,27 @@
+{
+  "status": "SUCCESS",
+  "message": "Replenishment File List Response",
+  "data": [
+    {
+      "replenId": "REPLEN/260629/0002",
+      "status": "DP Created",
+      "replenType": "User Upload",
+      "totalSkuCount": 5,
+      "successCount": 5,
+      "failedCount": 0,
+      "dpId": "DP_REPLEN/260629/0002",
+      "filePath": "uploads/replenishment/sap_replen_upload_20260629_080232.xlsx",
+      "errorFilePath": null,
+      "createdBy": "admin",
+      "createdAt": "2026-06-29T08:02:34.160000",
+      "modifiedAt": "2026-06-29T08:20:07.316000",
+      "replenDate": "2026-06-29T08:02:34.160000",
+      "hasError": false,
+      "canAdd": false
+    }
+  ],
+  "page": { "totalPage": 1, "currentPage": 1, "limit": 25, "total_records": 1 },
+  "error": null,
+  "warnings": null,
+  "canUpload": true
+}

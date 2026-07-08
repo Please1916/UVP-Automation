@@ -49,11 +49,11 @@ describe('Impetus Platform — Login Page Tests', () => {
     cy.logout({ force: true });
   });
 it('Test Case 1: Self QC', () => {
-    cy.visit('https://platform.impetusz0.de/workspace');
+    cy.visit('https://platform.uat.impetusz0.de/workspace');
     cy.get('svg.nitrozen-svg-icon', { timeout: 20000 }).should('be.visible');
 
     cy.get('div[data-testid="Shein-vendor"]', { timeout: 20000 }).click({ force: true });
-    cy.contains('32021321').click();
+    cy.contains('32021182').click();
 
     cy.contains('span.side-navigation-panel-select-option-text', 'QC')
       .parents('span.side-navigation-panel-select-option-wrap').click();
@@ -67,10 +67,10 @@ it('Test Case 1: Self QC', () => {
     cy.contains('QC PENDING', { timeout: 10000 }).click({ force: true }).wait(1000);
 
     // Verify vendor cluster on UI and highlight it
-    cy.contains('AHMEDABAD', { timeout: 10000 }).should('exist').then(($el) => {
+    cy.contains('SURAT', { timeout: 10000 }).should('exist').then(($el) => {
       $el[0].scrollIntoView({ inline: 'center', block: 'nearest' });
     });
-    cy.contains('AHMEDABAD').should('be.visible').then(($el) => {
+    cy.contains('SURAT').should('be.visible').then(($el) => {
       $el.css({
         'border': '3px solid red',
         'background-color': 'yellow',

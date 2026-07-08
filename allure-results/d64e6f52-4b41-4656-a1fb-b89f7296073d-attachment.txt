@@ -1,0 +1,5 @@
+Timed out retrying after 60050ms: `cy.click()` failed because this element is `disabled`:
+
+`<button class="n-button ripple n-button-rounded n-button-primary n-button-mid null" disabled="">...</button>`
+
+Fix this problem, or use `{force: true}` to disable error checking.

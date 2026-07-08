@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Allure Suite Report</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .passed {
+      background: #c8f7c5;
+    }
+
+    .failed {
+      background: #f7c5c5;
+    }
+
+    .skipped {
+      background: #dddddd;
+    }
+
+    .test-card {
+      border: 1px solid #aaa;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    img.screenshot {
+      width: 90%;
+      max-width: 900px;
+      height: auto;
+      margin-top: 12px;
+      border: 1px solid #666;
+      display: block;
+    }
+
+    .error {
+      color: #b00020;
+      font-weight: bold;
+      white-space: pre-wrap;
+    }
+
+    .trace {
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 10px;
+      border-left: 4px solid #f44336;
+      white-space: pre-wrap;
+      margin-top: 8px;
+    }
+
+    .page {
+      page-break-before: always;
+    }
+
+    .page:first-of-type {
+      page-break-before: avoid;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    window.REPORT_DATA = {"stats":{"total":77,"passed":"74 (96.10%)","failed":"2 (2.60%)","broken":"0 (0.00%)","skipped":"1 (1.30%)","retries":"0 (0.00%)"},"tests":[{"name":"TC_001: Replen column visible for buyer and cluster; absent for vendor","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"cf5db8669fc0dc30","start":1782912581957,"stop":1782912647975,"duration":66018,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_002: Replen column has a numeric value for Brick+MRP rows","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"ad307986b1be9e36","start":1782912648182,"stop":1782912675789,"duration":27607,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_003: Total count = ODM + OEM + Replen for each row","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"adfe7d5f166531da","start":1782912675880,"stop":1782912691056,"duration":15176,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_004: 110% fill rate cap applies to combined ODM+OEM+Replen; no bypass","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"a9de066bd4511adf","start":1782912691165,"stop":1782912709241,"duration":18076,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_005: Eye view on Current RA row shows exactly 3 tabs: ODM, OEM, Replen","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"2f962d1bde7cff39","start":1782912709437,"stop":1782912722919,"duration":13482,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_006: Replen tab in eye view lists shortlisted designs for that Brick+MRP","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"bc5f7efeca2e6290","start":1782912723046,"stop":1782912738672,"duration":15626,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_007: Replen tab design status = 'Uploaded' before DP creation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"94873275adbe2821","start":1782912738813,"stop":1782912763271,"duration":24458,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_008: Replen tab design status = 'DP created' after DP generation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"90a23c94f4a10b37","start":1782912763404,"stop":1782912781645,"duration":18241,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_009: Filter button present; panel shows correct filters on ODM, OEM, and Replen tabs","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"48e0a9b6ad1341a5","start":1782912781772,"stop":1782912806726,"duration":24954,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_010: Download Current Global RA Excel triggers success and includes Replen column","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"af27d64242c11d16","start":1782912806869,"stop":1782912826408,"duration":19539,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_011: Upload RA and Edit RA restrictions unchanged after Replen feature","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"da141bf2caa44848","start":1782912826653,"stop":1782912839179,"duration":12526,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_012: Eye view on Old Global RA row shows exactly 3 tabs: ODM, OEM, Replen","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"18b8917a5ea3fd61","start":1782912839379,"stop":1782912853966,"duration":14587,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_013: Old RA eye view shows exactly 3 tabs: ODM, OEM, Replen","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"f5f4225a8a91e239","start":1782912854131,"stop":1782912870297,"duration":16166,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_014: Old Global RA Excel download triggers success toast","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"d862057e7b142d8c","start":1782912870582,"stop":1782912883537,"duration":12955,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_015: Current Cluster RA tab not visible in UI for buyer role","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"ad0a400fda6ed50d","start":1782912883768,"stop":1782912893694,"duration":9926,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_016: Old Cluster RA tab not visible in UI for buyer role","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"6d136778eef53a89","start":1782912893853,"stop":1782912903041,"duration":9188,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_017: Cluster RA tabs hidden for buyer, cluster, and vendor roles","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"1bc817f94ea11fdf","start":1782912903203,"stop":1782912939689,"duration":36486,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_018: Replen column visible in RA table for Buyer and Cluster; absent for Vendor","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"9ccdb38e151a4e00","start":1782912939890,"stop":1782912972581,"duration":32691,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_019: Replen menu item present below OEM in main navigation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"b4865793a60c16b7","start":1782912972880,"stop":1782912977188,"duration":4308,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_020: Replen page opens with exactly 2 tabs: File and Replenished","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"be28a1174433ab27","start":1782912977419,"stop":1782912983001,"duration":5582,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_021: SAP Design menu item present below Replen in navigation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"80e8dd0a1fa819fa","start":1782912983509,"stop":1782912989884,"duration":6375,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_022: Upload button enabled when no active Replen file exists","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"6d563428c6171b03","start":1782912990282,"stop":1782913001195,"duration":10913,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_023: Upload pop-up opens and Download Sample button works","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"62507e47416d17ba","start":1782913001378,"stop":1782913012429,"duration":11051,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_024: New Replen ID row appears in Files tab after file upload","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"d553c8f1c463b351","start":1782913012814,"stop":1782913042399,"duration":29585,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_025: Status = 'Processing' immediately after upload","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"3312e7fea83fe457","start":1782913042691,"stop":1782913053905,"duration":11214,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_026: Upload button disabled while an active Replen file exists","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"5898171fd6cdddc0","start":1782913054199,"stop":1782913064458,"duration":10259,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_027: ADD button absent/inactive during Processing state","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"fc046a5a0f2caed","start":1782913064763,"stop":1782913075926,"duration":11163,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_028: Status = 'DP Created' when all SKUs are valid","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"bf8b287dab9d7295","start":1782913076276,"stop":1782913086914,"duration":10638,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_029: Status = 'DP Created' with error icon for mixed valid/invalid SKUs","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"f527d784ac480eb7","start":1782913087173,"stop":1782913099084,"duration":11911,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_030: Status = 'No DP Created' with download button when all SKUs invalid","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"7f23c990f9e489cf","start":1782913099412,"stop":1782913109544,"duration":10132,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_031: Status = 'DP Created' (dark green) after 12:00 AM DP generation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"6c18711cb7c8256d","start":1782913109844,"stop":1782913120316,"duration":10472,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_032: ADD button visible and clickable after processing completes (No DP Created)","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"1c9226b92617fb93","start":1782913120626,"stop":1782913129935,"duration":9309,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_033: Error file download button present on No DP Created / partial rows","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"1d5480498101058f","start":1782913130156,"stop":1782913140778,"duration":10622,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_034: Error file download icon present — file has SKUID, QTY, Error columns","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"1df4ecc54262e915","start":1782913141066,"stop":1782913151003,"duration":9937,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_035: Error download icon also present on partial DP Created rows","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"18c99b54a5bd73e6","start":1782913151315,"stop":1782913161499,"duration":10184,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_036: ADD accepts re-upload of error file; extra columns ignored","status":"failed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"4c2d495ddf7d89c4","start":1782913161829,"stop":1782913199688,"duration":37859,"retries":0,"flaky":false,"errorMessage":"Timed out retrying after 20000ms: Expected to find element: `[role='alert']`, but never found it.","errorTrace":"AssertionError: Timed out retrying after 20000ms: Expected to find element: `[role='alert']`, but never found it.\n    at Context.eval (webpack://cypress-uvp/./cypress/e2e/replen.cy.js:819:49)","attachments":[]},{"name":"TC_037: ADD accepts fresh 2-column file and appends SKUs to same Replen ID","status":"failed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"bcc0dae124abe26f","start":1782913202048,"stop":1782913240443,"duration":38395,"retries":0,"flaky":false,"errorMessage":"Timed out retrying after 20000ms: Expected to find element: `[role='alert']`, but never found it.","errorTrace":"AssertionError: Timed out retrying after 20000ms: Expected to find element: `[role='alert']`, but never found it.\n    at Context.eval (webpack://cypress-uvp/./cypress/e2e/replen.cy.js:836:49)","attachments":[]},{"name":"TC_038: Replen ID is clickable after processing; opens SKU-level detail view","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"8798221e427f678","start":1782913242560,"stop":1782913257060,"duration":14500,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_039: Detail view has all 19 required columns plus Action column","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"5e2cd4fe21a815ba","start":1782913257369,"stop":1782913271945,"duration":14576,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_040: UVPID column is clickable and opens design detail page","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"e931c545aed685a2","start":1782913272237,"stop":1782913288885,"duration":16648,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_041: Source type column shows 'User Upload' for Excel-uploaded entries","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"a7f771503e121509","start":1782913289154,"stop":1782913299394,"duration":10240,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_042: Duplicate SKU in same file shows error download icon","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"27d1a0b55280999c","start":1782913299805,"stop":1782913310007,"duration":10202,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_043: SKU with no UVPID shows error download icon","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"3ba8cc598be073e1","start":1782913310409,"stop":1782913321037,"duration":10628,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_044: SKU with no RA line item shows No DP Created status and error file","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"d34359d3cb64a07f","start":1782913321421,"stop":1782913331894,"duration":10473,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_045: Clicking Replen ID opens detail view and table loads","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"c06bc305376e3328","start":1782913332264,"stop":1782913346009,"duration":13745,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_046: Edited Qty saved and reflected in detail view","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"1ac90927818c8ecf","start":1782913346345,"stop":1782913361622,"duration":15277,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_047: Edit button disabled for all rows after DP creation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"c925db229630643a","start":1782913361907,"stop":1782913375646,"duration":13739,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_048: Delete shows confirmation dialog; row removed after confirm","status":"skipped","suiteName":"Replen Enhancement – P0 Test Suite","uid":"52ef5746f078bed9","start":1782913375965,"stop":1782913375966,"duration":1,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_049: Delete button disabled for all rows after DP creation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"90b4644a50ce388","start":1782913375966,"stop":1782913390228,"duration":14262,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_050: Upload button re-enabled after active file reaches DP Created state","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"61199032a30e10f2","start":1782913390547,"stop":1782913401050,"duration":10503,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_051: ADD button disabled on DP Created Replen file row","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"5988b198a770b2bf","start":1782913401353,"stop":1782913411738,"duration":10385,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_052: Replen file fully non-editable after DP Created (Edit, Delete, ADD all disabled)","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"7e43e48fe2fd1056","start":1782913412118,"stop":1782913426506,"duration":14388,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_053: DP ID follows REPLEN/[date]/[seq] naming format in Files tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"592aaa29d5374544","start":1782913426810,"stop":1782913436496,"duration":9686,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_054: Replen DP entry visible in Replenished tab after DP creation","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"6f696267208f2367","start":1782913436954,"stop":1782913509301,"duration":72347,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_055: SAP Design menu opens listing page with table and filters","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"544e6f7435a9c4fa","start":1782913511730,"stop":1782913521713,"duration":9983,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_056: SAP designs visible in FPT only; NOT in PP Sample, Self QC, Photoshoot","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"8f3e03274c6bfb07","start":1782913522131,"stop":1782913565854,"duration":43723,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_057: SAP design detail has no PLM ID field","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"ad79c11b31ebdd74","start":1782913566211,"stop":1782913582371,"duration":16160,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_058: Clicking SAP design ID opens design detail mirroring OEM detail page","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"58735d6cc20b9fa2","start":1782913583458,"stop":1782913597672,"duration":14214,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_059: SAP bulk upload creates designs with correct Design ID format","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"eb54c9720c1e022c","start":1782913598354,"stop":1782913616820,"duration":18466,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_060: All uploaded SAP designs auto-marked as FPT approved","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"b3d781102ca813bc","start":1782913619479,"stop":1782913642552,"duration":23073,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_061: Colorways created from SAP Excel; each in approved state; buyer approval date = creation date","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"2fe9160bbf21ce3d","start":1782913644760,"stop":1782913666422,"duration":21662,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_062: Vendor cost populated per colorway from SAP Excel","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"dfe2773f987cd048","start":1782913666844,"stop":1782913682155,"duration":15311,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_063: SKUID and EAN ID saved per colorway on SAP design","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"c7a3ef6b50085668","start":1782913682588,"stop":1782913705508,"duration":22920,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_064: SKU linked to SAP ID ingested correctly into Replen file","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"ca3ae879954a0c1c","start":1782913707938,"stop":1782913721773,"duration":13835,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_065: SAP design detail shows Quantity field (sum of PO qtys per colorway)","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"1ceb4f5222e6abab","start":1782913722241,"stop":1782913739730,"duration":17489,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_066: All date fields pre-filled as creation date on SAP design","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"600d6734bdb01de3","start":1782913741443,"stop":1782913793685,"duration":52242,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_067: Replenished tab accessible for buyer and cluster; vendor sees their designs only","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"ae5ce33da2763395","start":1782913796426,"stop":1782913825701,"duration":29275,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_068: Replenished tab lists UVP IDs with at least 1 Replan ID; sorted by latest date","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"a222f89e9537c040","start":1782913827945,"stop":1782913839810,"duration":11865,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_069: All required columns present in Replenished tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"8ba1eb376792015c","start":1782913840267,"stop":1782913855208,"duration":14941,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_070: Clicking Replen Qty opens pop-up showing Replen ID and qty","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"989b2be912063de0","start":1782913855744,"stop":1782913885177,"duration":29433,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_071: Phase 2 columns (Inventory, DOC, Bracket) absent in Replenished tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"9f275a221165108","start":1782913887786,"stop":1782913902680,"duration":14894,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_072: Design detail page has Design tab and Purchase tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"dfeda58c139f65fe","start":1782913903106,"stop":1782913924431,"duration":21325,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_073: Purchase tab visible on design detail accessed from Replenished tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"b4e4e6edc72d9729","start":1782913924938,"stop":1782913940139,"duration":15201,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_074: Replen ID and date columns present on Purchase tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"3379ed9c800446c6","start":1782913940714,"stop":1782913959337,"duration":18623,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_075: Vendor Cost, Quantity and SKU ID columns present on Purchase tab","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"b7c0083031fb7aa8","start":1782913959996,"stop":1782913978279,"duration":18283,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_076: PO Number field shows all POs separated by comma in Brick Description section","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"585ff3186637b963","start":1782913978915,"stop":1782913996057,"duration":17142,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_077: Purchase tab visible for design with replenishment; absent for design without","status":"passed","suiteName":"Replen Enhancement – P0 Test Suite","uid":"558b120d0449d7f1","start":1782913996628,"stop":1782914082202,"duration":85574,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]}],"generatedAt":"01/07/2026, 07:37:47 pm"};
+  </script>
+</head>
+
+<body>
+
+  <h1>Allure Execution PDF</h1>
+  <p id="generated-at" style="color:#555; font-size:14px; margin-top:-10px;"></p>
+
+  <!-- ================= PAGE 1 ================= -->
+  <div class="page">
+    <h2>Summary</h2>
+    <table>
+      <tr>
+        <th>Total</th>
+        <th>Passed</th>
+        <th>Failed</th>
+        <th>Skipped</th>
+
+      </tr>
+      <tr>
+        <td id="total"></td>
+        <td id="passed" class="passed"></td>
+        <td id="failed" class="failed"></td>
+        <td id="skipped" class="skipped"></td>
+
+      </tr>
+    </table>
+    <h2>Test List</h2>
+    <table id="tests-table">
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Status</th>
+          <th>Duration (ms)</th>
+
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- ================= PAGE 2 ================= -->
+  <div class="page">
+    <h2>Status Distribution</h2>
+    <canvas id="pieChart" width="600" height="600"></canvas>
+  </div>
+
+  <!-- ================= PAGE 3 ================= -->
+  <div class="page">
+    <h2>Duration per Test</h2>
+    <canvas id="durationChart" height="300"></canvas>
+  </div>
+
+  <!-- ================= PAGE 4+ ================= -->
+  <div class="page" id="failed-logs-page">
+  <h2>Failed Logs</h2>
+  <div id="test-list"></div>
+</div>
+
+  <script>
+    /* ===== WHITE BACKGROUND FIX ===== */
+    const whiteBackgroundPlugin = {
+      id: 'whiteBackground',
+      beforeDraw(chart) {
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
+      }
+    };
+
+    /* ===== LABELS INSIDE PIE ===== */
+    const pieLabelPlugin = {
+      id: 'pieLabelPlugin',
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const dataset = chart.data.datasets[0];
+        const meta = chart.getDatasetMeta(0);
+
+        ctx.save();
+        ctx.font = "bold 16px Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        meta.data.forEach((arc, index) => {
+          const value = dataset.data[index];
+          if (!value) return;
+          const pos = arc.tooltipPosition();
+          ctx.fillText(`${chart.data.labels[index]}: ${value}`, pos.x, pos.y);
+        });
+
+        ctx.restore();
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const report = window.REPORT_DATA;
+
+      total.innerText = report.stats.total;
+      passed.innerText = report.stats.passed;
+      failed.innerText = report.stats.failed;
+      skipped.innerText = report.stats.skipped;
+
+      if (report.generatedAt) {
+        document.getElementById("generated-at").innerText = "Report Generated: " + report.generatedAt;
+      }
+
+
+      /* ===== POPULATE TESTS TABLE ===== */
+      const testsTbody = document.querySelector("#tests-table tbody");
+
+      report.tests.forEach(test => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+    <td>${test.name}</td>
+    <td class="${test.status}">${test.status}</td>
+    <td>${test.duration}</td>
+    
+  `;
+        testsTbody.appendChild(tr);
+      });
+
+
+      /* ===== PIE CHART ===== */
+      new Chart(pieChart, {
+        type: "pie",
+        plugins: [whiteBackgroundPlugin, pieLabelPlugin],
+        data: {
+          labels: ["Passed", "Failed", "Skipped"],
+          datasets: [{
+            data: [
+              parseInt(report.stats.passed),
+              parseInt(report.stats.failed),
+              parseInt(report.stats.skipped)
+            ],
+            backgroundColor: ["#4CAF50", "#F44336", "#9E9E9E"],
+            borderWidth: 0,
+            radius: "92%"
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: false,
+          plugins: {
+            legend: {
+              position: "right",
+              labels: {
+                font: { size: 14 }
+              }
+            }
+          }
+        }
+      });
+
+      /* ===== DURATION CHART (UNCHANGED) ===== */
+      new Chart(durationChart, {
+        plugins: [whiteBackgroundPlugin],
+        type: "bar",
+        data: {
+          labels: report.tests.map(t => t.name),
+          datasets: [{
+            label: "Duration (ms)",
+            data: report.tests.map(t => t.duration),
+            backgroundColor: "#2196F3"
+          }]
+        }
+      });
+
+      const failedLogsPage = document.getElementById("failed-logs-page");
+const list = document.getElementById("test-list");
+
+const failedTests = report.tests.filter(t => t.status === "failed");
+
+if (failedTests.length === 0) {
+  // ✅ Completely remove the page (PDF-safe)
+  failedLogsPage.remove();
+} else {
+  failedTests.forEach(test => {
+    const div = document.createElement("div");
+    div.className = "test-card failed";
+
+    div.innerHTML = `
+      <h3>${test.name}</h3>
+      <p><strong>Suite:</strong> ${test.suiteName || "N/A"}</p>
+      <p class="error">Failure Reason:<br>${test.errorMessage || "N/A"}</p>
+      ${test.errorTrace ? `<div class="trace">${test.errorTrace}</div>` : ""}
+      <p><strong>Duration:</strong> ${test.duration} ms</p>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+
+
+
+    });
+  </script>
+
+</body>
+
+</html>

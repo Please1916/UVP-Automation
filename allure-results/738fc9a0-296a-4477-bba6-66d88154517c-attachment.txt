@@ -1,0 +1,7 @@
+Timed out retrying after 60000ms: `cy.invoke()` errored because the property: `css` does not exist on your subject.
+
+`cy.invoke()` waited for the specified property `css` to exist, but it never did.
+
+If you do not expect the property `css` to exist, then add an assertion such as:
+
+`cy.wrap({ foo: 'bar' }).its('quux').should('not.exist')`

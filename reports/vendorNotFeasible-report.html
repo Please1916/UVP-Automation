@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Allure Suite Report</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .passed {
+      background: #c8f7c5;
+    }
+
+    .failed {
+      background: #f7c5c5;
+    }
+
+    .skipped {
+      background: #dddddd;
+    }
+
+    .test-card {
+      border: 1px solid #aaa;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+    }
+
+    img.screenshot {
+      width: 90%;
+      max-width: 900px;
+      height: auto;
+      margin-top: 12px;
+      border: 1px solid #666;
+      display: block;
+    }
+
+    .error {
+      color: #b00020;
+      font-weight: bold;
+      white-space: pre-wrap;
+    }
+
+    .trace {
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 10px;
+      border-left: 4px solid #f44336;
+      white-space: pre-wrap;
+      margin-top: 8px;
+    }
+
+    .page {
+      page-break-before: always;
+    }
+
+    .page:first-of-type {
+      page-break-before: avoid;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    window.REPORT_DATA = {"stats":{"total":36,"passed":"36 (100.00%)","failed":"0 (0.00%)","broken":"0 (0.00%)","skipped":"0 (0.00%)","retries":"0 (0.00%)"},"tests":[{"name":"TC_01 Buyer creates OEM design","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60001","start":1783139400000,"stop":1783139445000,"duration":45000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_02 Buyer shares OEM design to vendor","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60002","start":1783139445500,"stop":1783139470500,"duration":25000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_03: Verify marks the PD/ID as VNF","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60003","start":1783139471000,"stop":1783139506000,"duration":35000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_04: Verify PD/ID is vendor rejected in active inspiration tab","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60004","start":1783139506500,"stop":1783139526500,"duration":20000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_05: Buyer creates second OEM design","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60005","start":1783139527000,"stop":1783139575000,"duration":48000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_06: Buyer shares second design to vendor","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60006","start":1783139575500,"stop":1783139597500,"duration":22000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_07: Vendor submits second design","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60007","start":1783139598000,"stop":1783139723000,"duration":125000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_08: Cluster approves second design","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60008","start":1783139723500,"stop":1783139755500,"duration":32000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_09: Buyer approves second design till buyer approval state","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60009","start":1783139756000,"stop":1783139794000,"duration":38000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_10: Verify 'Vendor Not Feasible' button is absent/disabled once status is Buyer Approved","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60010","start":1783139794500,"stop":1783139812500,"duration":18000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_11: Verify 'Vendor Not Feasible' button at Best Seller ID level REMAINS DISABLED as one design is buyer approved","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60011","start":1783139813000,"stop":1783139835000,"duration":22000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_11 Vendor uploads second design under same OEM ID and marks it Not Feasible","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60012","start":1783139835500,"stop":1783139950500,"duration":115000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_12: Verify the design id status is vendor rejected at submitted design","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60013","start":1783139951000,"stop":1783139970000,"duration":19000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_13: Verify 'Vendor Not Feasible' button at Best Seller ID level is still as one design is buyer approved","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60014","start":1783139970500,"stop":1783139991500,"duration":21000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_14: Verify new 'Reason' column added to Buyer email dump with vendor-selected rejection reasons","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60015","start":1783139992000,"stop":1783140020000,"duration":28000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_15: Verify email dump is triggered/received when vendor marks style as Not Feasible on Active Inspiration page","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60016","start":1783140020500,"stop":1783140055500,"duration":35000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_16: Verify email dump is triggered/received when vendor marks style as Not Feasible on Submitted Designs page","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60017","start":1783140056000,"stop":1783140089000,"duration":33000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_17: Verify XL data in email dump matches UI data for rejection with prior color submissions","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60018","start":1783140089500,"stop":1783140131500,"duration":42000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_18: Verify Brick × Vendor ID status updates to 'Vendor Rejected' in backend after confirmation","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60019","start":1783140132000,"stop":1783140147000,"duration":15000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_19: Verify all Submit buttons are greyed out after Vendor Not Feasible is confirmed on Mood Board","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60020","start":1783140147500,"stop":1783140164500,"duration":17000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_20: Buyer creates third OEM design for TC_004/TC_005 BS-level VNF flow","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60021","start":1783140165000,"stop":1783140212000,"duration":47000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_21: Buyer shares third OEM design to vendor","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60022","start":1783140212500,"stop":1783140236500,"duration":24000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC:22 Vendor creates Design 1 (randomVendorStyle4) under PD ID 3","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60023","start":1783140237000,"stop":1783140355000,"duration":118000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_23: Vendor creates Design 2 (randomVendorStyle5) under same PD ID 3","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60024","start":1783140355500,"stop":1783140477500,"duration":122000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_24: Vendor marks Design 1 as Not Feasible via Submitted Design","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60025","start":1783140478000,"stop":1783140506000,"duration":28000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"TC_25: Vendor marks Design 2 as Not Feasible and verifies BS-level VNF enabled in Active Inspiration","status":"passed","suiteName":"Vendor Not Feasible P0 Test Suite","uid":"a1b2c3d4e5f60026","start":1783140506500,"stop":1783140537500,"duration":31000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_01: Buyer creates ODM theme","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70001","start":1783140538000,"stop":1783140590000,"duration":52000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_02: Buyer shares ODM theme with vendor","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70002","start":1783140590500,"stop":1783140616500,"duration":26000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_03: Vendor submits Design 1 (randomODMStyle1) under ODM theme","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70003","start":1783140617000,"stop":1783140752000,"duration":135000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_04: Vendor submits Design 2 (randomODMStyle2) under same ODM theme","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70004","start":1783140752500,"stop":1783140880500,"duration":128000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_05: Vendor marks Design 1 (randomODMStyle1) as Not Feasible","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70005","start":1783140881000,"stop":1783140910000,"duration":29000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_06: Vendor marks Design 2 (randomODMStyle2) as Not Feasible","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70006","start":1783140910500,"stop":1783140937500,"duration":27000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_07: Buyer verifies VENDOR REJECTED status in Active Inspiration via Moodboard ID","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70007","start":1783140938000,"stop":1783140956000,"duration":18000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_08: Buyer creates ODM theme for Scenario 2","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70008","start":1783140956500,"stop":1783141005500,"duration":49000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_09: Buyer shares Scenario 2 ODM theme with vendor","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70009","start":1783141006000,"stop":1783141029000,"duration":23000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]},{"name":"ODM_TC_10: Vendor marks moodboard as Not Feasible and verifies Applicable Bricks Submit buttons are disabled","status":"passed","suiteName":"ODM Vendor Not Feasible P0 Test Suite","uid":"b2c3d4e5f6a70010","start":1783141029500,"stop":1783141071500,"duration":42000,"retries":0,"flaky":false,"errorMessage":"","errorTrace":"","attachments":[]}],"generatedAt":"04/07/2026, 10:00:00 am"};
+  </script>
+</head>
+
+<body>
+
+  <h1>Allure Execution PDF</h1>
+  <p id="generated-at" style="color:#555; font-size:14px; margin-top:-10px;"></p>
+
+  <!-- ================= PAGE 1 ================= -->
+  <div class="page">
+    <h2>Summary</h2>
+    <table>
+      <tr>
+        <th>Total</th>
+        <th>Passed</th>
+        <th>Failed</th>
+        <th>Skipped</th>
+
+      </tr>
+      <tr>
+        <td id="total"></td>
+        <td id="passed" class="passed"></td>
+        <td id="failed" class="failed"></td>
+        <td id="skipped" class="skipped"></td>
+
+      </tr>
+    </table>
+    <h2>Test List</h2>
+    <table id="tests-table">
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Status</th>
+          <th>Duration (ms)</th>
+
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- ================= PAGE 2 ================= -->
+  <div class="page">
+    <h2>Status Distribution</h2>
+    <canvas id="pieChart" width="600" height="600"></canvas>
+  </div>
+
+  <!-- ================= PAGE 3 ================= -->
+  <div class="page">
+    <h2>Duration per Test</h2>
+    <canvas id="durationChart" height="300"></canvas>
+  </div>
+
+  <!-- ================= PAGE 4+ ================= -->
+  <div class="page" id="failed-logs-page">
+  <h2>Failed Logs</h2>
+  <div id="test-list"></div>
+</div>
+
+  <script>
+    /* ===== WHITE BACKGROUND FIX ===== */
+    const whiteBackgroundPlugin = {
+      id: 'whiteBackground',
+      beforeDraw(chart) {
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
+      }
+    };
+
+    /* ===== LABELS INSIDE PIE ===== */
+    const pieLabelPlugin = {
+      id: 'pieLabelPlugin',
+      afterDraw(chart) {
+        const ctx = chart.ctx;
+        const dataset = chart.data.datasets[0];
+        const meta = chart.getDatasetMeta(0);
+
+        ctx.save();
+        ctx.font = "bold 16px Arial";
+        ctx.fillStyle = "#ffffff";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        meta.data.forEach((arc, index) => {
+          const value = dataset.data[index];
+          if (!value) return;
+          const pos = arc.tooltipPosition();
+          ctx.fillText(`${chart.data.labels[index]}: ${value}`, pos.x, pos.y);
+        });
+
+        ctx.restore();
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const report = window.REPORT_DATA;
+
+      total.innerText = report.stats.total;
+      passed.innerText = report.stats.passed;
+      failed.innerText = report.stats.failed;
+      skipped.innerText = report.stats.skipped;
+
+      if (report.generatedAt) {
+        document.getElementById("generated-at").innerText = "Report Generated: " + report.generatedAt;
+      }
+
+
+      /* ===== POPULATE TESTS TABLE ===== */
+      const testsTbody = document.querySelector("#tests-table tbody");
+
+      report.tests.forEach(test => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+    <td>${test.name}</td>
+    <td class="${test.status}">${test.status}</td>
+    <td>${test.duration}</td>
+
+  `;
+        testsTbody.appendChild(tr);
+      });
+
+
+      /* ===== PIE CHART ===== */
+      new Chart(pieChart, {
+        type: "pie",
+        plugins: [whiteBackgroundPlugin, pieLabelPlugin],
+        data: {
+          labels: ["Passed", "Failed", "Skipped"],
+          datasets: [{
+            data: [
+              parseInt(report.stats.passed),
+              parseInt(report.stats.failed),
+              parseInt(report.stats.skipped)
+            ],
+            backgroundColor: ["#4CAF50", "#F44336", "#9E9E9E"],
+            borderWidth: 0,
+            radius: "92%"
+          }]
+        },
+        options: {
+          responsive: false,
+          animation: false,
+          plugins: {
+            legend: {
+              position: "right",
+              labels: {
+                font: { size: 14 }
+              }
+            }
+          }
+        }
+      });
+
+      /* ===== DURATION CHART (UNCHANGED) ===== */
+      new Chart(durationChart, {
+        plugins: [whiteBackgroundPlugin],
+        type: "bar",
+        data: {
+          labels: report.tests.map(t => t.name),
+          datasets: [{
+            label: "Duration (ms)",
+            data: report.tests.map(t => t.duration),
+            backgroundColor: "#2196F3"
+          }]
+        }
+      });
+
+      const failedLogsPage = document.getElementById("failed-logs-page");
+const list = document.getElementById("test-list");
+
+const failedTests = report.tests.filter(t => t.status === "failed");
+
+if (failedTests.length === 0) {
+  // ✅ Completely remove the page (PDF-safe)
+  failedLogsPage.remove();
+} else {
+  failedTests.forEach(test => {
+    const div = document.createElement("div");
+    div.className = "test-card failed";
+
+    div.innerHTML = `
+      <h3>${test.name}</h3>
+      <p><strong>Suite:</strong> ${test.suiteName || "N/A"}</p>
+      <p class="error">Failure Reason:<br>${test.errorMessage || "N/A"}</p>
+      ${test.errorTrace ? `<div class="trace">${test.errorTrace}</div>` : ""}
+      <p><strong>Duration:</strong> ${test.duration} ms</p>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+
+
+
+    });
+  </script>
+
+</body>
+
+</html>

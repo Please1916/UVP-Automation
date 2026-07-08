@@ -1,0 +1,41 @@
+{
+  "uuid": "f70c4c08-bc9b-4408-90dd-1fa4c361f001",
+  "historyId": "vnf-tc-009",
+  "testCaseId": "VNF-009",
+  "fullName": "Vendor Not Feasible – P0 Test Suite.TC_009: Verify email dump is triggered/received when vendor marks style as Not Feasible on Submitted Designs page",
+  "name": "TC_009: Verify email dump is triggered/received when vendor marks style as Not Feasible on Submitted Designs page",
+  "status": "failed",
+  "statusMessage": "AssertionError: expected 'Error' to equal 'Email Sent'",
+  "statusTrace": "at [data-testid='email-send-status'] assertion (vendorNotFeasible.cy.js:146)\nError: Email service timeout — POST /api/email-dump/trigger returned 500",
+  "stage": "finished",
+  "description": "",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "labels": [
+    {
+      "name": "package",
+      "value": "cypress.e2e.vendorNotFeasible.cy.js"
+    },
+    {
+      "name": "suite",
+      "value": "Vendor Not Feasible – P0 Test Suite"
+    },
+    {
+      "name": "feature",
+      "value": "Vendor Not Feasible"
+    },
+    {
+      "name": "severity",
+      "value": "critical"
+    }
+  ],
+  "links": [],
+  "start": 1782896412390,
+  "stop": 1782896414310,
+  "time": {
+    "start": 1782896412390,
+    "stop": 1782896414310,
+    "duration": 1920
+  }
+}

@@ -1,0 +1,7 @@
+
+Expected:
+"VENDOR REJECTED"
+
+Actual:
+"PD/260702/0027VNF_6a3r9qBangladeshSheinJul 02, 2026Aug 16, 2026101PENDING"
+      
